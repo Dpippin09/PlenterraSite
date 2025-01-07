@@ -198,7 +198,7 @@ h3{
 }
 
 .about-Us p {
-    font-size: 22px;
+    font-size: 20px;
     line-height: 1.6;
 }
 
@@ -333,6 +333,8 @@ main.Projects section {
     max-width: 900px; /* Set a maximum width, adjust as needed */
     max-height: 700px; /* Set a maximum height, adjust as needed */
 }
+
+
 
 .graphic-list {
     display: block;
