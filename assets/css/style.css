@@ -1,0 +1,658 @@
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+
+body {
+    background-color: #e3d5ca;
+}
+
+
+
+
+.header div {
+    padding-top: 15px;
+    margin-right: 20px;
+    float: right;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-size: 20px;
+}
+
+.header div ul li {
+    display: inline-block;
+    margin-left: 25px;
+}
+
+a {
+    color: #ffffff;
+    text-decoration: none;
+}
+
+p {
+    font-size: 16px;
+}
+
+#welcome {
+    margin: 0; /* Removes default margin */
+    float: left;
+}
+/* Base styles */
+.hero {
+    height: 800px;
+    width: 100%;
+    margin-bottom: 25px;
+    background-image: url("../images/NewOpeningImage.png");
+    background-size: cover;
+    background-position: center;
+}
+
+/* Media queries for mobile compatibility */
+@media (max-width: 768px) {
+    .hero {
+        height: 500px; /* Adjust the height for tablets */
+    }
+}
+
+@media (max-width: 480px) {
+    .hero {
+        height: 300px; /* Adjust the height for mobile phones */
+    }
+}
+nav {
+    display: flex;
+    justify-content: flex-end; /* Aligns the nav-links container to the right */
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 20px;
+    background-color: #ccc5b9;
+    color: #505050;
+    position: fixed;
+    width: 100%; /* Ensures the nav container takes the full width */
+    top: 0; /* Fixes the nav to the top of the page */
+}
+
+.Welcome {
+    margin: 0; /* Removes default margin */
+    float: left;
+}
+
+.nav-links {
+    display: flex;
+    gap: 10px;
+    list-style: none; /* Removes the default list styling */
+    padding: 0;
+    margin: 0;
+}
+
+.nav-links li {
+    display: inline;
+}
+
+.nav-links a {
+    color: #000000;
+    text-decoration: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+    font-size: 18px;
+    
+}
+
+.nav-links a:hover {
+    background-color: #797979;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #a39171;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+}
+
+.dropdown-content li {
+    display: block;
+}
+
+.dropdown-content a {
+    color: black; 
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+.dropdown-content a:hover {
+    background-color: #ccc5b9;
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+.nav-links .login-signup {
+    background-color: #386641;
+    color: #ffffff;
+}
+
+.nav-links .login-signup:hover {
+    background-color: #555;
+    color: #ffffff;
+}
+
+h1 {
+    
+    text-decoration: underline;
+}
+
+a { color: #ffffff;
+    text-decoration: none;
+}
+
+p {
+    font-size: 21px; /* Change this value to your desired font size */
+    line-height: 1.75; /* Optional: Adjust the line height for better readability */
+}
+
+
+  
+.float-left {
+    float: left;
+    margin-right: 25px;
+}
+
+.float-right {
+    float: right;
+    margin-left: 25px;
+}
+
+h3{
+    font-size: 24px;
+    margin-top: 0;
+    text-decoration: underline;
+    color: #000000;
+}
+
+/* Base styles */
+.about-Us {
+    margin-bottom: 20px;
+    padding: 50px;
+    height: auto; /* Change height to auto for better responsiveness */
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    background-color: #588157;
+    color: #dad7cd;
+}
+
+.about-Us img {
+    width: 400px; /* Set the desired width */
+    height: auto; /* Maintain aspect ratio */
+    max-width: 100%; /* Ensure it doesn't exceed the container's width */
+    border-radius: 5px;
+    margin-right: 20px;
+}
+
+.about-Us h2 {
+    text-decoration: underline;
+    margin-top: 0;
+}
+
+.about-Us p {
+    font-size: 22px;
+    line-height: 1.6;
+}
+
+/* Media queries for mobile compatibility */
+@media (max-width: 768px) {
+    .about-Us {
+        padding: 30px;
+    }
+
+    .about-Us img {
+        float: none;
+        display: block;
+        margin: 0 auto 20px;
+    }
+
+    .about-Us h2 {
+        font-size: 24px;
+    }
+
+    .about-Us p {
+        font-size: 16px;
+    }
+}
+
+@media (max-width: 480px) {
+    .about-Us {
+        padding: 20px;
+    }
+
+    .about-Us h2 {
+        font-size: 20px;
+    }
+
+    .about-Us p {
+        font-size: 14px;
+    }
+}
+
+/* Base styles */
+.soil-health {
+    margin-bottom: 20px;
+    padding: 50px;
+    height: auto; /* Change height to auto for better responsiveness */
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    background-color: #588157;
+    color: #dad7cd;
+}
+
+.soil-health img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 5px;
+    margin-left: 20px;
+}
+
+.soil-health h2 {
+    text-decoration: underline;
+    margin-top: 0;
+}
+
+.soil-health p {
+    font-size: 22px;
+    line-height: 1.6;
+}
+
+/* Media queries for mobile compatibility */
+@media (max-width: 768px) {
+    .soil-health {
+        padding: 30px;
+    }
+
+    .soil-health img {
+        float: none;
+        display: block;
+        margin: 0 auto 20px;
+    }
+
+    .soil-health h2 {
+        font-size: 24px;
+    }
+
+    .soil-health p {
+        font-size: 16px;
+    }
+}
+
+@media (max-width: 480px) {
+    .soil-health {
+        padding: 20px;
+    }
+
+    .soil-health h2 {
+        font-size: 20px;
+    }
+
+    .soil-health p {
+        font-size: 14px;
+    }
+}
+
+/* Base styles */
+.Projects {
+    margin-bottom: 20px;
+    padding: 50px;
+    height: auto; /* Change height to auto for better responsiveness */
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    background-color: #ffffff;
+    color: #000000;
+}
+
+main.Projects {
+    display: flex;
+    flex-direction: column;
+}
+
+main.Projects h2 {
+    color: #008000; /* Set the desired color */
+}
+
+main.Projects section {
+    padding: 45px; /* Add desired padding */
+    margin-bottom: 10px; /* Optional: Add margin between sections */
+}
+
+#graphic-image {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 20px; /* Optional: Add some margin at the top for spacing */
+    width: auto; /* Ensure the width is set to auto */
+    height: auto; /* Maintain aspect ratio */
+    max-width: 900px; /* Set a maximum width, adjust as needed */
+    max-height: 700px; /* Set a maximum height, adjust as needed */
+}
+
+.graphic-list {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 20px; /* Optional: Add some margin at the top for spacing */
+    width: auto; /* Ensure the width is set to auto */
+    height: auto; /* Ensure the height is set to auto */
+    max-width: none; /* Remove any max-width constraints */
+   
+}
+
+.Projects h2 {
+    text-decoration: underline;
+    margin-top: 0;
+    
+}
+
+.Projects p {
+    font-size: 22px;
+}
+
+.section-image {
+    float: right;
+    margin-left: 20px; /* Optional: Add margin to the left for spacing */
+    width: 200px; /* Set the desired width */
+    height: auto; /* Maintain aspect ratio */
+    border-radius: 5px; /* Optional: Add border radius */
+}
+
+#Dead-Trees {
+    background-color: #6a994e; /* Set the desired background color */
+    padding: 50px; /* Optional: Add padding for better spacing */
+}
+
+#Biochar {
+    background-color: #6a994e; /* Set the desired background color */
+    padding: 50px; /* Optional: Add padding for better spacing */
+}
+
+#Biochar ul {
+    font-size: 20px; /* Set the desired font size */
+    line-height: 1.6; /* Optional: Adjust the line height for better readability */
+}
+
+#Fertilizer {
+    background-color: #6a994e; /* Set the desired background color */
+    padding: 50px; /* Optional: Add padding for better spacing */
+}
+
+#Healthy-Soil {
+    background-color: #6a994e; /* Set the desired background color */
+    padding: 50px; /* Optional: Add padding for better spacing */
+}
+
+#Healthy-Soil p, #Healthy-Soil ul, #Healthy-Soil li {
+    font-size: 22px; /* Set the desired font size */
+    line-height: 1.6; /* Optional: Adjust the line height for better readability */
+}
+
+#Healthy-Crops {
+    background-color: #6a994e; /* Set the desired background color */
+    padding: 50px; /* Optional: Add padding for better spacing */
+}
+
+#Healthy-Crops p, #Healthy-Crops ul, #Healthy-Crops li {
+    font-size: 22px; /* Set the desired font size */
+    line-height: 1.6; /* Optional: Adjust the line height for better readability */
+}
+
+#Clean {
+    background-color: #6a994e; /* Set the desired background color */
+    padding: 50px; /* Optional: Add padding for better spacing */
+}
+
+#Clean p, #Clean ul, #Clean li {
+    font-size: 22px; /* Set the desired font size */
+    line-height: 1.6; /* Optional: Adjust the line height for better readability */
+}
+
+#Carbon-Returned {
+    background-color: #6a994e; /* Set the desired background color */
+    padding: 50px; /* Optional: Add padding for better spacing */
+}
+/* Add other sections as needed */
+
+/* Media queries for mobile compatibility */
+@media (max-width: 768px) {
+    .Projects {
+        padding: 30px;
+    }
+
+    .Projects img {
+        max-width: 100%;
+        height: auto;
+        border-radius: 5px;
+        margin-left: 20px;
+    }
+
+    .Projects h2 {
+        font-size: 24px;
+    }
+
+    .Projects p {
+        font-size: 16px;
+    }
+}
+
+@media (max-width: 480px) {
+    .Projects {
+        padding: 20px;
+    }
+
+    .Projects h2 {
+        font-size: 20px;
+    }
+
+    .Projects p {
+        font-size: 14px;
+    }
+}
+
+/* Base styles */
+.our-farms {
+    margin-bottom: 20px;
+    padding: 50px;
+    height: auto; /* Change height to auto for better responsiveness */
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    background-color: #588157;
+    color: #dad7cd;
+}
+
+.our-farms img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 5px;
+    margin-left: 20px;
+}
+
+.our-farms h2 {
+    text-decoration: underline;
+    margin-top: 0;
+}
+
+.our-farms p {
+    font-size: 22px;
+    line-height: 1.6;
+}
+
+/* Media queries for mobile compatibility */
+@media (max-width: 768px) {
+    .our-farms {
+        padding: 30px;
+    }
+
+    .our-farms img {
+        float: none;
+        display: block;
+        margin: 0 auto 20px;
+    }
+
+    .our-farms h2 {
+        font-size: 24px;
+    }
+
+    .our-farms p {
+        font-size: 16px;
+    }
+}
+
+@media (max-width: 480px) {
+    .our-farms {
+        padding: 20px;
+    }
+
+    .our-farms h2 {
+        font-size: 20px;
+    }
+
+    .our-farms p {
+        font-size: 14px;
+    }
+}
+
+.about-Us img {
+    max-height: 200px;
+}
+
+.soil-health img {
+    max-height: 330px;
+}
+
+.Projects img {
+    max-height: 280px;
+}
+
+.our-farms img {
+    max-height: 300px;
+}
+
+.about-Us h2 {
+    margin-bottom: 20px;
+    font-size: 36px;
+}
+
+.soil-health h2 {
+    margin-bottom: 20px;
+    font-size: 36px;
+}
+
+.Projects h2 {
+    margin-bottom: 20px;
+    font-size: 36px;
+}
+
+.our-farms h2 {
+    margin-bottom: 20px;
+    font-size: 36px;
+}
+
+
+/* Contact section styles */
+.contact {
+    padding: 20px;
+    background-color: #d4a373;
+    border-radius: 5px;
+}
+
+.contact h2 {
+    margin-top: 0;
+}
+
+.contact form {
+    display: flex;
+    flex-direction: column;
+}
+
+.contact label {
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+.contact input,
+.contact textarea {
+    margin-bottom: 15px;
+    padding: 10px;
+    border: 1px solid #a7a7a7;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+.contact button {
+    padding: 10px 20px;
+    background-color: #52796f;
+    color: #ffffff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+}
+
+.contact button:hover {
+    background-color: #344e41;
+}
+
+/* Media queries for mobile compatibility */
+@media (max-width: 768px) {
+    .header h1 {
+        font-size: 28px;
+    }
+
+    .nav-links {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .nav-links a {
+        padding: 10px;
+    }
+
+    .hero {
+        height: 300px;
+    }
+
+    main img {
+        float: none;
+        margin: 0 auto 20px;
+    }
+
+
+}
+
+@media (max-width: 480px) {
+    .header h1 {
+        font-size: 24px;
+    }
+
+    .nav-links a {
+        padding: 8px;
+    }
+
+    .hero {
+        height: 200px;
+    }
+
+    main p {
+        font-size: 16px;
+    }
+
+
+}
+
+.footer {
+    padding: 15px;
+    clear: both;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    text-align: center;
+}
+
+.footer h2 {
+    font-size: 20px;
+}
