@@ -39,12 +39,12 @@ p {
 }
 /* Base styles */
 .hero {
-    height: 800px;
+     height: 800px;
     width: 100%;
-    /* margin-bottom: 25px; */
+    
     background-image: url("../images/farmerOpening.png");
     background-size: cover;
-    background-position: center;
+    background-position: center; 
 }
 
 /* Media queries for mobile compatibility */
@@ -69,7 +69,13 @@ nav {
     color: #505050;
     position: fixed;
     width: 100%; /* Ensures the nav container takes the full width */
-    top: 0; /* Fixes the nav to the top of the page */
+    top: -60px; /* Move the nav bar out of view */
+    transition: top 0.3s ease; /* Smooth transition */
+    z-index: 1000; /* Ensure it stays on top */
+}
+
+body:hover nav {
+    top: 0; /* Show the nav bar when hovering at the top */
 }
 
 .Welcome {
@@ -157,7 +163,7 @@ p {
 
 .plenterra-logo {
     width: 100%; /* Adjust the width as needed */
-    max-width: 240px; /* Set a maximum width */
+    max-width: 150px; /* Set a maximum width */
     height: auto; /* Maintain aspect ratio */
     object-fit: contain; /* Ensure the image scales properly within the set dimensions */
     border-radius: 10px; /* Optional: Add border radius for rounded corners */
@@ -387,8 +393,37 @@ main.Projects section {
 }
 
 #Dead-Trees {
-    background-color: #6a994e; /* Set the desired background color */
+    background-color: #ffffff; /* Set the desired background color */
     padding: 50px; /* Optional: Add padding for better spacing */
+}
+
+.three-columns {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px; /* Adjust the gap between columns as needed */
+    margin-top: 20px; /* Add some margin to the top of the columns */
+}
+
+.column {
+    flex: 1;
+    background-color: #dad7cd; /* Optional: Add a background color */
+    padding: 20px; /* Add some padding inside the columns */
+    border-radius: 10px; /* Optional: Add border radius for rounded corners */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Optional: Add a subtle box shadow */
+}
+
+.three-images {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px; /* Adjust the gap between images as needed */
+    margin-top: 20px; /* Add some margin to the top of the images */
+}
+
+.three-images img {
+    flex: 1;
+    max-width: 100%; /* Ensure the images don't exceed the container's width */
+    border-radius: 10px; /* Optional: Add border radius for rounded corners */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Optional: Add a subtle box shadow */
 }
 
 #Biochar {
@@ -539,6 +574,28 @@ main.Projects section {
     .our-farms p {
         font-size: 14px;
     }
+}
+
+@keyframes slide-in {
+    from {
+        opacity: 0;
+        transform: translateY(50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.section {
+    opacity: 0;
+    transform: translateY(50px);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+.section.visible {
+    opacity: 1;
+    transform: translateY(0);
 }
 
 .about-Us img {

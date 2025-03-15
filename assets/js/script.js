@@ -48,3 +48,23 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 });
+
+document.addEventListener('DOMContentLoaded', function() {
+    const nav = document.querySelector('nav');
+    let lastScrollY = window.scrollY;
+
+    window.addEventListener('scroll', function() {
+        if (window.scrollY > lastScrollY) {
+            nav.style.top = '-60px'; // Hide nav on scroll down
+        } else {
+            nav.style.top = '0'; // Show nav on scroll up
+        }
+        lastScrollY = window.scrollY;
+    });
+
+    document.addEventListener('mousemove', function(event) {
+        if (event.clientY < 50) {
+            nav.style.top = '0'; // Show nav when mouse is at the top
+        }
+    });
+});
