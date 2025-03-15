@@ -41,7 +41,7 @@ p {
 .hero {
     height: 800px;
     width: 100%;
-    margin-bottom: 25px;
+    /* margin-bottom: 25px; */
     background-image: url("../images/farmerOpening.png");
     background-size: cover;
     background-position: center;
@@ -165,7 +165,7 @@ p {
     margin: 0 auto; /* Center the image horizontally */
 }
 
-.farming-image,
+ .farming-image, 
 .section-image,
 .graphic-list {
     border-radius: 30px; /* Adjust the value as needed */
