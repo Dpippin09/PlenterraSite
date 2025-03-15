@@ -65,7 +65,7 @@ nav {
     align-items: center;
     justify-content: space-between;
     padding: 10px 20px;
-    background-color: #ccc5b9;
+    background-color: #ffffff;
     color: #505050;
     position: fixed;
     width: 100%; /* Ensures the nav container takes the full width */
@@ -157,12 +157,13 @@ p {
 
 .plenterra-logo {
     width: 100%; /* Adjust the width as needed */
-    max-width: 450px; /* Set a maximum width */
+    max-width: 240px; /* Set a maximum width */
     height: auto; /* Maintain aspect ratio */
     object-fit: contain; /* Ensure the image scales properly within the set dimensions */
     border-radius: 10px; /* Optional: Add border radius for rounded corners */
     display: block; /* Make the image a block element */
-    margin: 0 auto; /* Center the image horizontally */
+    margin: 0; /* Remove auto margin to stop centering */
+    float: left; /* Float the logo to the left */
 }
 
  .farming-image, 
