@@ -155,7 +155,15 @@ p {
     line-height: 1.75; /* Optional: Adjust the line height for better readability */
 }
 
+.farming-image,
+.section-image,
+.graphic-list {
+    border-radius: 30px; /* Adjust the value as needed */
+}
 
+section {
+    border-radius: 30px; /* Adjust the value as needed */
+}
   
 .float-left {
     float: left;
