@@ -53,7 +53,11 @@ document.addEventListener('DOMContentLoaded', function() {
     const nav = document.querySelector('nav');
 
     window.addEventListener('scroll', function() {
-        nav.style.top = '-60px'; // Always hide nav on scroll
+        if (window.scrollY === 0) {
+            nav.style.top = '0'; // Show nav when at the top of the page
+        } else {
+            nav.style.top = '-60px'; // Hide nav on scroll
+        }
     });
 
     document.addEventListener('mousemove', function(event) {
