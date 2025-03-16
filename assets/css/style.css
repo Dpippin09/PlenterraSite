@@ -358,8 +358,8 @@ main.Projects section {
     margin-top: 20px; /* Optional: Add some margin at the top for spacing */
     width: auto; /* Ensure the width is set to auto */
     height: auto; /* Maintain aspect ratio */
-    max-width: 900px; /* Set a maximum width, adjust as needed */
-    max-height: 700px; /* Set a maximum height, adjust as needed */
+    max-width: 1200px; /* Increase the maximum width */
+    max-height: 1000px; /* Increase the maximum height */
 }
 
 
