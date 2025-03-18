@@ -521,6 +521,7 @@ main.Projects section {
     height: auto; /* Maintain aspect ratio */
     object-fit: contain; /* Ensure the image scales properly */
     border-radius: 10px; /* Optional: Add rounded corners */
+    float: right;
 }
 
 #Clean {
