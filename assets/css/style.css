@@ -193,14 +193,21 @@ section {
     margin-left: 25px;
 }
 
-h3{
-    font-size: 50px;
-    margin-top: 0;
+section h3 {
+    text-align: center; /* Center the text horizontally */
+    margin-top: 0; /* Remove any default margin at the top */
+    padding-top: 10px; /* Optional: Add some padding at the top for spacing */
+    font-size: 50px; /* Optional: Adjust the font size */
+    font-weight: bold; /* Optional: Make the text bold */
     text-decoration: underline;
-    color: #000000;
-    text-align: center;
 }
 
+section {
+    display: flex;
+    flex-direction: column; /* Stack items vertically */
+    align-items: center; /* Center-align items horizontally */
+    padding: 200px; /* Optional: Add padding for spacing */
+}
 /* Base styles */
 .about-Us {
     margin-bottom: 20px;
