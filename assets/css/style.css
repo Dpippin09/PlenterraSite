@@ -498,7 +498,7 @@ main.Projects section {
     flex-direction: row; /* Align items in a row */
     align-items: flex-start; /* Align items at the top */
     gap: 20px; /* Add spacing between the text and the image */
-    background-color: #6a994e; /* Set the desired background color */
+    background-color: #ffffff; /* Set the desired background color */
     padding: 50px; /* Optional: Add padding for better spacing */
 }
 
@@ -512,12 +512,12 @@ main.Projects section {
     flex: 1; /* Allow the text to take up more space */
     font-size: 22px; /* Set the desired font size */
     line-height: 1.6; /* Optional: Adjust the line height for better readability */
-    color: #ffffff; /* Set the text color */
+    color: #000000; /* Set the text color */
 }
 
 .healthy-crops-image {
     flex: 2; /* Allow the image to take up less space */
-    max-width: 300px; /* Set a maximum width for the image */
+    max-width: 600px; /* Set a maximum width for the image */
     height: auto; /* Maintain aspect ratio */
     object-fit: contain; /* Ensure the image scales properly */
     border-radius: 10px; /* Optional: Add rounded corners */
@@ -525,7 +525,7 @@ main.Projects section {
 }
 
 #Clean {
-    background-color: #6a994e; /* Set the desired background color */
+    background-color: #ffffff; /* Set the desired background color */
     padding: 50px; /* Optional: Add padding for better spacing */
 }
 
