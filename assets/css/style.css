@@ -194,10 +194,11 @@ section {
 }
 
 h3{
-    font-size: 24px;
+    font-size: 50px;
     margin-top: 0;
     text-decoration: underline;
     color: #000000;
+    text-align: center;
 }
 
 /* Base styles */
@@ -428,7 +429,7 @@ main.Projects section {
 }
 
 #Biochar {
-    background-color: #6a994e; /* Set the desired background color */
+    background-color: #ffffff; /* Set the desired background color */
     padding: 50px; /* Optional: Add padding for better spacing */
 }
 
@@ -535,7 +536,7 @@ main.Projects section {
 }
 
 #Carbon-Returned {
-    background-color: #6a994e; /* Set the desired background color */
+    background-color: #ffffff; /* Set the desired background color */
     padding: 50px; /* Optional: Add padding for better spacing */
 }
 /* Add other sections as needed */
