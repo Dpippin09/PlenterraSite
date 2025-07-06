@@ -23,7 +23,8 @@ function handleLogin(event) {
     
     const username = document.getElementById('login-username').value;
     const password = document.getElementById('login-password').value;
-    const rememberMe = document.getElementById('remember-me').checked;
+    const rememberMeElement = document.getElementById('remember-me');
+    const rememberMe = rememberMeElement ? rememberMeElement.checked : false;
     
     // Basic validation
     if (!username || !password) {
@@ -207,7 +208,7 @@ function validateSignupData(userData) {
 
 // Simulate user authentication
 function authenticateUser(username, password) {
-    // Demo credentials
+    // Check demo credentials first
     const validCredentials = [
         { username: 'demo', password: 'demo123' },
         { username: 'farmer', password: 'farmer123' },
@@ -215,15 +216,42 @@ function authenticateUser(username, password) {
         { username: 'demo_farmer', password: 'demo' }
     ];
     
-    return validCredentials.some(cred => 
+    const isDemoUser = validCredentials.some(cred => 
         (cred.username === username || cred.username === username.toLowerCase()) && 
         cred.password === password
     );
+    
+    if (isDemoUser) {
+        return true;
+    }
+    
+    // Check registered users
+    const registeredUsers = JSON.parse(localStorage.getItem('plenterraRegisteredUsers') || '[]');
+    
+    const foundUser = registeredUsers.find(user => 
+        (user.username.toLowerCase() === username.toLowerCase() || user.email.toLowerCase() === username.toLowerCase()) && 
+        user.password === password
+    );
+    
+    return !!foundUser;
 }
 
 // Get user data based on username
 function getUserData(username) {
-    // Return demo user data (in real app, this would fetch from database)
+    // Check if it's a registered user first
+    const registeredUsers = JSON.parse(localStorage.getItem('plenterraRegisteredUsers') || '[]');
+    const registeredUser = registeredUsers.find(user => 
+        user.username.toLowerCase() === username.toLowerCase() || 
+        user.email.toLowerCase() === username.toLowerCase()
+    );
+    
+    if (registeredUser) {
+        // Return the actual registered user data (without password for security)
+        const { password, ...userDataWithoutPassword } = registeredUser;
+        return userDataWithoutPassword;
+    }
+    
+    // Return demo user data for demo accounts
     return {
         firstName: 'John',
         lastName: 'Anderson',
@@ -274,18 +302,21 @@ function getUserData(username) {
 
 // Check if user already exists
 function checkUserExists(username, email) {
-    // Simulate checking against existing users
-    const existingUsers = ['admin', 'demo', 'test', 'farmer'];
-    return existingUsers.includes(username.toLowerCase());
+    const registeredUsers = JSON.parse(localStorage.getItem('plenterraRegisteredUsers') || '[]');
+    return registeredUsers.some(user => 
+        user.username.toLowerCase() === username.toLowerCase() || 
+        user.email.toLowerCase() === email.toLowerCase()
+    );
 }
 
 // Create new user account
 function createUser(userData) {
-    return {
+    const newUser = {
         firstName: userData.firstName,
         lastName: userData.lastName,
         email: userData.email,
         username: userData.username,
+        password: userData.password, // In real app, this would be hashed
         farmName: userData.farmName,
         totalAcres: userData.farmSize,
         farmingType: userData.farmType,
@@ -311,6 +342,13 @@ function createUser(userData) {
         createdAt: new Date().toISOString(),
         newsletter: userData.newsletter
     };
+    
+    // Store the new user in localStorage
+    const registeredUsers = JSON.parse(localStorage.getItem('plenterraRegisteredUsers') || '[]');
+    registeredUsers.push(newUser);
+    localStorage.setItem('plenterraRegisteredUsers', JSON.stringify(registeredUsers));
+    
+    return newUser;
 }
 
 // Show forgot password modal
@@ -399,7 +437,14 @@ document.addEventListener('DOMContentLoaded', function() {
     const userData = JSON.parse(localStorage.getItem('plenterraUserData') || '{}');
     
     if (rememberMe && userData.username) {
-        document.getElementById('login-username').value = userData.username;
-        document.getElementById('remember-me').checked = true;
+        const usernameField = document.getElementById('login-username');
+        const rememberMeField = document.getElementById('remember-me');
+        
+        if (usernameField) {
+            usernameField.value = userData.username;
+        }
+        if (rememberMeField) {
+            rememberMeField.checked = true;
+        }
     }
 });

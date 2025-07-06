@@ -188,36 +188,138 @@ nav {
 
 /* Checkbox Groups */
 .checkbox-group {
-    margin-bottom: 20px;
+    margin-bottom: 60px; /* Even more base margin between checkbox groups */
 }
 
 .checkbox-label {
-    display: flex;
-    align-items: flex-start;
-    gap: 12px;
+    display: flex !important;
+    align-items: center;
+    gap: 15px; /* Increased gap between checkbox and text */
     cursor: pointer;
     font-weight: normal;
     line-height: 1.5;
+    padding: 20px 15px; /* Increased padding for larger touch targets */
+    border-radius: 8px;
+    transition: background-color 0.2s ease;
+    user-select: none;
+    min-height: 65px; /* Larger touch target */
+    margin-bottom: 35px; /* Much more space between individual checkboxes */
+}
+
+.checkbox-label:hover {
+    background-color: rgba(45, 90, 39, 0.05);
 }
 
 .checkbox-label input[type="checkbox"] {
     margin: 0;
-    transform: scale(1.2);
+    transform: scale(1.4); /* Slightly larger checkboxes */
     accent-color: #2d5a27;
+    cursor: pointer;
+    flex-shrink: 0;
+    width: 24px; /* Larger checkbox */
+    height: 24px;
+    min-width: 24px;
+    min-height: 24px;
 }
 
 .checkbox-label span {
     color: #666;
+    cursor: pointer;
+    flex: 1;
 }
 
 .checkbox-label a {
     color: #2d5a27;
     text-decoration: none;
     font-weight: 600;
+    pointer-events: auto;
 }
 
 .checkbox-label a:hover {
     text-decoration: underline;
+}
+
+/* Ensure proper spacing before Create Account button */
+.checkbox-group:last-of-type {
+    margin-bottom: 100px; /* Much more space before Create Account button */
+}
+
+/* Improve checkbox visibility and interaction */
+.checkbox-label input[type="checkbox"]:hover {
+    box-shadow: 0 0 0 3px rgba(45, 90, 39, 0.1);
+    border-radius: 3px;
+}
+
+/* Ensure the entire label is clickable */
+.checkbox-label {
+    pointer-events: auto !important;
+    position: relative;
+    z-index: 1;
+}
+
+.checkbox-label * {
+    pointer-events: none;
+}
+
+.checkbox-label input[type="checkbox"] {
+    pointer-events: auto !important;
+    position: relative;
+    z-index: 2;
+}
+
+.checkbox-label a {
+    pointer-events: auto !important;
+    position: relative;
+    z-index: 2;
+}
+
+.checkbox-label span {
+    pointer-events: auto !important;
+}
+
+/* Additional checkbox fixes */
+.checkbox-label input[type="checkbox"]:focus {
+    outline: 2px solid #2d5a27;
+    outline-offset: 2px;
+}
+
+/* Ensure proper label association */
+.checkbox-group label[for] {
+    cursor: pointer;
+}
+
+/* Debug and ensure checkbox functionality */
+.checkbox-label[for] {
+    cursor: pointer !important;
+}
+
+.checkbox-label:active {
+    background-color: rgba(45, 90, 39, 0.1);
+}
+
+/* Force checkbox visibility and interaction */
+input[type="checkbox"] {
+    appearance: checkbox !important;
+    -webkit-appearance: checkbox !important;
+    -moz-appearance: checkbox !important;
+}
+
+/* Ensure no overlapping elements */
+.checkbox-group {
+    position: relative;
+    z-index: 10;
+}
+
+.checkbox-label {
+    display: flex !important;
+    position: relative;
+    z-index: 11;
+}
+
+.checkbox-label input[type="checkbox"] {
+    display: block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
 }
 
 /* Buttons */
@@ -232,7 +334,10 @@ nav {
     font-weight: 600;
     cursor: pointer;
     transition: all 0.3s ease;
-    margin-top: 10px;
+    margin-top: 80px; /* Increased margin to prevent overlap */
+    clear: both; /* Ensure button clears any floating elements */
+    position: relative;
+    z-index: 1;
 }
 
 .auth-btn:hover {
@@ -337,6 +442,33 @@ nav {
     
     .hero {
         height: 150px;
+    }
+    
+    /* Mobile improvements */
+    .checkbox-group {
+        margin-bottom: 40px; /* Extra space on mobile */
+    }
+    
+    .checkbox-label {
+        min-height: 54px; /* Larger touch target on mobile */
+        padding: 15px 12px;
+        gap: 15px;
+        margin-bottom: 18px; /* More space between checkboxes on mobile */
+    }
+    
+    .checkbox-label input[type="checkbox"] {
+        transform: scale(1.5); /* Larger checkboxes on mobile */
+        width: 22px;
+        height: 22px;
+    }
+    
+    .checkbox-group:last-of-type {
+        margin-bottom: 80px; /* Much more space on mobile */
+    }
+    
+    .auth-btn {
+        margin-top: 90px; /* Much more margin on mobile */
+        padding: 18px; /* Larger button on mobile */
     }
 }
 
