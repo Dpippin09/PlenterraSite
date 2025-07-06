@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+    <meta charset="UTF-8" />
+    <link rel="stylesheet" href="./assets/css/style.css">
+    <link rel="stylesheet" href="./assets/css/dashboard.css">
+    <title>Farmer Profile - PLENTERRA</title>
+</head>
+
+<body>
+    <header>
+        <nav>
+            <img src="./assets/images/plenterra-logo.png" class="plenterra-logo" alt="plenterra-logo">
+            <ul class="nav-links" id="nav-links">
+                <li><a href="farmer-dashboard.html">Dashboard</a></li>
+                <li><a href="#profile-info">My Profile</a></li>
+                <li><a href="#farm-details">Farm Details</a></li>
+                <li><a href="contact.html">Contact Us</a></li>
+                <li><a href="#" class="logout-btn" onclick="logout()">Logout</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="profile-container">
+        <div class="profile-header">
+            <div class="profile-avatar">
+                <img src="./assets/images/farmer-image.jpg" alt="Farmer Profile" id="profile-image">
+                <button class="change-photo-btn">Change Photo</button>
+            </div>
+            <div class="profile-info">
+                <h1 id="farmer-full-name">John Anderson</h1>
+                <p class="farm-name">Anderson Family Farm</p>
+                <p class="member-since">PLENTERRA member since 2023</p>
+            </div>
+        </div>
+
+        <div class="profile-tabs">
+            <button class="tab-btn active" onclick="showTab('personal')">Personal Information</button>
+            <button class="tab-btn" onclick="showTab('farm')">Farm Details</button>
+            <button class="tab-btn" onclick="showTab('soil')">Soil History</button>
+            <button class="tab-btn" onclick="showTab('settings')">Settings</button>
+        </div>
+
+        <!-- Personal Information Tab -->
+        <div id="personal-tab" class="tab-content active">
+            <div class="form-section">
+                <h2>Personal Information</h2>
+                <form class="profile-form">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="first-name">First Name</label>
+                            <input type="text" id="first-name" value="John">
+                        </div>
+                        <div class="form-group">
+                            <label for="last-name">Last Name</label>
+                            <input type="text" id="last-name" value="Anderson">
+                        </div>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="email" id="email" value="john.anderson@email.com">
+                        </div>
+                        <div class="form-group">
+                            <label for="phone">Phone</label>
+                            <input type="tel" id="phone" value="(555) 123-4567">
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="address">Address</label>
+                        <textarea id="address" rows="3">1245 Rural Route 14
+Ogden, UT 84401</textarea>
+                    </div>
+                    
+                    <button type="button" class="save-btn" onclick="savePersonalInfo()">Save Changes</button>
+                </form>
+            </div>
+        </div>
+
+        <!-- Farm Details Tab -->
+        <div id="farm-tab" class="tab-content">
+            <div class="form-section">
+                <h2>Farm Information</h2>
+                <form class="profile-form">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="farm-name">Farm Name</label>
+                            <input type="text" id="farm-name" value="Anderson Family Farm">
+                        </div>
+                        <div class="form-group">
+                            <label for="total-acreage">Total Acreage</label>
+                            <input type="number" id="total-acreage" value="450">
+                        </div>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="farming-type">Primary Farming Type</label>
+                            <select id="farming-type">
+                                <option value="row-crop">Row Crop</option>
+                                <option value="livestock">Livestock</option>
+                                <option value="mixed">Mixed</option>
+                                <option value="organic">Organic</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="years-farming">Years Farming</label>
+                            <input type="number" id="years-farming" value="25">
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="primary-crops">Primary Crops</label>
+                        <input type="text" id="primary-crops" value="Corn, Soybeans, Wheat">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="certification">Certifications</label>
+                        <div class="checkbox-group">
+                            <label><input type="checkbox" checked> Organic Certified</label>
+                            <label><input type="checkbox"> Regenerative Agriculture</label>
+                            <label><input type="checkbox" checked> Carbon Credit Verified</label>
+                            <label><input type="checkbox"> Sustainable Agriculture</label>
+                        </div>
+                    </div>
+                    
+                    <button type="button" class="save-btn" onclick="saveFarmInfo()">Save Changes</button>
+                </form>
+            </div>
+
+            <!-- Field Management -->
+            <div class="form-section">
+                <h2>Field Management</h2>
+                <div class="fields-list">
+                    <div class="field-item">
+                        <div class="field-header">
+                            <h3>North Field</h3>
+                            <button class="edit-field-btn">Edit</button>
+                        </div>
+                        <div class="field-details">
+                            <p><strong>Size:</strong> 180 acres</p>
+                            <p><strong>Soil Type:</strong> Clay Loam</p>
+                            <p><strong>Current Crop:</strong> Corn</p>
+                            <p><strong>Irrigation:</strong> Center Pivot</p>
+                        </div>
+                    </div>
+                    
+                    <div class="field-item">
+                        <div class="field-header">
+                            <h3>South Field</h3>
+                            <button class="edit-field-btn">Edit</button>
+                        </div>
+                        <div class="field-details">
+                            <p><strong>Size:</strong> 200 acres</p>
+                            <p><strong>Soil Type:</strong> Sandy Loam</p>
+                            <p><strong>Current Crop:</strong> Soybeans</p>
+                            <p><strong>Irrigation:</strong> Drip System</p>
+                        </div>
+                    </div>
+                    
+                    <div class="field-item">
+                        <div class="field-header">
+                            <h3>East Field</h3>
+                            <button class="edit-field-btn">Edit</button>
+                        </div>
+                        <div class="field-details">
+                            <p><strong>Size:</strong> 70 acres</p>
+                            <p><strong>Soil Type:</strong> Silt Loam</p>
+                            <p><strong>Current Crop:</strong> Wheat</p>
+                            <p><strong>Irrigation:</strong> Rain-fed</p>
+                        </div>
+                    </div>
+                </div>
+                <button class="add-field-btn" onclick="addNewField()">+ Add New Field</button>
+            </div>
+        </div>
+
+        <!-- Soil History Tab -->
+        <div id="soil-tab" class="tab-content">
+            <div class="form-section">
+                <h2>Soil Testing History</h2>
+                <div class="soil-timeline">
+                    <div class="timeline-item">
+                        <div class="timeline-date">January 2025</div>
+                        <div class="timeline-content">
+                            <h3>Comprehensive Soil Analysis</h3>
+                            <div class="soil-results">
+                                <div class="result-item">
+                                    <span>pH Level:</span>
+                                    <span class="good">7.2 (Optimal)</span>
+                                </div>
+                                <div class="result-item">
+                                    <span>Organic Matter:</span>
+                                    <span class="excellent">4.2% (Excellent)</span>
+                                </div>
+                                <div class="result-item">
+                                    <span>Nitrogen:</span>
+                                    <span class="good">68 ppm (Good)</span>
+                                </div>
+                                <div class="result-item">
+                                    <span>Carbon Content:</span>
+                                    <span class="excellent">2.8% (Excellent)</span>
+                                </div>
+                            </div>
+                            <button class="view-report-btn">View Full Report</button>
+                        </div>
+                    </div>
+                    
+                    <div class="timeline-item">
+                        <div class="timeline-date">October 2024</div>
+                        <div class="timeline-content">
+                            <h3>Post-Treatment Analysis</h3>
+                            <div class="soil-results">
+                                <div class="result-item">
+                                    <span>pH Level:</span>
+                                    <span class="good">7.0 (Good)</span>
+                                </div>
+                                <div class="result-item">
+                                    <span>Organic Matter:</span>
+                                    <span class="good">3.8% (Good)</span>
+                                </div>
+                                <div class="result-item">
+                                    <span>Water Retention:</span>
+                                    <span class="excellent">+15% Improvement</span>
+                                </div>
+                            </div>
+                            <button class="view-report-btn">View Full Report</button>
+                        </div>
+                    </div>
+                    
+                    <div class="timeline-item">
+                        <div class="timeline-date">June 2024</div>
+                        <div class="timeline-content">
+                            <h3>Baseline Assessment</h3>
+                            <div class="soil-results">
+                                <div class="result-item">
+                                    <span>pH Level:</span>
+                                    <span class="warning">6.5 (Needs Attention)</span>
+                                </div>
+                                <div class="result-item">
+                                    <span>Organic Matter:</span>
+                                    <span class="warning">2.1% (Low)</span>
+                                </div>
+                                <div class="result-item">
+                                    <span>Overall Health:</span>
+                                    <span class="warning">6.2/10</span>
+                                </div>
+                            </div>
+                            <button class="view-report-btn">View Full Report</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Treatment History -->
+            <div class="form-section">
+                <h2>Treatment History</h2>
+                <div class="treatments-timeline">
+                    <div class="treatment-timeline-item">
+                        <div class="treatment-date">December 15, 2024</div>
+                        <div class="treatment-info">
+                            <h4>Custom Biochar Application</h4>
+                            <p>Applied 2 tons/acre of custom biochar blend to North Field</p>
+                            <div class="treatment-details">
+                                <span class="detail">Field: North Field</span>
+                                <span class="detail">Cost: $3,200</span>
+                                <span class="detail">Expected ROI: 18 months</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="treatment-timeline-item">
+                        <div class="treatment-date">November 28, 2024</div>
+                        <div class="treatment-info">
+                            <h4>Organic Fertilizer Treatment</h4>
+                            <p>Custom nutrient blend applied to South Field</p>
+                            <div class="treatment-details">
+                                <span class="detail">Field: South Field</span>
+                                <span class="detail">Cost: $1,800</span>
+                                <span class="detail">Yield Increase: +12%</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Settings Tab -->
+        <div id="settings-tab" class="tab-content">
+            <div class="form-section">
+                <h2>Account Settings</h2>
+                <form class="profile-form">
+                    <div class="form-group">
+                        <label for="username">Username</label>
+                        <input type="text" id="username" value="john_anderson" readonly>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="current-password">Current Password</label>
+                        <input type="password" id="current-password" placeholder="Enter current password">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="new-password">New Password</label>
+                        <input type="password" id="new-password" placeholder="Enter new password">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="confirm-password">Confirm New Password</label>
+                        <input type="password" id="confirm-password" placeholder="Confirm new password">
+                    </div>
+                    
+                    <button type="button" class="save-btn" onclick="changePassword()">Change Password</button>
+                </form>
+            </div>
+
+            <div class="form-section">
+                <h2>Notification Preferences</h2>
+                <form class="profile-form">
+                    <div class="notification-group">
+                        <label class="notification-item">
+                            <input type="checkbox" checked>
+                            <span>Email notifications for soil test results</span>
+                        </label>
+                        <label class="notification-item">
+                            <input type="checkbox" checked>
+                            <span>Treatment reminders</span>
+                        </label>
+                        <label class="notification-item">
+                            <input type="checkbox">
+                            <span>Monthly progress reports</span>
+                        </label>
+                        <label class="notification-item">
+                            <input type="checkbox" checked>
+                            <span>Carbon credit updates</span>
+                        </label>
+                        <label class="notification-item">
+                            <input type="checkbox">
+                            <span>New feature announcements</span>
+                        </label>
+                    </div>
+                    
+                    <button type="button" class="save-btn" onclick="saveNotificationSettings()">Save Preferences</button>
+                </form>
+            </div>
+
+            <div class="form-section danger-zone">
+                <h2>Account Management</h2>
+                <div class="danger-actions">
+                    <button class="danger-btn" onclick="exportData()">Export My Data</button>
+                    <button class="danger-btn" onclick="deleteAccount()">Delete Account</button>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <h2>Building a Healthier Planet Together</h2>
+        <p>&copy; PLENTERRA</p>
+        <div class="contactInfo">
+            <li>Phone: (555)5555555</li>
+            <li>Email: name@PLENTERRA.com</li>
+            <li>Ogden, UT</li>
+        </div>
+    </footer>
+
+    <script src="./assets/js/script.js"></script>
+    <script src="./assets/js/dashboard.js"></script>
+</body>
+
+</html>

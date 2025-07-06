@@ -4,43 +4,146 @@
 <head>
     <meta charset="UTF-8" />
     <link rel="stylesheet" href="./assets/css/style.css">
+    <link rel="stylesheet" href="./assets/css/contact.css">
     <title>Contact Us - PLENTERRA</title>
 </head>
 
 <body>
     <header>
         <nav>
-            <h1 id="welcome">Contact Us</h1>
-            <ul class="nav-links" id="nav-links">
-                <li><a href="index.html">Home</a></li>
-                <li><a href="index.html#about-Us">Our Mission</a></li>
-                <li><a href="index.html#Projects">How We Do It</a></li>
-                <li><a href="index.html#our-farms">Results</a></li>
-                <li><a href="#footer">Contact Us</a></li>
-                <li><a href="login-signup.html" class="login-signup">Login/Signup</a></li>
-            </ul>
+            <img src="./assets/images/plenterra-logo.png" class="plenterra-logo" alt="plenterra-logo">                <ul class="nav-links" id="nav-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="index.html#what-we-do">What We Do</a></li>
+                    <li><a href="index.html#services">Services</a></li>
+                    <li><a href="contact.html" class="active">Contact</a></li>
+                    <li><a href="login-signup.html" class="login-btn">Login/Signup</a></li>
+                </ul>
         </nav>
+        
+        <section class="hero">
+            <div class="hero-content">
+                <h1>Contact Us</h1>
+                <p>Get in touch to learn more about how Plenterra can help transform your agricultural operations.</p>
+            </div>
+        </section>
     </header>
 
-    <section class="contact">
-        <h2>Contact Us</h2>
-        <form action="submit_form.php" method="post">
-            <label for="name">Name:</label>
-            <input type="text" id="name" name="name" required>
+    <section class="contact-section">
+        <div class="container">
+            <div class="contact-grid">
+                <div class="contact-info">
+                    <h2>Get in Touch</h2>
+                    <p>Ready to transform your farm with regenerative agriculture? We're here to help you get started on your journey to healthier soil, better yields, and increased profitability.</p>
+                    
+                    <div class="contact-details">
+                        <div class="contact-item">
+                            <h4>Email</h4>
+                            <p>info@plenterra.com</p>
+                        </div>
+                        
+                        <div class="contact-item">
+                            <h4>Phone</h4>
+                            <p>(555) 555-5555</p>
+                        </div>
+                        
+                        <div class="contact-item">
+                            <h4>Location</h4>
+                            <p>Ogden, Utah</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="contact-form-container">
+                    <form class="contact-form" action="submit_form.php" method="post">
+                        <div class="form-group">
+                            <label for="name">Full Name</label>
+                            <input type="text" id="name" name="name" required>
+                        </div>
 
-            <label for="email">Email:</label>
-            <input type="email" id="email" name="email" required>
+                        <div class="form-group">
+                            <label for="email">Email Address</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="farm-name">Farm/Organization Name</label>
+                            <input type="text" id="farm-name" name="farm_name">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="acres">Farm Size (Acres)</label>
+                            <select id="acres" name="acres">
+                                <option value="">Select farm size</option>
+                                <option value="1-50">1-50 acres</option>
+                                <option value="51-200">51-200 acres</option>
+                                <option value="201-500">201-500 acres</option>
+                                <option value="501-1000">501-1000 acres</option>
+                                <option value="1000+">1000+ acres</option>
+                            </select>
+                        </div>
 
-            <label for="message">Message:</label>
-            <textarea id="message" name="message" rows="5" required></textarea>
+                        <div class="form-group">
+                            <label for="interest">Area of Interest</label>
+                            <select id="interest" name="interest">
+                                <option value="">Select your interest</option>
+                                <option value="soil-sampling">Soil Sampling</option>
+                                <option value="agronomy">Agronomy Services</option>
+                                <option value="nutrient-tracking">Nutrient Tracking</option>
+                                <option value="drone-application">Drone Application</option>
+                                <option value="pivot-injection">Pivot Injection</option>
+                                <option value="general">General Information</option>
+                            </select>
+                        </div>
 
-            <button type="submit">Submit</button>
-        </form>
+                        <div class="form-group">
+                            <label for="message">Message</label>
+                            <textarea id="message" name="message" rows="5" placeholder="Tell us about your farm and how we can help..." required></textarea>
+                        </div>
+
+                        <button type="submit" class="submit-btn">Send Message</button>
+                    </form>
+                </div>
+            </div>
+        </div>
     </section>
 
     <footer class="footer" id="footer">
-        <h2>Building a Healthier Planet Together</h2>
-        <p>&copy; 2025 PLENTERRA. All rights reserved.</p>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <img src="./assets/images/plenterra-logo.png" class="footer-logo" alt="plenterra-logo">
+                    <p class="footer-tagline">Restoring agriculture from the ground up.</p>
+                </div>
+                
+                <div class="footer-social">
+                    <h4>Follow Us</h4>
+                    <div class="social-links">
+                        <a href="#" aria-label="Facebook">Facebook</a>
+                        <a href="https://www.instagram.com/plenterra/" aria-label="Instagram">Instagram</a>
+                        <a href="https://www.tiktok.com/@plenterra" aria-label="TikTok">TikTok</a>
+                        <a href="https://www.youtube.com/@Plenterra" aria-label="YouTube">YouTube</a>
+                        <a href="https://x.com/plenterra" aria-label="Twitter">Twitter</a>
+                    </div>
+                </div>
+                
+                <div class="footer-newsletter">
+                    <h4>Sign up to Learn More</h4>
+                    <form class="newsletter-form">
+                        <input type="email" placeholder="Email" required>
+                        <button type="submit">Send</button>
+                    </form>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; Copyright 2025 Plenterra. All Rights Reserved.</p>
+                <div class="footer-links">
+                    <a href="#policy-makers">For Policy Makers</a>
+                    <a href="#terms">Terms of Service</a>
+                    <a href="#privacy">Privacy Policy</a>
+                </div>
+            </div>
+        </div>
     </footer>
 </body>
 

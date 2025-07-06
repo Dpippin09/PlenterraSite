@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+    <meta charset="UTF-8" />
+    <link rel="stylesheet" href="./assets/css/style.css">
+    <link rel="stylesheet" href="./assets/css/dashboard.css">
+    <title>Farmer Dashboard - PLENTERRA</title>
+</head>
+
+<body>
+    <header class="site-header">
+        <nav class="main-nav">
+            <div class="nav-container">
+                <div class="nav-brand">
+                    <img src="./assets/images/plenterra-logo.png" class="plenterra-logo" alt="Plenterra Logo">
+                </div>
+                
+                <button class="mobile-menu-toggle" aria-label="Toggle mobile menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+                
+                <ul class="nav-links" id="nav-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="farmer-profile.html">My Profile</a></li>
+                    <li><a href="#soil-reports">Soil Reports</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                    <li><a href="#" class="logout-btn" onclick="logout()">Logout</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <main class="dashboard-container">
+        <div class="welcome-section">
+            <h1>Welcome back, <span id="farmer-name">Farmer</span>!</h1>
+            <p class="last-login">Last login: <span id="last-login-date">Today</span></p>
+        </div>
+
+        <div class="dashboard-grid">
+            <!-- Quick Stats Cards -->
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-icon">🌱</div>
+                    <div class="stat-content">
+                        <h3>Total Acres</h3>
+                        <p class="stat-number" id="total-acres">450</p>
+                    </div>
+                </div>
+                
+                <div class="stat-card">
+                    <div class="stat-icon">📊</div>
+                    <div class="stat-content">
+                        <h3>Soil Health Score</h3>
+                        <p class="stat-number" id="soil-health-score">8.2/10</p>
+                    </div>
+                </div>
+                
+                <div class="stat-card">
+                    <div class="stat-icon">💧</div>
+                    <div class="stat-content">
+                        <h3>Water Retention</h3>
+                        <p class="stat-number" id="water-retention">85%</p>
+                    </div>
+                </div>
+                
+                <div class="stat-card">
+                    <div class="stat-icon">🌿</div>
+                    <div class="stat-content">
+                        <h3>Carbon Sequestered</h3>
+                        <p class="stat-number" id="carbon-sequestered">12.5 tons</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Soil Health Overview -->
+            <div class="dashboard-section">
+                <h2>Soil Health Overview</h2>
+                <div class="soil-metrics">
+                    <div class="metric-bar">
+                        <label>pH Level</label>
+                        <div class="progress-bar">
+                            <div class="progress" style="width: 75%" data-value="7.2"></div>
+                        </div>
+                        <span class="metric-value">7.2</span>
+                    </div>
+                    
+                    <div class="metric-bar">
+                        <label>Nitrogen (N)</label>
+                        <div class="progress-bar">
+                            <div class="progress" style="width: 68%" data-value="68"></div>
+                        </div>
+                        <span class="metric-value">68 ppm</span>
+                    </div>
+                    
+                    <div class="metric-bar">
+                        <label>Phosphorus (P)</label>
+                        <div class="progress-bar">
+                            <div class="progress" style="width: 72%" data-value="45"></div>
+                        </div>
+                        <span class="metric-value">45 ppm</span>
+                    </div>
+                    
+                    <div class="metric-bar">
+                        <label>Potassium (K)</label>
+                        <div class="progress-bar">
+                            <div class="progress" style="width: 80%" data-value="285"></div>
+                        </div>
+                        <span class="metric-value">285 ppm</span>
+                    </div>
+                    
+                    <div class="metric-bar">
+                        <label>Organic Matter</label>
+                        <div class="progress-bar">
+                            <div class="progress" style="width: 85%" data-value="4.2"></div>
+                        </div>
+                        <span class="metric-value">4.2%</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Recent Treatments -->
+            <div class="dashboard-section">
+                <h2>Recent Treatments</h2>
+                <div class="treatments-list">
+                    <div class="treatment-item">
+                        <div class="treatment-date">Dec 15, 2024</div>
+                        <div class="treatment-details">
+                            <h4>Biochar Application</h4>
+                            <p>Applied 2 tons/acre custom biochar blend to North Field</p>
+                        </div>
+                        <div class="treatment-status completed">Completed</div>
+                    </div>
+                    
+                    <div class="treatment-item">
+                        <div class="treatment-date">Nov 28, 2024</div>
+                        <div class="treatment-details">
+                            <h4>Organic Fertilizer</h4>
+                            <p>Custom nutrient blend applied to South Field</p>
+                        </div>
+                        <div class="treatment-status completed">Completed</div>
+                    </div>
+                    
+                    <div class="treatment-item">
+                        <div class="treatment-date">Jan 10, 2025</div>
+                        <div class="treatment-details">
+                            <h4>Soil Testing</h4>
+                            <p>Scheduled comprehensive soil analysis</p>
+                        </div>
+                        <div class="treatment-status scheduled">Scheduled</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Field Map -->
+            <div class="dashboard-section full-width">
+                <h2>Field Management</h2>
+                <div class="field-grid">
+                    <div class="field-card" data-field="north">
+                        <h3>North Field</h3>
+                        <div class="field-stats">
+                            <p><strong>Size:</strong> 180 acres</p>
+                            <p><strong>Crop:</strong> Corn</p>
+                            <p><strong>Health Score:</strong> 8.5/10</p>
+                            <p><strong>Last Treatment:</strong> Dec 15, 2024</p>
+                        </div>
+                        <button class="view-details-btn" onclick="viewFieldDetails('north')">View Details</button>
+                    </div>
+                    
+                    <div class="field-card" data-field="south">
+                        <h3>South Field</h3>
+                        <div class="field-stats">
+                            <p><strong>Size:</strong> 200 acres</p>
+                            <p><strong>Crop:</strong> Soybeans</p>
+                            <p><strong>Health Score:</strong> 7.8/10</p>
+                            <p><strong>Last Treatment:</strong> Nov 28, 2024</p>
+                        </div>
+                        <button class="view-details-btn" onclick="viewFieldDetails('south')">View Details</button>
+                    </div>
+                    
+                    <div class="field-card" data-field="east">
+                        <h3>East Field</h3>
+                        <div class="field-stats">
+                            <p><strong>Size:</strong> 70 acres</p>
+                            <p><strong>Crop:</strong> Wheat</p>
+                            <p><strong>Health Score:</strong> 8.1/10</p>
+                            <p><strong>Last Treatment:</strong> Oct 5, 2024</p>
+                        </div>
+                        <button class="view-details-btn" onclick="viewFieldDetails('east')">View Details</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Carbon Credits -->
+            <div class="dashboard-section">
+                <h2>Carbon Credits</h2>
+                <div class="carbon-credits">
+                    <div class="credit-summary">
+                        <h3>Total Credits Earned</h3>
+                        <p class="credits-amount">847 credits</p>
+                        <p class="credits-value">Est. Value: $12,705</p>
+                    </div>
+                    <div class="credit-breakdown">
+                        <div class="credit-item">
+                            <span>Q4 2024</span>
+                            <span>234 credits</span>
+                        </div>
+                        <div class="credit-item">
+                            <span>Q3 2024</span>
+                            <span>198 credits</span>
+                        </div>
+                        <div class="credit-item">
+                            <span>Q2 2024</span>
+                            <span>215 credits</span>
+                        </div>
+                        <div class="credit-item">
+                            <span>Q1 2024</span>
+                            <span>200 credits</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Quick Actions -->
+        <div class="quick-actions">
+            <h2>Quick Actions</h2>
+            <div class="action-buttons">
+                <button class="action-btn" onclick="scheduleTest()">
+                    <span class="btn-icon">🧪</span>
+                    Schedule Soil Test
+                </button>
+                <button class="action-btn" onclick="requestTreatment()">
+                    <span class="btn-icon">🌱</span>
+                    Request Treatment
+                </button>
+                <button class="action-btn" onclick="downloadReport()">
+                    <span class="btn-icon">📄</span>
+                    Download Report
+                </button>
+                <button class="action-btn" onclick="contactSupport()">
+                    <span class="btn-icon">📞</span>
+                    Contact Support
+                </button>
+            </div>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <h2>Building a Healthier Planet Together</h2>
+        <p>&copy; PLENTERRA</p>
+        <div class="contactInfo">
+            <li>Phone: (555)5555555</li>
+            <li>Email: name@PLENTERRA.com</li>
+            <li>Ogden, UT</li>
+        </div>
+    </footer>
+
+    <script src="./assets/js/script.js"></script>
+    <script src="./assets/js/dashboard.js"></script>
+</body>
+
+</html>

@@ -3,49 +3,218 @@
 
 <head>
     <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./assets/css/style.css">
     <link rel="stylesheet" href="./assets/css/login-signup.css">
     <title>Login/Signup - Plenterra</title>
 </head>
 
 <body>
-    <header>
-        <nav>
-            <h1 id="welcome">Welcome to Plentarra</h1>
-            <a href="index.html" class="back-button">Back to Main Page</a>
+    <header class="site-header">
+        <nav class="main-nav">
+            <div class="nav-container">
+                <div class="nav-brand">
+                    <img src="./assets/images/plenterra-logo.png" class="plenterra-logo" alt="Plenterra Logo">
+                </div>
+                
+                <button class="mobile-menu-toggle" aria-label="Toggle mobile menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+                
+                <ul class="nav-links" id="nav-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="index.html#what-we-do">What We Do</a></li>
+                    <li><a href="index.html#services">Services</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                    <li><a href="login-signup.html" class="login-btn active">Login/Signup</a></li>
+                </ul>
+            </div>
         </nav>
     </header>
     <section class="hero"></section>
     <article class="content">
         <main id="login-signup" class="login-signup">
-            
-            <form action="/submit-login" method="post">
-                <div class="form-group">
-                    <label for="username">Username:</label>
-                    <input type="text" id="username" name="username" required>
+            <div class="auth-container">
+                <div class="auth-tabs">
+                    <button class="auth-tab active" onclick="showAuthTab('login')">Login</button>
+                    <button class="auth-tab" onclick="showAuthTab('signup')">Sign Up</button>
                 </div>
-                <div class="form-group">
-                    <label for="password">Password:</label>
-                    <input type="password" id="password" name="password" required>
+                
+                <!-- Login Form -->
+                <div id="login-form" class="auth-form active">
+                    <h2>Welcome Back to PLENTERRA</h2>
+                    <p class="auth-subtitle">Access your farm dashboard and soil analytics</p>
+                    
+                    <form onsubmit="handleLogin(event)">
+                        <div class="form-group">
+                            <label for="login-username">Username or Email:</label>
+                            <input type="text" id="login-username" name="username" required 
+                                   placeholder="Enter your username or email">
+                        </div>
+                        <div class="form-group">
+                            <label for="login-password">Password:</label>
+                            <input type="password" id="login-password" name="password" required 
+                                   placeholder="Enter your password">
+                        </div>
+                        <div class="form-group checkbox-group">
+                            <label class="checkbox-label">
+                                <input type="checkbox" id="remember-me">
+                                <span>Remember me</span>
+                            </label>
+                        </div>
+                        <div class="form-group">
+                            <button type="submit" class="auth-btn">Login to Dashboard</button>
+                        </div>
+                        <div class="auth-links">
+                            <a href="#" onclick="showForgotPassword()">Forgot your password?</a>
+                        </div>
+                    </form>
+                    
+                    <!-- Demo Login -->
+                    <div class="demo-login">
+                        <p>Demo Account (for testing):</p>
+                        <button type="button" class="demo-btn" onclick="demoLogin()">
+                            Login as Demo Farmer
+                        </button>
+                    </div>
                 </div>
-                <div class="form-group">
-                    <button type="submit">Login</button>
+                
+                <!-- Signup Form -->
+                <div id="signup-form" class="auth-form">
+                    <h2>Join PLENTERRA</h2>
+                    <p class="auth-subtitle">Start your journey to healthier soil and better yields</p>
+                    
+                    <form onsubmit="handleSignup(event)">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="signup-firstname">First Name:</label>
+                                <input type="text" id="signup-firstname" name="firstname" required 
+                                       placeholder="Your first name">
+                            </div>
+                            <div class="form-group">
+                                <label for="signup-lastname">Last Name:</label>
+                                <input type="text" id="signup-lastname" name="lastname" required 
+                                       placeholder="Your last name">
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="signup-email">Email Address:</label>
+                            <input type="email" id="signup-email" name="email" required 
+                                   placeholder="your.email@example.com">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="signup-username">Username:</label>
+                            <input type="text" id="signup-username" name="username" required 
+                                   placeholder="Choose a username">
+                        </div>
+                        
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="signup-password">Password:</label>
+                                <input type="password" id="signup-password" name="password" required 
+                                       placeholder="Create a password" minlength="8">
+                            </div>
+                            <div class="form-group">
+                                <label for="confirm-password">Confirm Password:</label>
+                                <input type="password" id="confirm-password" name="confirm-password" required 
+                                       placeholder="Confirm your password">
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="farm-name">Farm Name:</label>
+                            <input type="text" id="farm-name" name="farm-name" required 
+                                   placeholder="Your farm or operation name">
+                        </div>
+                        
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="farm-size">Farm Size (acres):</label>
+                                <input type="number" id="farm-size" name="farm-size" required 
+                                       placeholder="Total acres" min="1">
+                            </div>
+                            <div class="form-group">
+                                <label for="farm-type">Farm Type:</label>
+                                <select id="farm-type" name="farm-type" required>
+                                    <option value="">Select farm type</option>
+                                    <option value="row-crop">Row Crop</option>
+                                    <option value="livestock">Livestock</option>
+                                    <option value="mixed">Mixed</option>
+                                    <option value="organic">Organic</option>
+                                    <option value="other">Other</option>
+                                </select>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group checkbox-group">
+                            <label class="checkbox-label">
+                                <input type="checkbox" id="terms-agree" required>
+                                <span>I agree to the <a href="#" onclick="showTerms()">Terms of Service</a> and <a href="#" onclick="showPrivacy()">Privacy Policy</a></span>
+                            </label>
+                        </div>
+                        
+                        <div class="form-group checkbox-group">
+                            <label class="checkbox-label">
+                                <input type="checkbox" id="newsletter-signup">
+                                <span>Send me updates about soil health tips and PLENTERRA news</span>
+                            </label>
+                        </div>
+                        
+                        <div class="form-group">
+                            <button type="submit" class="auth-btn">Create Account</button>
+                        </div>
+                    </form>
                 </div>
-            </form>
-            <form action="/submit-signup" method="post">
-                <div class="form-group">
-                    <label for="new-username">Create Username:</label>
-                    <input type="text" id="new-username" name="new-username" required>
-                </div>
-                <div class="form-group">
-                    <label for="new-password">Create Password:</label>
-                    <input type="password" id="new-password" name="new-password" required>
-                </div>
-                <div class="form-group">
-                    <button type="submit">Signup</button>
-                </div>
-            </form>
+            </div>
         </main>
     </article>
+    
+    <footer class="site-footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <img src="./assets/images/plenterra-logo.png" class="footer-logo" alt="Plenterra Logo">
+                    <p class="footer-tagline">Restoring agriculture from the ground up.</p>
+                </div>
+                
+                <div class="footer-social">
+                    <div class="social-links">
+                        <a href="#" aria-label="Facebook" class="social-link">Facebook</a>
+                        <a href="https://www.instagram.com/plenterra/" aria-label="Instagram" class="social-link">Instagram</a>
+                        <a href="https://www.tiktok.com/@plenterra" aria-label="TikTok" class="social-link">TikTok</a>
+                        <a href="https://www.youtube.com/@Plenterra" aria-label="YouTube" class="social-link">YouTube</a>
+                        <a href="https://x.com/plenterra" aria-label="Twitter" class="social-link">Twitter</a>
+                    </div>
+                </div>
+                
+                <div class="footer-newsletter">
+                    <h4>Sign up to Learn More</h4>
+                    <form class="newsletter-form" action="#" method="post">
+                        <input type="email" placeholder="Email" required aria-label="Email address">
+                        <button type="submit">Send</button>
+                    </form>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; Copyright 2025 Plenterra. All Rights Reserved.</p>
+                <div class="footer-legal">
+                    <a href="/policy-makers/">For Policy Makers</a>
+                    <span class="separator">|</span>
+                    <a href="/terms/">Terms of Service</a>
+                    <span class="separator">|</span>
+                    <a href="/privacy/">Privacy Policy</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+    
+    <script src="./assets/js/script.js"></script>
+    <script src="./assets/js/auth.js"></script>
 </body>
 
 </html>
