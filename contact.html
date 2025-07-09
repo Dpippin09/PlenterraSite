@@ -3,21 +3,34 @@
 
 <head>
     <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./assets/css/style.css">
     <link rel="stylesheet" href="./assets/css/contact.css">
     <title>Contact Us - PLENTERRA</title>
 </head>
 
 <body>
-    <header>
-        <nav>
-            <img src="./assets/images/plenterra-logo.png" class="plenterra-logo" alt="plenterra-logo">                <ul class="nav-links" id="nav-links">
+    <header class="site-header">
+        <nav class="main-nav">
+            <div class="nav-container">
+                <div class="nav-brand">
+                    <img src="./assets/images/plenterra-logo.png" class="plenterra-logo" alt="Plenterra Logo">
+                </div>
+                
+                <button class="mobile-menu-toggle" aria-label="Toggle mobile menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+                
+                <ul class="nav-links" id="nav-links">
                     <li><a href="index.html">Home</a></li>
                     <li><a href="index.html#what-we-do">What We Do</a></li>
                     <li><a href="index.html#services">Services</a></li>
                     <li><a href="contact.html" class="active">Contact</a></li>
                     <li><a href="login-signup.html" class="login-btn">Login/Signup</a></li>
                 </ul>
+            </div>
         </nav>
         
         <section class="hero">
@@ -145,6 +158,8 @@
             </div>
         </div>
     </footer>
+    
+    <script src="./assets/js/script.js"></script>
 </body>
 
 </html>
