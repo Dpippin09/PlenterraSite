@@ -296,7 +296,7 @@ document.addEventListener('DOMContentLoaded', function() {
     }
     
     // Add ripple effect to buttons
-    const buttons = document.querySelectorAll('.btn, .cta-button, button[type="submit"]');
+    const buttons = document.querySelectorAll('.btn, .cta-button, .auth-btn, button[type="submit"]');
     buttons.forEach(button => {
         button.addEventListener('click', createRipple);
     });

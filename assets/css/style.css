@@ -1,4 +1,4 @@
-/* Plenterra Official Theme - Green Theme to Match Login Page */
+/* Plenterra Official Theme - Enhanced Agricultural Theme */
 :root {
     --plenterra-primary: #1a5f3a;         /* Deep forest green - matches login page */
     --plenterra-secondary: #2d7a4d;       /* Medium green */
@@ -15,6 +15,16 @@
     --plenterra-error: #ef4444;           /* Error red */
     --plenterra-white: #FFFFFF;           /* Pure white */
     --plenterra-background: #f8faf9;      /* Light green-tinted background */
+    
+    /* Enhanced Agricultural Colors */
+    --soil-rich: #6f4e37;                 /* Rich soil brown */
+    --crop-green: #228b22;                /* Vibrant crop green */
+    --harvest-gold: #ffd700;              /* Golden harvest */
+    --sky-blue: #87ceeb;                  /* Clear sky blue */
+    --earth-texture: linear-gradient(135deg, #8b7355 0%, #a0896b 50%, #6f4e37 100%);
+    --growth-gradient: linear-gradient(135deg, #1a5f3a 0%, #2d7a4d 50%, #4a9b65 100%);
+    --agricultural-shadow: 0 4px 20px rgba(26, 95, 58, 0.15);
+    --soft-glow: 0 0 20px rgba(74, 155, 101, 0.3);
 }
 
 /* Reset and Base Styles */
@@ -33,15 +43,40 @@ body {
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
     line-height: 1.65;
     color: var(--plenterra-text);
-    background-color: var(--plenterra-background);
+    background: linear-gradient(135deg, #f8faf9 0%, #e8f5e8 100%);
+    background-attachment: fixed;
     overflow-x: hidden;
     animation: fadeInPage 0.8s ease-in;
+    position: relative;
+}
+
+/* Beautiful floating agricultural particles background */
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: 
+        radial-gradient(circle at 20% 80%, rgba(74, 155, 101, 0.03) 0%, transparent 50%),
+        radial-gradient(circle at 80% 20%, rgba(26, 95, 58, 0.03) 0%, transparent 50%),
+        radial-gradient(circle at 40% 40%, rgba(212, 175, 55, 0.02) 0%, transparent 50%);
+    pointer-events: none;
+    z-index: -1;
+    animation: floatingParticles 20s infinite linear;
+}
+
+@keyframes floatingParticles {
+    0% { transform: translateY(0px) rotate(0deg); }
+    50% { transform: translateY(-10px) rotate(180deg); }
+    100% { transform: translateY(0px) rotate(360deg); }
 }
 
 @keyframes fadeInPage {
     from {
         opacity: 0;
-        transform: translateY(10px);
+        transform: translateY(20px);
     }
     to {
         opacity: 1;
@@ -66,26 +101,44 @@ body {
     top: 6px;
 }
 
-/* Progress Bar Container */
+/* Progress Bar Container with Agricultural Enhancement */
 .progress-container {
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
-    height: 3px;
-    background: rgba(0, 0, 0, 0.1);
+    height: 4px;
+    background: rgba(139, 115, 85, 0.1);
     z-index: 1001;
+    overflow: hidden;
 }
 
 .progress-bar {
     height: 100%;
     width: 0%;
-    background: linear-gradient(90deg, var(--plenterra-primary), var(--plenterra-accent));
-    transition: width 0.1s ease;
-    box-shadow: 0 0 10px rgba(26, 95, 58, 0.5);
+    background: var(--growth-gradient);
+    transition: width 0.3s ease;
+    box-shadow: var(--soft-glow);
+    position: relative;
 }
 
-/* Header and Navigation */
+.progress-bar::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    animation: shimmer 2s infinite;
+}
+
+@keyframes shimmer {
+    0% { transform: translateX(-100%); }
+    100% { transform: translateX(100%); }
+}
+
+/* Header and Navigation with Agricultural Theme */
 .site-header {
     position: fixed;
     top: 0;
@@ -93,9 +146,26 @@ body {
     right: 0;
     z-index: 1000;
     background: rgba(255, 255, 255, 0.95);
-    backdrop-filter: blur(10px);
-    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(15px);
+    border-bottom: 2px solid rgba(26, 95, 58, 0.1);
     transition: all 0.3s ease;
+    box-shadow: 0 2px 20px rgba(26, 95, 58, 0.1);
+}
+
+.site-header::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: var(--growth-gradient);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.site-header.scrolled::after {
+    opacity: 1;
 }
 
 .main-nav {
@@ -115,11 +185,13 @@ body {
 .nav-brand .plenterra-logo {
     height: 40px;
     width: auto;
-    transition: transform 0.3s ease;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    filter: drop-shadow(0 2px 4px rgba(26, 95, 58, 0.1));
 }
 
 .nav-brand .plenterra-logo:hover {
-    transform: scale(1.05);
+    transform: scale(1.05) rotate(1deg);
+    filter: drop-shadow(0 4px 8px rgba(26, 95, 58, 0.2));
 }
 
 .mobile-menu-toggle {
@@ -162,28 +234,47 @@ body {
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     position: relative;
     padding: 8px 12px;
-    border-radius: 6px;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.nav-links a::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(74, 155, 101, 0.1), transparent);
+    transition: left 0.6s ease;
+}
+
+.nav-links a:hover::before {
+    left: 100%;
 }
 
 .nav-links a:hover {
     color: var(--plenterra-primary);
-    background: rgba(26, 95, 58, 0.05);
-    transform: translateY(-1px);
+    background: rgba(26, 95, 58, 0.08);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(26, 95, 58, 0.15);
 }
 
 .nav-links a::after {
     content: '';
     position: absolute;
-    bottom: -5px;
-    left: 0;
+    bottom: 2px;
+    left: 50%;
     width: 0;
     height: 2px;
-    background: var(--plenterra-primary);
-    transition: width 0.3s ease;
+    background: var(--growth-gradient);
+    transition: all 0.3s ease;
+    transform: translateX(-50%);
+    border-radius: 1px;
 }
 
 .nav-links a:hover::after {
-    width: 100%;
+    width: 80%;
 }
 
 .nav-links a.active {
@@ -200,34 +291,53 @@ body {
     background: var(--plenterra-white) !important;
     color: var(--plenterra-primary) !important;
     border: 2px solid var(--plenterra-primary) !important;
-    padding: 10px 20px !important;
+    padding: 12px 24px !important;
     border-radius: 25px !important;
     font-weight: 600 !important;
     transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1) !important;
     position: relative !important;
     overflow: hidden !important;
+    box-shadow: 0 2px 8px rgba(26, 95, 58, 0.1) !important;
 }
 
 .login-btn::before {
+    content: '🌱' !important;
+    position: absolute !important;
+    top: 50% !important;
+    left: -30px !important;
+    transform: translateY(-50%) !important;
+    font-size: 14px !important;
+    transition: all 0.4s ease !important;
+    opacity: 0 !important;
+}
+
+.login-btn::after {
     content: '' !important;
     position: absolute !important;
     top: 0 !important;
     left: -100% !important;
     width: 100% !important;
     height: 100% !important;
-    background: linear-gradient(90deg, transparent, rgba(26, 95, 58, 0.1), transparent) !important;
-    transition: left 0.6s ease !important;
+    background: var(--growth-gradient) !important;
+    transition: left 0.4s ease !important;
+    z-index: -1 !important;
 }
 
 .login-btn:hover::before {
-    left: 100% !important;
+    left: 8px !important;
+    opacity: 1 !important;
+}
+
+.login-btn:hover::after {
+    left: 0 !important;
 }
 
 .login-btn:hover {
-    background: var(--plenterra-primary) !important;
     color: var(--plenterra-white) !important;
     border-color: var(--plenterra-primary) !important;
     transform: translateY(-3px) scale(1.02) !important;
+    box-shadow: var(--agricultural-shadow) !important;
+    padding-left: 32px !important;
     box-shadow: 0 6px 20px rgba(26, 95, 58, 0.4) !important;
 }
 
@@ -240,7 +350,7 @@ body {
     display: none !important;
 }
 
-/* Hero Section */
+/* Hero Section with Enhanced Agricultural Theming */
 .hero-section {
     position: relative;
     height: 100vh;
@@ -265,11 +375,12 @@ body {
     height: 100%;
     object-fit: cover;
     object-position: center;
-    transition: transform 8s ease-in-out;
+    transition: transform 12s ease-in-out;
+    filter: brightness(1.1) contrast(1.05);
 }
 
 .hero-section:hover .hero-bg-image {
-    transform: scale(1.02);
+    transform: scale(1.05);
 }
 
 .hero-overlay {
@@ -278,8 +389,28 @@ body {
     left: 0;
     width: 100%;
     height: 100%;
-    background: linear-gradient(135deg, rgba(26, 95, 58, 0.8) 0%, rgba(45, 122, 77, 0.6) 100%);
+    background: 
+        linear-gradient(135deg, rgba(26, 95, 58, 0.85) 0%, rgba(45, 122, 77, 0.7) 50%, rgba(74, 155, 101, 0.6) 100%),
+        radial-gradient(circle at 30% 70%, rgba(212, 175, 55, 0.1) 0%, transparent 50%);
     z-index: 2;
+}
+
+.hero-overlay::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: 
+        radial-gradient(circle at 20% 80%, rgba(255, 255, 255, 0.1) 0%, transparent 20%),
+        radial-gradient(circle at 80% 20%, rgba(255, 255, 255, 0.08) 0%, transparent 20%);
+    animation: floatingLights 8s infinite ease-in-out;
+}
+
+@keyframes floatingLights {
+    0%, 100% { opacity: 0.3; transform: scale(1); }
+    50% { opacity: 0.6; transform: scale(1.1); }
 }
 
 .hero-content {
@@ -287,6 +418,18 @@ body {
     z-index: 3;
     text-align: center;
     color: white;
+    animation: heroContentSlideUp 1s ease-out;
+}
+
+@keyframes heroContentSlideUp {
+    from {
+        opacity: 0;
+        transform: translateY(40px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 .hero-title {
@@ -294,8 +437,46 @@ body {
     font-weight: 700;
     line-height: 1.1;
     margin: 0;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+    text-shadow: 
+        2px 2px 4px rgba(0, 0, 0, 0.4),
+        0 0 20px rgba(212, 175, 55, 0.3);
     max-width: 1000px;
+    background: linear-gradient(135deg, #ffffff 0%, #f0f8ff 50%, #e8f5e8 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    position: relative;
+    animation: titleGlow 3s ease-in-out infinite alternate;
+}
+
+.hero-title::before {
+    content: '🌾';
+    position: absolute;
+    left: -60px;
+    top: 10px;
+    font-size: 2rem;
+    opacity: 0.8;
+    animation: leafFloat 4s ease-in-out infinite;
+}
+
+.hero-title::after {
+    content: '🌱';
+    position: absolute;
+    right: -60px;
+    bottom: 10px;
+    font-size: 2rem;
+    opacity: 0.8;
+    animation: leafFloat 4s ease-in-out infinite reverse;
+}
+
+@keyframes titleGlow {
+    0% { text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.4), 0 0 20px rgba(212, 175, 55, 0.3); }
+    100% { text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.4), 0 0 30px rgba(212, 175, 55, 0.5); }
+}
+
+@keyframes leafFloat {
+    0%, 100% { transform: translateY(0px) rotate(0deg); }
+    50% { transform: translateY(-10px) rotate(5deg); }
 }
 
 /* Container */
@@ -346,12 +527,42 @@ body {
 }
 
 .goals-section {
-    background: var(--plenterra-light-gray);
+    background: linear-gradient(135deg, var(--plenterra-light-gray) 0%, rgba(232, 245, 232, 0.8) 100%);
     padding: 3rem;
-    border-radius: 16px;
+    border-radius: 20px;
     margin: 3rem 0;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+    box-shadow: 
+        0 4px 20px rgba(0, 0, 0, 0.05),
+        inset 0 1px 0 rgba(255, 255, 255, 0.6);
     transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    border: 1px solid rgba(74, 155, 101, 0.1);
+    position: relative;
+    overflow: hidden;
+}
+
+.goals-section::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    right: -50%;
+    width: 100%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(212, 175, 55, 0.03) 0%, transparent 70%);
+    animation: rotateBackground 15s linear infinite;
+    pointer-events: none;
+}
+
+@keyframes rotateBackground {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+.goals-section:hover {
+    transform: translateY(-5px);
+    box-shadow: 
+        0 8px 30px rgba(26, 95, 58, 0.1),
+        inset 0 1px 0 rgba(255, 255, 255, 0.8);
+    border-color: rgba(74, 155, 101, 0.2);
 }
 
 .goals-section h3 {
@@ -592,14 +803,54 @@ body {
 .impact-item {
     background: var(--plenterra-white);
     padding: 3rem 2rem;
-    border-radius: 16px;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
-    transition: transform 0.3s ease;
+    border-radius: 20px;
+    box-shadow: 
+        0 4px 20px rgba(0, 0, 0, 0.05),
+        0 1px 3px rgba(26, 95, 58, 0.1);
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    overflow: hidden;
+    border: 1px solid rgba(74, 155, 101, 0.1);
+}
+
+.impact-item::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: var(--growth-gradient);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.4s ease;
+}
+
+.impact-item::after {
+    content: '🌱';
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    font-size: 1.5rem;
+    opacity: 0.1;
+    transition: all 0.4s ease;
 }
 
 .impact-item:hover {
-    transform: translateY(-8px);
-    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
+    transform: translateY(-12px) scale(1.02);
+    box-shadow: 
+        var(--agricultural-shadow),
+        0 1px 3px rgba(26, 95, 58, 0.15);
+    border-color: rgba(74, 155, 101, 0.3);
+}
+
+.impact-item:hover::before {
+    transform: scaleX(1);
+}
+
+.impact-item:hover::after {
+    opacity: 0.3;
+    transform: scale(1.2) rotate(15deg);
 }
 
 .impact-number {
@@ -672,14 +923,35 @@ body {
     gap: 3rem;
     align-items: center;
     padding: 2rem 0;
-    transition: all 0.3s ease;
-    border-radius: 16px;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    border-radius: 20px;
+    position: relative;
+    overflow: hidden;
+}
+
+.service-item::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(74, 155, 101, 0.03), transparent);
+    transition: left 0.6s ease;
+}
+
+.service-item:hover::before {
+    left: 100%;
 }
 
 .service-item:hover {
-    background: rgba(26, 95, 58, 0.02);
+    background: linear-gradient(135deg, rgba(26, 95, 58, 0.02) 0%, rgba(74, 155, 101, 0.01) 100%);
     padding: 2.5rem;
     margin: -0.5rem;
+    box-shadow: 
+        0 8px 25px rgba(26, 95, 58, 0.1),
+        inset 0 1px 0 rgba(255, 255, 255, 0.6);
+    border: 1px solid rgba(74, 155, 101, 0.1);
 }
 
 .service-item:nth-child(even) {
@@ -720,11 +992,18 @@ body {
     width: 100%;
     height: 300px;
     object-fit: cover;
-    transition: transform 0.3s ease;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    border-radius: 16px;
+    box-shadow: 0 4px 15px rgba(26, 95, 58, 0.1);
+    filter: brightness(1.05) contrast(1.02);
 }
 
 .service-item:hover .service-img {
-    transform: scale(1.05);
+    transform: scale(1.05) rotate(1deg);
+    box-shadow: 
+        0 8px 25px rgba(26, 95, 58, 0.2),
+        0 0 20px rgba(74, 155, 101, 0.1);
+    filter: brightness(1.1) contrast(1.05);
 }
 
 /* Footer */
@@ -1440,5 +1719,156 @@ textarea:focus-visible {
         padding-left: max(20px, env(safe-area-inset-left));
         padding-right: max(20px, env(safe-area-inset-right));
     }
+}
+
+/* Enhanced Agricultural Animations */
+.animate-in {
+    animation: slideUpAgricultural 0.8s ease-out forwards;
+}
+
+@keyframes slideUpAgricultural {
+    from {
+        opacity: 0;
+        transform: translateY(40px) scale(0.95);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+/* Beautiful cursor trail effect */
+.cursor-trail {
+    position: fixed;
+    width: 8px;
+    height: 8px;
+    background: radial-gradient(circle, var(--plenterra-accent) 0%, transparent 70%);
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 9999;
+    animation: trailFade 1s ease-out forwards;
+}
+
+@keyframes trailFade {
+    0% {
+        opacity: 0.8;
+        transform: scale(1);
+    }
+    100% {
+        opacity: 0;
+        transform: scale(0.3);
+    }
+}
+
+/* Enhanced fade-in animations */
+.fade-in {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.fade-in.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Agricultural themed loading states */
+.loading-state {
+    position: relative;
+    overflow: hidden;
+}
+
+.loading-state::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(74, 155, 101, 0.1), transparent);
+    animation: shimmerLoad 2s infinite;
+}
+
+@keyframes shimmerLoad {
+    0% { left: -100%; }
+    100% { left: 100%; }
+}
+
+/* Enhanced mobile menu */
+.mobile-menu-toggle.active span:nth-child(1) {
+    transform: rotate(45deg) translate(5px, 5px);
+}
+
+.mobile-menu-toggle.active span:nth-child(2) {
+    opacity: 0;
+}
+
+.mobile-menu-toggle.active span:nth-child(3) {
+    transform: rotate(-45deg) translate(7px, -6px);
+}
+
+.nav-links.active {
+    transform: translateX(0);
+    opacity: 1;
+    visibility: visible;
+}
+
+/* Smooth scroll enhancement */
+html {
+    scroll-behavior: smooth;
+}
+
+/* Enhanced focus states for accessibility */
+*:focus {
+    outline: 2px solid var(--plenterra-accent);
+    outline-offset: 2px;
+    border-radius: 4px;
+}
+
+/* Beautiful agricultural micro-interactions */
+.impact-item:hover .impact-number {
+    animation: numberPulse 0.6s ease-in-out;
+}
+
+@keyframes numberPulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+}
+
+/* Staggered animation delays for agricultural elements */
+.impact-item:nth-child(1) { animation-delay: 0s; }
+.impact-item:nth-child(2) { animation-delay: 0.1s; }
+.impact-item:nth-child(3) { animation-delay: 0.2s; }
+.impact-item:nth-child(4) { animation-delay: 0.3s; }
+
+.service-item:nth-child(1) { animation-delay: 0s; }
+.service-item:nth-child(2) { animation-delay: 0.15s; }
+.service-item:nth-child(3) { animation-delay: 0.3s; }
+
+/* Enhanced agricultural section backgrounds */
+.about-section,
+.services-section {
+    position: relative;
+    overflow: hidden;
+}
+
+.about-section::before,
+.services-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: 
+        radial-gradient(circle at 10% 90%, rgba(74, 155, 101, 0.02) 0%, transparent 40%),
+        radial-gradient(circle at 90% 10%, rgba(212, 175, 55, 0.02) 0%, transparent 40%);
+    pointer-events: none;
+    animation: backgroundShift 20s infinite ease-in-out;
+}
+
+@keyframes backgroundShift {
+    0%, 100% { opacity: 0.5; transform: scale(1); }
+    50% { opacity: 0.8; transform: scale(1.05); }
 }
 

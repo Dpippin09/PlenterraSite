@@ -49,12 +49,12 @@
                     
                     <form onsubmit="handleLogin(event)">
                         <div class="form-group">
-                            <label for="login-username">Username or Email:</label>
                             <input type="text" id="login-username" name="username" required>
+                            <label for="login-username">Username or Email</label>
                         </div>
                         <div class="form-group">
-                            <label for="login-password">Password:</label>
                             <input type="password" id="login-password" name="password" required>
+                            <label for="login-password">Password</label>
                         </div>
                         <div class="form-group">
                             <button type="submit" class="auth-btn">Login to Dashboard</button>
@@ -81,48 +81,48 @@
                     <form onsubmit="handleSignup(event)">
                         <div class="form-row">
                             <div class="form-group">
-                                <label for="signup-firstname">First Name:</label>
                                 <input type="text" id="signup-firstname" name="firstname" required>
+                                <label for="signup-firstname">First Name</label>
                             </div>
                             <div class="form-group">
-                                <label for="signup-lastname">Last Name:</label>
                                 <input type="text" id="signup-lastname" name="lastname" required>
+                                <label for="signup-lastname">Last Name</label>
                             </div>
                         </div>
                         
                         <div class="form-group">
-                            <label for="signup-email">Email Address:</label>
                             <input type="email" id="signup-email" name="email" required>
+                            <label for="signup-email">Email Address</label>
                         </div>
                         
                         <div class="form-group">
-                            <label for="signup-username">Username:</label>
                             <input type="text" id="signup-username" name="username" required>
+                            <label for="signup-username">Username</label>
                         </div>
                         
                         <div class="form-row">
                             <div class="form-group">
-                                <label for="signup-password">Password:</label>
                                 <input type="password" id="signup-password" name="password" required minlength="8">
+                                <label for="signup-password">Password</label>
                             </div>
                             <div class="form-group">
-                                <label for="confirm-password">Confirm Password:</label>
                                 <input type="password" id="confirm-password" name="confirm-password" required>
+                                <label for="confirm-password">Confirm Password</label>
                             </div>
                         </div>
                         
                         <div class="form-group">
-                            <label for="farm-name">Farm Name:</label>
                             <input type="text" id="farm-name" name="farm-name" required>
+                            <label for="farm-name">Farm Name</label>
                         </div>
                         
                         <div class="form-row">
                             <div class="form-group">
-                                <label for="farm-size">Farm Size (acres):</label>
                                 <input type="number" id="farm-size" name="farm-size" required min="1">
+                                <label for="farm-size">Farm Size (acres)</label>
                             </div>
                             <div class="form-group">
-                                <label for="farm-type">Farm Type:</label>
+                                <label for="farm-type" class="select-label">Farm Type:</label>
                                 <select id="farm-type" name="farm-type" required>
                                     <option value="">Select farm type</option>
                                     <option value="row-crop">Row Crop</option>

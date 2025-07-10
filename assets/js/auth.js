@@ -448,3 +448,29 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
 });
+
+// Handle floating labels
+document.addEventListener('DOMContentLoaded', function() {
+    const inputs = document.querySelectorAll('.form-group input');
+    
+    inputs.forEach(input => {
+        // Check if input has value on page load
+        checkLabelState(input);
+        
+        // Add event listeners
+        input.addEventListener('input', () => checkLabelState(input));
+        input.addEventListener('focus', () => checkLabelState(input));
+        input.addEventListener('blur', () => checkLabelState(input));
+    });
+    
+    function checkLabelState(input) {
+        const formGroup = input.closest('.form-group');
+        const label = formGroup.querySelector('label');
+        
+        if (input.value.trim() !== '' || input === document.activeElement) {
+            label.classList.add('active');
+        } else {
+            label.classList.remove('active');
+        }
+    }
+});

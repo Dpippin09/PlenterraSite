@@ -1,4 +1,4 @@
-/* Plenterra Login/Signup Theme */
+/* Plenterra Login/Signup Theme - Enhanced Agricultural Variables */
 :root {
     --plenterra-primary: #1a5f3a;     /* Deep forest green */
     --plenterra-secondary: #2d7a4d;   /* Medium green */
@@ -12,6 +12,11 @@
     --plenterra-success: #10b981;     /* Success green */
     --plenterra-warning: #f59e0b;     /* Warning amber */
     --plenterra-error: #ef4444;       /* Error red */
+    
+    /* Enhanced Agricultural Gradients */
+    --growth-gradient: linear-gradient(135deg, #1a5f3a 0%, #2d7a4d 50%, #4a9b65 100%);
+    --earth-gradient: linear-gradient(135deg, #8b7355 0%, #a0896b 50%, #6f4e37 100%);
+    --agricultural-shadow: 0 4px 20px rgba(26, 95, 58, 0.15);
 }
 
 /* Login/Signup Page Styles */
@@ -27,11 +32,51 @@ body {
     min-height: 100vh;
 }
 
-/* Header */
+/* Header with Enhanced Agricultural Theme */
 header {
-    background: linear-gradient(135deg, #2d5a27 0%, #3a6b34 100%);
+    background: var(--growth-gradient);
     padding: 20px 0;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    box-shadow: 
+        0 4px 20px rgba(45, 90, 39, 0.3),
+        inset 0 1px 0 rgba(255, 255, 255, 0.1);
+    position: relative;
+    overflow: hidden;
+}
+
+header::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: 
+        radial-gradient(circle at 20% 20%, rgba(255, 255, 255, 0.1) 0%, transparent 30%),
+        radial-gradient(circle at 80% 80%, rgba(255, 255, 255, 0.08) 0%, transparent 25%),
+        url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><path d="M30,50 Q35,40 40,50 T50,50" stroke="rgba(255,255,255,0.1)" stroke-width="1" fill="none"/><path d="M60,30 Q65,20 70,30 T80,30" stroke="rgba(255,255,255,0.08)" stroke-width="1" fill="none"/></svg>');
+    animation: floatAgricultural 25s infinite linear;
+}
+
+header::after {
+    content: '🌾';
+    position: absolute;
+    top: 15px;
+    right: 5%;
+    font-size: 1.5rem;
+    opacity: 0.3;
+    animation: leafSwayRight 8s ease-in-out infinite;
+}
+
+@keyframes floatAgricultural {
+    0% { transform: translateX(-50px) translateY(0px); }
+    50% { transform: translateX(50vw) translateY(-10px); }
+    100% { transform: translateX(100vw) translateY(0px); }
+}
+
+@keyframes leafSwayRight {
+    0%, 100% { transform: rotate(0deg) scale(1); }
+    25% { transform: rotate(5deg) scale(1.1); }
+    75% { transform: rotate(-5deg) scale(0.9); }
 }
 
 nav {
@@ -65,17 +110,72 @@ nav {
     border-color: rgba(255,255,255,0.5);
 }
 
-/* Hero Section */
+/* Enhanced Agricultural Hero Section */
 .hero {
     height: 200px;
-    background: linear-gradient(rgba(45,90,39,0.8), rgba(58,107,52,0.8)), url('../images/farming-image.jpg');
+    background: 
+        linear-gradient(135deg, rgba(45,90,39,0.85) 0%, rgba(58,107,52,0.75) 50%, rgba(74,155,101,0.7) 100%), 
+        url('../images/farming-image.jpg');
     background-size: cover;
     background-position: center;
+    background-attachment: fixed;
     display: flex;
     align-items: center;
     justify-content: center;
     color: white;
     text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: 
+        radial-gradient(circle at 30% 70%, rgba(212, 175, 55, 0.1) 0%, transparent 40%),
+        radial-gradient(circle at 70% 30%, rgba(255, 255, 255, 0.1) 0%, transparent 30%);
+    animation: heroGlow 12s ease-in-out infinite alternate;
+}
+
+.hero::after {
+    content: '🌱';
+    position: absolute;
+    top: 20px;
+    left: 10%;
+    font-size: 2rem;
+    opacity: 0.4;
+    animation: leafSwayLeft 6s ease-in-out infinite;
+}
+
+@keyframes heroGlow {
+    0% { opacity: 0.8; transform: scale(1); }
+    100% { opacity: 1; transform: scale(1.02); }
+}
+
+@keyframes leafSwayLeft {
+    0%, 100% { transform: rotate(0deg) translateY(0px); }
+    33% { transform: rotate(-8deg) translateY(-5px); }
+    66% { transform: rotate(8deg) translateY(-3px); }
+}
+
+.hero::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 40px;
+    background: linear-gradient(135deg, transparent 0%, rgba(255,255,255,0.1) 50%, transparent 100%);
+    animation: shimmer 3s infinite;
+}
+
+@keyframes shimmer {
+    0%, 100% { opacity: 0; }
+    50% { opacity: 1; }
 }
 
 /* Content */
@@ -87,12 +187,59 @@ nav {
     z-index: 10;
 }
 
-/* Auth Container */
+/* Enhanced Agricultural Auth Container */
 .auth-container {
-    background: white;
-    border-radius: 15px;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    background: linear-gradient(135deg, rgba(255,255,255,0.98) 0%, rgba(248,250,249,0.95) 100%);
+    border-radius: 24px;
+    box-shadow: 
+        0 25px 50px rgba(45, 90, 39, 0.15), 
+        0 10px 20px rgba(0,0,0,0.1),
+        inset 0 1px 0 rgba(255,255,255,0.8);
     overflow: hidden;
+    backdrop-filter: blur(15px);
+    border: 1px solid rgba(74, 155, 101, 0.1);
+    position: relative;
+    transform: translateY(0);
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.auth-container:hover {
+    transform: translateY(-5px);
+    box-shadow: 
+        0 30px 60px rgba(45, 90, 39, 0.2), 
+        0 15px 30px rgba(0,0,0,0.15),
+        inset 0 1px 0 rgba(255,255,255,0.9);
+}
+
+.auth-container::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: var(--growth-gradient);
+    animation: topBarShimmer 3s ease-in-out infinite;
+}
+
+.auth-container::after {
+    content: '🌿';
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    font-size: 1.2rem;
+    opacity: 0.1;
+    animation: floatIcon 4s ease-in-out infinite;
+}
+
+@keyframes topBarShimmer {
+    0%, 100% { opacity: 0.7; transform: scaleX(1); }
+    50% { opacity: 1; transform: scaleX(1.02); }
+}
+
+@keyframes floatIcon {
+    0%, 100% { transform: translateY(0px) rotate(0deg); }
+    50% { transform: translateY(-5px) rotate(10deg); }
 }
 
 /* Auth Tabs */
@@ -110,8 +257,25 @@ nav {
     font-size: 1.1rem;
     font-weight: 600;
     color: #666;
-    transition: all 0.3s ease;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
     border-bottom: 3px solid transparent;
+    position: relative;
+    overflow: hidden;
+}
+
+.auth-tab::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(45, 90, 39, 0.05), transparent);
+    transition: left 0.5s ease;
+}
+
+.auth-tab:hover::before {
+    left: 100%;
 }
 
 .auth-tab.active,
@@ -119,16 +283,44 @@ nav {
     background: white;
     color: #2d5a27;
     border-bottom-color: #2d5a27;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(45, 90, 39, 0.1);
 }
 
-/* Auth Forms */
+/* Enhanced Consistent Form Styling */
 .auth-form {
     display: none;
     padding: 40px;
+    animation: fadeIn 0.5s ease-in-out;
+    min-height: 500px; /* Ensure consistent height */
+    position: relative;
 }
 
 .auth-form.active {
     display: block;
+}
+
+/* Ensure consistent spacing for login form */
+#login-form {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+#login-form .form-group:last-of-type {
+    margin-top: auto;
+    margin-bottom: 0;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 .auth-form h2 {
@@ -136,6 +328,16 @@ nav {
     font-size: 2rem;
     margin-bottom: 10px;
     text-align: center;
+    position: relative;
+}
+
+.auth-form h2::after {
+    content: '🌱';
+    position: absolute;
+    right: -30px;
+    top: 0;
+    font-size: 0.8em;
+    opacity: 0.7;
 }
 
 .auth-subtitle {
@@ -143,6 +345,7 @@ nav {
     color: #666;
     margin-bottom: 30px;
     font-size: 1.1rem;
+    line-height: 1.6;
 }
 
 /* Form Styling */
@@ -154,36 +357,90 @@ nav {
 
 .form-group {
     margin-bottom: 25px;
+    position: relative;
 }
 
 .form-group label {
-    display: block;
-    margin-bottom: 8px;
-    font-weight: 600;
-    color: #555;
+    position: absolute;
+    top: 14px;
+    left: 16px;
+    color: #adb5bd;
+    font-weight: 400;
+    font-size: 1rem;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    pointer-events: none;
+    z-index: 2;
+    background: transparent;
+    padding: 0 4px;
 }
 
 .form-group input,
-.form-group select {
+.form-group select,
+.form-group textarea {
     width: 100%;
-    padding: 12px 15px;
+    padding: 14px 16px;
     border: 2px solid #e9ecef;
-    border-radius: 8px;
+    border-radius: 12px;
     font-size: 1rem;
-    transition: all 0.3s ease;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
     background-color: #f8f9fa;
+    position: relative;
+    z-index: 1;
 }
 
 .form-group input:focus,
-.form-group select:focus {
+.form-group select:focus,
+.form-group textarea:focus {
     outline: none;
     border-color: #2d5a27;
     background-color: white;
-    box-shadow: 0 0 0 3px rgba(45,90,39,0.1);
+    box-shadow: 0 0 0 4px rgba(45,90,39,0.1), 0 4px 15px rgba(45,90,39,0.05);
+    transform: translateY(-2px);
+}
+
+/* Floating label animation */
+.form-group input:focus + label,
+.form-group label.active {
+    top: -12px;
+    left: 12px;
+    font-size: 0.8rem;
+    color: #2d5a27;
+    font-weight: 600;
+    background: linear-gradient(to bottom, transparent 0%, transparent 40%, #f8faf9 40%, #f8faf9 60%, transparent 60%);
 }
 
 .form-group input::placeholder {
     color: #adb5bd;
+    transition: opacity 0.3s ease;
+}
+
+.form-group input:focus::placeholder {
+    opacity: 0.6;
+}
+
+/* Special handling for select fields */
+.form-group .select-label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 600;
+    color: #555;
+    position: static;
+    background: transparent;
+    z-index: auto;
+}
+
+.form-group select {
+    background-color: #f8f9fa;
+    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"><path fill="%23999" d="M8 12L2 6h12z"/></svg>');
+    background-repeat: no-repeat;
+    background-position: right 12px center;
+    background-size: 16px;
+    appearance: none;
+    padding-right: 40px;
+}
+
+.form-group select:focus {
+    background-color: white;
 }
 
 /* Checkbox Groups */
@@ -322,32 +579,130 @@ input[type="checkbox"] {
     opacity: 1 !important;
 }
 
-/* Buttons */
+/* Enhanced Consistent Button Styling */
 .auth-btn {
     width: 100%;
-    background: linear-gradient(135deg, #2d5a27 0%, #3a6b34 100%);
+    background: var(--growth-gradient);
     color: white;
     border: none;
-    padding: 15px;
-    border-radius: 8px;
+    padding: 18px 24px;
+    border-radius: 12px;
     font-size: 1.1rem;
     font-weight: 600;
     cursor: pointer;
-    transition: all 0.3s ease;
-    margin-top: 80px; /* Increased margin to prevent overlap */
-    clear: both; /* Ensure button clears any floating elements */
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    margin-top: 30px;
+    clear: both;
     position: relative;
     z-index: 1;
+    overflow: hidden;
+    box-shadow: 0 4px 15px rgba(45, 90, 39, 0.2);
+    border: 2px solid transparent;
+    text-transform: none;
+    letter-spacing: 0.5px;
+    min-height: 56px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.auth-btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+    transition: left 0.5s ease;
+}
+
+.auth-btn::after {
+    content: '🌱';
+    position: absolute;
+    right: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 1.2rem;
+    opacity: 0;
+    transition: all 0.4s ease;
+}
+
+.auth-btn:hover::before {
+    left: 100%;
+}
+
+.auth-btn:hover::after {
+    opacity: 0.8;
+    right: 15px;
 }
 
 .auth-btn:hover {
     background: linear-gradient(135deg, #1e3d1a 0%, #2d5a27 100%);
-    transform: translateY(-2px);
-    box-shadow: 0 5px 15px rgba(45,90,39,0.3);
+    transform: translateY(-3px);
+    box-shadow: 
+        var(--agricultural-shadow),
+        0 8px 25px rgba(45,90,39,0.4);
+    border-color: rgba(255, 255, 255, 0.1);
+    padding-right: 50px;
 }
 
 .auth-btn:active {
-    transform: translateY(0);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 15px rgba(45,90,39,0.3);
+}
+
+.auth-btn:focus {
+    outline: none;
+    box-shadow: 
+        0 4px 15px rgba(45, 90, 39, 0.2),
+        0 0 0 3px rgba(45, 90, 39, 0.1);
+}
+
+/* Force Absolute Button Consistency - Override any browser defaults */
+#login-form .auth-btn,
+#signup-form .auth-btn {
+    /* Reset all possible browser differences */
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    
+    /* Force identical dimensions */
+    width: 100% !important;
+    height: 56px !important;
+    min-height: 56px !important;
+    max-height: 56px !important;
+    
+    /* Force identical styling */
+    background: var(--growth-gradient) !important;
+    color: white !important;
+    border: 2px solid transparent !important;
+    padding: 18px 24px !important;
+    border-radius: 12px !important;
+    font-size: 1.1rem !important;
+    font-weight: 600 !important;
+    font-family: inherit !important;
+    line-height: 1 !important;
+    
+    /* Force identical positioning and spacing */
+    margin: 30px 0 0 0 !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    
+    /* Force identical interaction states */
+    cursor: pointer !important;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1) !important;
+    position: relative !important;
+    z-index: 1 !important;
+    overflow: hidden !important;
+    box-shadow: 0 4px 15px rgba(45, 90, 39, 0.2) !important;
+    text-transform: none !important;
+    letter-spacing: 0.5px !important;
+    text-decoration: none !important;
+    text-align: center !important;
+    vertical-align: middle !important;
+    white-space: nowrap !important;
 }
 
 /* Auth Links */
@@ -369,34 +724,64 @@ input[type="checkbox"] {
 /* Demo Login Section */
 .demo-login {
     margin-top: 30px;
-    padding: 20px;
-    background: linear-gradient(135deg, #e3f2fd 0%, #f3e5f5 100%);
-    border-radius: 10px;
+    padding: 25px;
+    background: linear-gradient(135deg, #e8f5e8 0%, #f0f8f0 100%);
+    border-radius: 15px;
     text-align: center;
-    border: 2px solid #e1f5fe;
+    border: 2px solid rgba(45, 90, 39, 0.1);
+    position: relative;
+    overflow: hidden;
+}
+
+.demo-login::before {
+    content: '🌾';
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    font-size: 1.2em;
+    opacity: 0.6;
 }
 
 .demo-login p {
-    color: #666;
+    color: #2d5a27;
     margin-bottom: 15px;
     font-weight: 600;
+    font-size: 1rem;
 }
 
 .demo-btn {
-    background: linear-gradient(135deg, #1976d2 0%, #7b1fa2 100%);
+    background: linear-gradient(135deg, #4a9b65 0%, #2d7a4d 100%);
     color: white;
     border: none;
-    padding: 12px 24px;
-    border-radius: 6px;
+    padding: 14px 28px;
+    border-radius: 10px;
     cursor: pointer;
     font-weight: 600;
-    transition: all 0.3s ease;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    overflow: hidden;
+    font-size: 1rem;
+}
+
+.demo-btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+    transition: left 0.5s ease;
+}
+
+.demo-btn:hover::before {
+    left: 100%;
 }
 
 .demo-btn:hover {
-    background: linear-gradient(135deg, #1565c0 0%, #6a1b9a 100%);
-    transform: translateY(-2px);
-    box-shadow: 0 5px 15px rgba(25,118,210,0.3);
+    background: linear-gradient(135deg, #3a8555 0%, #236b3d 100%);
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(74, 155, 101, 0.4);
 }
 
 /* Responsive Design */
@@ -490,4 +875,71 @@ input[type="checkbox"] {
     .demo-login {
         padding: 15px;
     }
+}
+
+/* CRITICAL: Force Absolute Button Consistency */
+button.auth-btn {
+    -webkit-appearance: none !important;
+    -moz-appearance: none !important;
+    appearance: none !important;
+    width: 100% !important;
+    height: 56px !important;
+    background: var(--growth-gradient) !important;
+    color: white !important;
+    border: 2px solid transparent !important;
+    padding: 18px 24px !important;
+    border-radius: 12px !important;
+    font-size: 1.1rem !important;
+    font-weight: 600 !important;
+    margin: 30px 0 0 0 !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    cursor: pointer !important;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1) !important;
+    position: relative !important;
+    z-index: 1 !important;
+    overflow: hidden !important;
+    box-shadow: 0 4px 15px rgba(45, 90, 39, 0.2) !important;
+    text-transform: none !important;
+    letter-spacing: 0.5px !important;
+}
+
+button.auth-btn::before {
+    content: '' !important;
+    position: absolute !important;
+    top: 0 !important;
+    left: -100% !important;
+    width: 100% !important;
+    height: 100% !important;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent) !important;
+    transition: left 0.5s ease !important;
+}
+
+button.auth-btn::after {
+    content: '🌱' !important;
+    position: absolute !important;
+    right: 20px !important;
+    top: 50% !important;
+    transform: translateY(-50%) !important;
+    font-size: 1.2rem !important;
+    opacity: 0 !important;
+    transition: all 0.4s ease !important;
+}
+
+button.auth-btn:hover {
+    background: linear-gradient(135deg, #1e3d1a 0%, #2d5a27 100%) !important;
+    transform: translateY(-3px) !important;
+    box-shadow: 0 4px 20px rgba(26, 95, 58, 0.15), 0 8px 25px rgba(45,90,39,0.4) !important;
+    border-color: rgba(255, 255, 255, 0.1) !important;
+    padding-right: 50px !important;
+}
+
+button.auth-btn:hover::before {
+    left: 100% !important;
+}
+
+button.auth-btn:hover::after {
+    opacity: 0.8 !important;
+    right: 15px !important;
 }
