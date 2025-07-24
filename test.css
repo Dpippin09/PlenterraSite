@@ -1,0 +1,10 @@
+/* Simple test CSS */
+body {
+    background-color: red !important;
+    color: white !important;
+}
+
+h1 {
+    font-size: 3rem !important;
+    text-align: center !important;
+}

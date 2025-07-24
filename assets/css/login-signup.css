@@ -246,6 +246,9 @@ nav {
 .auth-tabs {
     display: flex;
     background: #f8f9fa;
+    border-radius: 0; /* Reset any border radius on the container */
+    margin: 0; /* Reset margins */
+    align-items: stretch; /* Ensure tabs are same height */
 }
 
 .auth-tab {
@@ -261,30 +264,17 @@ nav {
     border-bottom: 3px solid transparent;
     position: relative;
     overflow: hidden;
+    text-align: center; /* Center align text */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 60px; /* Consistent height */
 }
 
-.auth-tab::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: -100%;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(90deg, transparent, rgba(45, 90, 39, 0.05), transparent);
-    transition: left 0.5s ease;
-}
-
-.auth-tab:hover::before {
-    left: 100%;
-}
-
-.auth-tab.active,
-.auth-tab:hover {
+.auth-tab.active {
     background: white;
     color: #2d5a27;
     border-bottom-color: #2d5a27;
-    transform: translateY(-2px);
-    box-shadow: 0 4px 15px rgba(45, 90, 39, 0.1);
 }
 
 /* Enhanced Consistent Form Styling */
@@ -806,15 +796,18 @@ input[type="checkbox"] {
     
     .auth-tabs {
         flex-direction: column;
+        background: #f8f9fa;
     }
     
     .auth-tab {
         border-bottom: none;
         border-right: 3px solid transparent;
+        text-align: center;
+        justify-content: center;
+        min-height: 50px; /* Consistent height on mobile */
     }
     
-    .auth-tab.active,
-    .auth-tab:hover {
+    .auth-tab.active {
         border-right-color: #2d5a27;
         border-bottom-color: transparent;
     }
