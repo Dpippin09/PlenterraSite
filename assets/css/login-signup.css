@@ -271,9 +271,20 @@ nav {
     min-height: 60px; /* Consistent height */
 }
 
+.auth-tab:hover {
+    color: #333; /* Keep text black/dark on hover */
+    background: transparent;
+}
+
 .auth-tab.active {
     background: white;
     color: #2d5a27;
+    border-bottom-color: #2d5a27;
+}
+
+.auth-tab.active:hover {
+    background: white;
+    color: #2d5a27; /* Keep active tab text green on hover */
     border-bottom-color: #2d5a27;
 }
 
@@ -488,7 +499,7 @@ nav {
 
 /* Ensure proper spacing before Create Account button */
 .checkbox-group:last-of-type {
-    margin-bottom: 100px; /* Much more space before Create Account button */
+    margin-bottom: 30px; /* Normal spacing now that overlap issue is resolved */
 }
 
 /* Improve checkbox visibility and interaction */
@@ -581,7 +592,7 @@ input[type="checkbox"] {
     font-weight: 600;
     cursor: pointer;
     transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-    margin-top: 30px;
+    margin-top: 30px; /* Back to normal spacing */
     clear: both;
     position: relative;
     z-index: 1;
@@ -807,7 +818,18 @@ input[type="checkbox"] {
         min-height: 50px; /* Consistent height on mobile */
     }
     
+    .auth-tab:hover {
+        color: #333; /* Keep text black/dark on mobile hover */
+        background: transparent;
+    }
+    
     .auth-tab.active {
+        border-right-color: #2d5a27;
+        border-bottom-color: transparent;
+    }
+    
+    .auth-tab.active:hover {
+        color: #2d5a27; /* Keep active tab text green on mobile hover */
         border-right-color: #2d5a27;
         border-bottom-color: transparent;
     }
@@ -841,11 +863,11 @@ input[type="checkbox"] {
     }
     
     .checkbox-group:last-of-type {
-        margin-bottom: 80px; /* Much more space on mobile */
+        margin-bottom: 120px; /* Even more space on mobile */
     }
     
     .auth-btn {
-        margin-top: 90px; /* Much more margin on mobile */
+        margin-top: 120px; /* Much more margin on mobile */
         padding: 18px; /* Larger button on mobile */
     }
 }

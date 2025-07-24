@@ -71,8 +71,7 @@ function handleSignup(event) {
         farmName: formData.get('farm-name'),
         farmSize: parseInt(formData.get('farm-size')),
         farmType: formData.get('farm-type'),
-        termsAgreed: document.getElementById('terms-agree').checked,
-        newsletter: document.getElementById('newsletter-signup').checked
+        termsAgreed: document.getElementById('terms-agree').checked
     };
     
     // Validation

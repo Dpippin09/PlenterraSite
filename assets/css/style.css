@@ -298,6 +298,7 @@ body::before {
     position: relative !important;
     overflow: hidden !important;
     box-shadow: 0 2px 8px rgba(26, 95, 58, 0.1) !important;
+    z-index: 1 !important; /* Ensure button content stays above pseudo-elements */
 }
 
 .login-btn::before {
@@ -309,6 +310,7 @@ body::before {
     font-size: 14px !important;
     transition: all 0.4s ease !important;
     opacity: 0 !important;
+    z-index: 1 !important; /* Keep plant icon below text */
 }
 
 .login-btn::after {
@@ -320,7 +322,7 @@ body::before {
     height: 100% !important;
     background: var(--growth-gradient) !important;
     transition: left 0.4s ease !important;
-    z-index: -1 !important;
+    z-index: -1 !important; /* Keep background gradient behind everything */
 }
 
 .login-btn:hover::before {
@@ -333,12 +335,15 @@ body::before {
 }
 
 .login-btn:hover {
-    color: var(--plenterra-white) !important;
+    color: var(--plenterra-primary) !important; /* Keep text dark green instead of white */
     border-color: var(--plenterra-primary) !important;
     transform: translateY(-3px) scale(1.02) !important;
     box-shadow: var(--agricultural-shadow) !important;
     padding-left: 32px !important;
     box-shadow: 0 6px 20px rgba(26, 95, 58, 0.4) !important;
+    z-index: 10 !important; /* Ensure text stays above pseudo-elements */
+    position: relative !important;
+    background: var(--plenterra-white) !important; /* Keep white background */
 }
 
 .login-btn:active {
