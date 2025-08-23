@@ -1,0 +1,609 @@
+/* Root Variables - Plenterra Color Scheme */
+/* Import Agricultural Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Bitter:wght@400;500;600;700&family=Merriweather:wght@300;400;700&family=Playfair+Display:wght@400;600;700&display=swap');
+
+/* CSS Variables */
+:root {
+    --plenterra-primary: #1a5f3a;
+    --plenterra-secondary: #2d7a4d;
+    --plenterra-accent: #4a9b65;
+    --plenterra-light: #8cbd9c;
+    --white: #ffffff;
+    --light-gray: #f8f9fa;
+    --medium-gray: #e9ecef;
+    --dark-gray: #495057;
+    --success: #28a745;
+    --error: #dc3545;
+    --shadow-light: rgba(26, 95, 58, 0.1);
+    --shadow-medium: rgba(26, 95, 58, 0.2);
+    --shadow-dark: rgba(26, 95, 58, 0.3);
+    --transition: all 0.3s ease;
+    
+    /* Agricultural Font Variables */
+    --primary-font: 'Bitter', 'Times New Roman', serif;
+    --secondary-font: 'Merriweather', Georgia, serif;
+    --accent-font: 'Playfair Display', 'Times New Roman', serif;
+}
+
+/* Reset and Base Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html, body {
+    height: 100%;
+    font-family: var(--primary-font);
+}
+
+.auth-body {
+    background: linear-gradient(135deg, var(--plenterra-primary) 0%, var(--plenterra-secondary) 100%);
+    height: 100vh;
+    overflow: hidden;
+}
+
+/* Main Container */
+.auth-main-container {
+    display: flex;
+    height: 100vh;
+    background: var(--white);
+    border-radius: 0;
+    box-shadow: 0 20px 60px var(--shadow-dark);
+}
+
+/* Left Panel - Branding */
+.auth-left-panel {
+    flex: 1;
+    background: linear-gradient(135deg, var(--plenterra-primary) 0%, var(--plenterra-secondary) 50%, var(--plenterra-accent) 100%);
+    color: var(--white);
+    padding: 3rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    position: relative;
+    overflow: hidden;
+}
+
+.auth-left-panel::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    right: -50%;
+    width: 200%;
+    height: 200%;
+    background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grain" patternUnits="userSpaceOnUse" width="10" height="10"><circle cx="5" cy="5" r="1" fill="rgba(255,255,255,0.05)"/></pattern></defs><rect width="100" height="100" fill="url(%23grain)"/></svg>');
+    animation: float 20s infinite linear;
+}
+
+@keyframes float {
+    0% { transform: translate(0, 0) rotate(0deg); }
+    100% { transform: translate(-10px, -10px) rotate(360deg); }
+}
+
+.brand-section {
+    text-align: center;
+    margin-bottom: 2rem;
+    position: relative;
+    z-index: 1;
+}
+
+.auth-brand-title {
+    font-family: var(--accent-font);
+    font-size: 2.5rem;
+    font-weight: 700;
+    letter-spacing: 3px;
+    margin-bottom: 0.5rem;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.auth-brand-subtitle {
+    font-family: var(--secondary-font);
+    font-size: 1.1rem;
+    opacity: 0.9;
+    font-weight: 300;
+    letter-spacing: 1px;
+}
+
+.auth-info {
+    flex: 1;
+    position: relative;
+    z-index: 1;
+}
+
+.auth-info h2 {
+    font-family: var(--accent-font);
+    font-size: 2rem;
+    margin-bottom: 2rem;
+    line-height: 1.3;
+    font-weight: 600;
+}
+
+.auth-benefits {
+    list-style: none;
+}
+
+.auth-benefits li {
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: 1.5rem;
+    padding: 1rem;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    backdrop-filter: blur(10px);
+    transition: var(--transition);
+}
+
+.auth-benefits li:hover {
+    background: rgba(255, 255, 255, 0.15);
+    transform: translateX(5px);
+}
+
+.benefit-icon {
+    font-size: 1.5rem;
+    margin-right: 1rem;
+    flex-shrink: 0;
+    margin-top: 0.25rem;
+}
+
+.auth-benefits strong {
+    font-family: var(--accent-font);
+    display: block;
+    font-size: 1.1rem;
+    margin-bottom: 0.25rem;
+    font-weight: 600;
+}
+
+.auth-benefits p {
+    font-family: var(--secondary-font);
+    opacity: 0.9;
+    line-height: 1.4;
+}
+
+.auth-footer-info {
+    text-align: center;
+    opacity: 0.8;
+    font-size: 0.9rem;
+    position: relative;
+    z-index: 1;
+}
+
+/* Right Panel - Forms */
+.auth-right-panel {
+    flex: 1;
+    background: var(--white);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+}
+
+.auth-form-container {
+    width: 100%;
+    max-width: 580px;
+}
+
+.auth-header {
+    margin-bottom: 2rem;
+}
+
+.auth-tabs {
+    display: flex;
+    background: var(--light-gray);
+    border-radius: 12px;
+    padding: 4px;
+    margin-bottom: 2rem;
+}
+
+.auth-tab {
+    flex: 1;
+    padding: 1.25rem 1.5rem;
+    border: none;
+    background: transparent;
+    color: var(--dark-gray);
+    font-weight: 500;
+    font-size: 1.2rem;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: var(--transition);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.75rem;
+}
+
+.auth-tab.active {
+    background: var(--white);
+    color: var(--plenterra-primary);
+    box-shadow: 0 2px 8px var(--shadow-light);
+}
+
+.tab-icon {
+    font-size: 1.2rem;
+}
+
+/* Form Styles */
+.auth-form {
+    display: none;
+}
+
+.auth-form.active {
+    display: block;
+}
+
+.form-header {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.form-header h2 {
+    font-family: var(--accent-font);
+    color: var(--plenterra-primary);
+    font-size: 2.5rem;
+    font-weight: 600;
+    margin-bottom: 0.75rem;
+}
+
+.form-subtitle {
+    font-family: var(--secondary-font);
+    color: var(--dark-gray);
+    opacity: 0.8;
+    font-size: 1.2rem;
+    line-height: 1.4;
+}
+
+.auth-form-content {
+    margin-bottom: 2rem;
+}
+
+.form-row {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 1rem;
+}
+
+.form-group {
+    position: relative;
+    margin-bottom: 2.25rem;
+    flex: 1;
+}
+
+.form-group input,
+.form-group select {
+    width: 100%;
+    padding: 1.4rem 1.4rem 1.4rem 1.4rem;
+    border: 2px solid var(--medium-gray);
+    border-radius: 10px;
+    font-size: 1.2rem;
+    background: var(--white);
+    transition: var(--transition);
+    outline: none;
+    min-height: 64px;
+}
+
+.form-group input:focus,
+.form-group select:focus {
+    border-color: var(--plenterra-primary);
+    box-shadow: 0 0 0 4px var(--shadow-light);
+}
+
+.form-group label {
+    position: absolute;
+    left: 1.4rem;
+    top: 1.4rem;
+    color: var(--dark-gray);
+    font-size: 1.2rem;
+    transition: var(--transition);
+    pointer-events: none;
+    background: var(--white);
+    padding: 0 0.5rem;
+    font-weight: 500;
+}
+
+.form-group input:focus + label,
+.form-group input:valid + label {
+    top: -0.75rem;
+    left: 1rem;
+    font-size: 1rem;
+    color: var(--plenterra-primary);
+    font-weight: 600;
+}
+
+.select-label {
+    position: static !important;
+    display: block;
+    margin-bottom: 0.75rem;
+    color: var(--dark-gray);
+    font-weight: 600;
+    font-size: 1.1rem;
+}
+
+.checkbox-group {
+    margin-bottom: 2rem;
+}
+
+.checkbox-label {
+    display: flex;
+    align-items: flex-start;
+    cursor: pointer;
+    position: relative;
+    padding-left: 2.5rem;
+    line-height: 1.5;
+}
+
+.checkbox-label input[type="checkbox"] {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+}
+
+.checkmark {
+    position: absolute;
+    left: 0;
+    top: 0.25rem;
+    height: 1.6rem;
+    width: 1.6rem;
+    background: var(--white);
+    border: 2px solid var(--medium-gray);
+    border-radius: 6px;
+    transition: var(--transition);
+}
+
+.checkbox-label:hover .checkmark {
+    border-color: var(--plenterra-primary);
+}
+
+.checkbox-label input:checked ~ .checkmark {
+    background: var(--plenterra-primary);
+    border-color: var(--plenterra-primary);
+}
+
+.checkmark:after {
+    content: "";
+    position: absolute;
+    display: none;
+    left: 5px;
+    top: 2px;
+    width: 7px;
+    height: 12px;
+    border: solid white;
+    border-width: 0 3px 3px 0;
+    transform: rotate(45deg);
+}
+
+.checkbox-label input:checked ~ .checkmark:after {
+    display: block;
+}
+
+.checkbox-text {
+    color: var(--dark-gray);
+    line-height: 1.5;
+    font-size: 1.1rem;
+}
+
+.checkbox-text a {
+    color: var(--plenterra-primary);
+    text-decoration: none;
+}
+
+.checkbox-text a:hover {
+    text-decoration: underline;
+}
+
+.form-actions {
+    margin-top: 2.5rem;
+}
+
+.auth-btn {
+    font-family: var(--primary-font);
+    width: 100%;
+    padding: 1.4rem 2rem;
+    background: linear-gradient(135deg, var(--plenterra-primary), var(--plenterra-secondary));
+    color: var(--white);
+    border: none;
+    border-radius: 10px;
+    font-size: 1.3rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: var(--transition);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.75rem;
+    position: relative;
+    overflow: hidden;
+    min-height: 65px;
+}
+
+.auth-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px var(--shadow-medium);
+}
+
+.auth-btn:active {
+    transform: translateY(0);
+}
+
+.btn-arrow {
+    transition: var(--transition);
+}
+
+.auth-btn:hover .btn-arrow {
+    transform: translateX(4px);
+}
+
+.form-links {
+    text-align: center;
+    margin-top: 1.5rem;
+}
+
+.forgot-link {
+    color: var(--plenterra-primary);
+    text-decoration: none;
+    font-size: 1.1rem;
+    transition: var(--transition);
+    font-weight: 500;
+}
+
+.forgot-link:hover {
+    text-decoration: underline;
+    color: var(--plenterra-secondary);
+}
+
+/* Demo Section */
+.demo-section {
+    margin-top: 2.5rem;
+    padding-top: 2.5rem;
+}
+
+.demo-divider {
+    text-align: center;
+    position: relative;
+    margin-bottom: 2rem;
+}
+
+.demo-divider::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: var(--medium-gray);
+}
+
+.demo-divider span {
+    background: var(--white);
+    padding: 0 1.5rem;
+    color: var(--dark-gray);
+    font-size: 1rem;
+    position: relative;
+    font-weight: 500;
+}
+
+.demo-btn {
+    font-family: var(--primary-font);
+    width: 100%;
+    padding: 1.2rem 1.5rem;
+    background: var(--white);
+    color: var(--plenterra-primary);
+    border: 2px solid var(--plenterra-primary);
+    border-radius: 10px;
+    font-size: 1.2rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: var(--transition);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.75rem;
+    min-height: 60px;
+}
+
+.demo-btn:hover {
+    background: var(--plenterra-primary);
+    color: var(--white);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px var(--shadow-light);
+}
+
+.demo-icon {
+    font-size: 1.2rem;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .auth-main-container {
+        flex-direction: column;
+        height: 100vh;
+        overflow-y: auto;
+    }
+    
+    .auth-left-panel {
+        flex: none;
+        height: 40vh;
+        padding: 2rem 1.5rem;
+        text-align: center;
+    }
+    
+    .auth-info h2 {
+        font-size: 1.5rem;
+        margin-bottom: 1rem;
+    }
+    
+    .auth-benefits {
+        display: none;
+    }
+    
+    .auth-right-panel {
+        flex: 1;
+        min-height: 60vh;
+        padding: 1.5rem;
+    }
+    
+    .auth-brand-title {
+        font-size: 2rem;
+    }
+    
+    .form-row {
+        flex-direction: column;
+        gap: 0;
+    }
+}
+
+@media (max-width: 480px) {
+    .auth-left-panel {
+        padding: 1.5rem 1rem;
+    }
+    
+    .auth-right-panel {
+        padding: 1rem;
+    }
+    
+    .auth-brand-title {
+        font-size: 1.8rem;
+        letter-spacing: 2px;
+    }
+    
+    .form-header h2 {
+        font-size: 1.5rem;
+    }
+}
+
+/* Loading States */
+.auth-btn.loading {
+    pointer-events: none;
+    opacity: 0.7;
+}
+
+.auth-btn.loading .btn-text::after {
+    content: "...";
+    animation: dots 1.5s infinite;
+}
+
+@keyframes dots {
+    0%, 20% { opacity: 0; }
+    50% { opacity: 1; }
+    100% { opacity: 0; }
+}
+
+/* Success/Error States */
+.form-group.success input {
+    border-color: var(--success);
+}
+
+.form-group.error input {
+    border-color: var(--error);
+}
+
+.error-message {
+    color: var(--error);
+    font-size: 0.85rem;
+    margin-top: 0.5rem;
+}
+
+.success-message {
+    color: var(--success);
+    font-size: 0.85rem;
+    margin-top: 0.5rem;
+}

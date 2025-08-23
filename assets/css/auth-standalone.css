@@ -1,0 +1,697 @@
+/* Authentication Portal - Standalone CSS */
+
+/* CSS Variables */
+:root {
+    --plenterra-primary: #1a5f3a;
+    --plenterra-secondary: #2d7a4d;
+    --plenterra-accent: #4a9b65;
+    --plenterra-light: #e8f5e8;
+    --plenterra-white: #ffffff;
+    --plenterra-text: #2c3e2d;
+    --growth-gradient: linear-gradient(135deg, #1a5f3a 0%, #2d7a4d 50%, #4a9b65 100%);
+    --agricultural-shadow: 0 8px 32px rgba(26, 95, 58, 0.3);
+    --soft-glow: 0 4px 15px rgba(74, 155, 101, 0.2);
+}
+
+/* Reset and Base Styles */
+*, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    font-size: 16px;
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+    line-height: 1.65;
+    color: var(--plenterra-text);
+    background: linear-gradient(135deg, var(--plenterra-light) 0%, #e8f5e8 100%);
+    background-attachment: fixed;
+    overflow-x: hidden;
+    animation: fadeInPage 0.8s ease-in;
+    position: relative;
+}
+
+/* Animated Background */
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: 
+        radial-gradient(circle at 20% 80%, rgba(74, 155, 101, 0.03) 0%, transparent 50%),
+        radial-gradient(circle at 80% 20%, rgba(26, 95, 58, 0.03) 0%, transparent 50%),
+        radial-gradient(circle at 40% 40%, rgba(212, 175, 55, 0.02) 0%, transparent 50%),
+        radial-gradient(circle at 60% 70%, rgba(255, 255, 255, 0.1) 0%, transparent 30%),
+        radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.08) 0%, transparent 25%);
+    pointer-events: none;
+    z-index: -1;
+    animation: floatingParticles 20s infinite linear;
+}
+
+body::after {
+    content: '🌾';
+    position: fixed;
+    top: 15px;
+    right: 5%;
+    font-size: 1.5rem;
+    opacity: 0.3;
+    animation: leafSwayRight 8s ease-in-out infinite;
+    pointer-events: none;
+    z-index: 100;
+}
+
+@keyframes fadeInPage {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes floatingParticles {
+    0% { transform: translateY(0px) rotate(0deg); }
+    50% { transform: translateY(-10px) rotate(180deg); }
+    100% { transform: translateY(0px) rotate(360deg); }
+}
+
+@keyframes leafSwayRight {
+    0%, 100% { transform: rotate(0deg) scale(1); }
+    25% { transform: rotate(5deg) scale(1.1); }
+    75% { transform: rotate(-5deg) scale(0.9); }
+}
+
+/* Header */
+.site-header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(15px);
+    border-bottom: 2px solid rgba(26, 95, 58, 0.1);
+    transition: all 0.3s ease;
+    box-shadow: 
+        0 2px 20px rgba(26, 95, 58, 0.1),
+        0 4px 20px rgba(45, 90, 39, 0.3),
+        inset 0 1px 0 rgba(255, 255, 255, 0.1);
+    position: relative;
+    overflow: hidden;
+}
+
+.site-header::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: 
+        radial-gradient(circle at 20% 20%, rgba(255, 255, 255, 0.1) 0%, transparent 30%),
+        radial-gradient(circle at 80% 80%, rgba(255, 255, 255, 0.08) 0%, transparent 25%);
+    animation: floatAgricultural 25s infinite linear;
+    pointer-events: none;
+}
+
+@keyframes floatAgricultural {
+    0% { transform: translateX(-50px) translateY(0px); }
+    50% { transform: translateX(50vw) translateY(-10px); }
+    100% { transform: translateX(100vw) translateY(0px); }
+}
+
+.main-nav {
+    padding: 0;
+}
+
+.nav-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 70px;
+}
+
+.nav-brand {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.plenterra-logo {
+    height: 40px;
+    width: auto;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    filter: drop-shadow(0 2px 4px rgba(26, 95, 58, 0.1));
+}
+
+.plenterra-logo:hover {
+    transform: scale(1.05) rotate(1deg);
+    filter: drop-shadow(0 4px 8px rgba(26, 95, 58, 0.2));
+}
+
+.app-title {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: var(--plenterra-primary);
+    margin: 0;
+}
+
+/* Hero Section */
+.hero {
+    height: 120px;
+    background: 
+        linear-gradient(135deg, rgba(26, 95, 58, 0.1) 0%, rgba(74, 155, 101, 0.05) 100%),
+        radial-gradient(circle at center, rgba(212, 175, 55, 0.1) 0%, transparent 70%);
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    position: relative;
+    overflow: hidden;
+}
+
+.hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: 
+        radial-gradient(circle at 30% 70%, rgba(212, 175, 55, 0.1) 0%, transparent 40%),
+        radial-gradient(circle at 70% 30%, rgba(255, 255, 255, 0.1) 0%, transparent 30%);
+    animation: heroGlow 12s ease-in-out infinite alternate;
+}
+
+.hero::after {
+    content: '🌱';
+    position: absolute;
+    top: 20px;
+    left: 10%;
+    font-size: 2rem;
+    opacity: 0.4;
+    animation: leafSwayLeft 6s ease-in-out infinite;
+}
+
+@keyframes heroGlow {
+    0% { opacity: 0.8; transform: scale(1); }
+    100% { opacity: 1; transform: scale(1.02); }
+}
+
+@keyframes leafSwayLeft {
+    0%, 100% { transform: rotate(0deg) translateY(0px); }
+    33% { transform: rotate(-8deg) translateY(-5px); }
+    66% { transform: rotate(8deg) translateY(-3px); }
+}
+
+/* Main Content */
+.content {
+    flex: 1;
+    padding: 2rem 0;
+}
+
+.login-signup {
+    min-height: calc(100vh - 140px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem 1rem;
+}
+
+/* Auth Container */
+.auth-container {
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(20px);
+    border-radius: 24px;
+    padding: 3rem;
+    max-width: 500px;
+    width: 100%;
+    box-shadow: 
+        0 20px 40px rgba(26, 95, 58, 0.1),
+        0 1px 0 rgba(255, 255, 255, 0.3) inset,
+        0 -1px 0 rgba(26, 95, 58, 0.1) inset;
+    border: 1px solid rgba(26, 95, 58, 0.1);
+    position: relative;
+    overflow: hidden;
+}
+
+.auth-container::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: var(--growth-gradient);
+    border-radius: 24px 24px 0 0;
+    animation: topBarShimmer 3s ease-in-out infinite;
+}
+
+@keyframes topBarShimmer {
+    0%, 100% { opacity: 0.7; }
+    50% { opacity: 1; }
+}
+
+/* Auth Tabs */
+.auth-tabs {
+    display: flex;
+    margin-bottom: 2rem;
+    background: rgba(26, 95, 58, 0.05);
+    border-radius: 12px;
+    padding: 4px;
+}
+
+.auth-tab {
+    flex: 1;
+    padding: 12px 24px;
+    border: none;
+    background: transparent;
+    color: var(--plenterra-text);
+    font-weight: 500;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 1rem;
+}
+
+.auth-tab.active {
+    background: var(--plenterra-white);
+    color: var(--plenterra-primary);
+    box-shadow: 0 2px 8px rgba(26, 95, 58, 0.1);
+}
+
+.auth-tab:hover:not(.active) {
+    background: rgba(26, 95, 58, 0.1);
+}
+
+/* Auth Forms */
+.auth-form {
+    display: none;
+}
+
+.auth-form.active {
+    display: block;
+    animation: slideInUp 0.4s ease-out;
+}
+
+@keyframes slideInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.auth-form h2 {
+    text-align: center;
+    margin-bottom: 0.5rem;
+    color: var(--plenterra-primary);
+    font-size: 1.8rem;
+    font-weight: 700;
+    position: relative;
+}
+
+.auth-form h2::after {
+    content: '';
+    position: absolute;
+    bottom: -8px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60px;
+    height: 3px;
+    background: var(--growth-gradient);
+    border-radius: 2px;
+}
+
+.auth-subtitle {
+    text-align: center;
+    color: var(--plenterra-text);
+    margin-bottom: 2rem;
+    opacity: 0.8;
+}
+
+/* Form Styling */
+.form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+    margin-bottom: 1rem;
+}
+
+.form-group {
+    position: relative;
+    margin-bottom: 1.5rem;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 18px 16px 8px 16px;
+    border: 2px solid rgba(26, 95, 58, 0.2);
+    border-radius: 12px;
+    font-size: 1rem;
+    background: rgba(255, 255, 255, 0.9);
+    color: var(--plenterra-text);
+    transition: all 0.3s ease;
+    outline: none;
+}
+
+.form-group input:focus {
+    border-color: var(--plenterra-primary);
+    background: var(--plenterra-white);
+    box-shadow: 0 0 0 4px rgba(26, 95, 58, 0.1);
+}
+
+.form-group label {
+    position: absolute;
+    top: 50%;
+    left: 16px;
+    transform: translateY(-50%);
+    color: rgba(44, 62, 45, 0.7);
+    font-size: 1rem;
+    pointer-events: none;
+    transition: all 0.3s ease;
+    background: transparent;
+    padding: 0;
+}
+
+.form-group input:focus + label,
+.form-group input:not(:placeholder-shown) + label {
+    top: 8px;
+    font-size: 0.75rem;
+    color: var(--plenterra-primary);
+    font-weight: 500;
+    transform: translateY(0);
+}
+
+.form-group select {
+    width: 100%;
+    padding: 18px 16px 8px 16px;
+    border: 2px solid rgba(26, 95, 58, 0.2);
+    border-radius: 12px;
+    font-size: 1rem;
+    background: rgba(255, 255, 255, 0.9);
+    color: var(--plenterra-text);
+    transition: all 0.3s ease;
+    outline: none;
+    cursor: pointer;
+}
+
+.select-label {
+    display: block;
+    margin-bottom: 8px;
+    color: var(--plenterra-primary);
+    font-weight: 500;
+    font-size: 0.9rem;
+}
+
+/* Checkbox Styling */
+.checkbox-group {
+    margin-bottom: 30px;
+}
+
+.checkbox-label {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    cursor: pointer;
+    color: var(--plenterra-text);
+    font-size: 0.9rem;
+    line-height: 1.5;
+}
+
+.checkbox-label input[type="checkbox"] {
+    width: 18px;
+    height: 18px;
+    margin: 0;
+    cursor: pointer;
+    accent-color: var(--plenterra-primary);
+}
+
+.checkbox-label span {
+    flex: 1;
+}
+
+.checkbox-label a {
+    color: var(--plenterra-primary);
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.checkbox-label a:hover {
+    text-decoration: underline;
+}
+
+/* Auth Button */
+.auth-btn {
+    width: 100%;
+    background: var(--growth-gradient);
+    color: white;
+    border: none;
+    padding: 18px 24px;
+    border-radius: 12px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    margin-top: 30px;
+    clear: both;
+    position: relative;
+    z-index: 1;
+    overflow: hidden;
+    box-shadow: 0 4px 15px rgba(45, 90, 39, 0.2);
+    border: 2px solid transparent;
+    text-transform: none;
+    letter-spacing: 0.5px;
+    min-height: 56px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.auth-btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, rgba(255,255,255,0.1) 0%, transparent 50%, rgba(255,255,255,0.1) 100%);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.auth-btn::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    background: rgba(255, 255, 255, 0.3);
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    transition: all 0.3s ease;
+}
+
+.auth-btn:hover::before {
+    opacity: 1;
+}
+
+.auth-btn:hover::after {
+    width: 300px;
+    height: 300px;
+}
+
+.auth-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(45, 90, 39, 0.4);
+}
+
+.auth-btn:active {
+    transform: translateY(0);
+    box-shadow: 0 4px 15px rgba(45, 90, 39, 0.3);
+}
+
+/* Auth Links */
+.auth-links {
+    text-align: center;
+    margin-top: 1rem;
+}
+
+.auth-links a {
+    color: var(--plenterra-primary);
+    text-decoration: none;
+    font-size: 0.9rem;
+    font-weight: 500;
+}
+
+.auth-links a:hover {
+    text-decoration: underline;
+}
+
+/* Demo Login */
+.demo-login {
+    margin-top: 2rem;
+    padding: 1.5rem;
+    background: rgba(26, 95, 58, 0.05);
+    border-radius: 12px;
+    border: 1px solid rgba(26, 95, 58, 0.1);
+    text-align: center;
+}
+
+.demo-login p {
+    margin-bottom: 1rem;
+    color: var(--plenterra-text);
+    font-size: 0.9rem;
+    opacity: 0.8;
+}
+
+.demo-btn {
+    background: rgba(26, 95, 58, 0.1);
+    color: var(--plenterra-primary);
+    border: 2px solid var(--plenterra-primary);
+    padding: 12px 24px;
+    border-radius: 8px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 0.9rem;
+}
+
+.demo-btn:hover {
+    background: var(--plenterra-primary);
+    color: white;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(26, 95, 58, 0.3);
+}
+
+/* Footer */
+.site-footer {
+    background: var(--plenterra-primary);
+    color: white;
+    padding: 2rem 0 1rem;
+    margin-top: auto;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.footer-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+.footer-brand {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.footer-logo {
+    height: 32px;
+    width: auto;
+    margin-bottom: 0.5rem;
+    filter: brightness(0) invert(1);
+}
+
+.footer-tagline {
+    font-size: 0.9rem;
+    opacity: 0.8;
+    margin: 0;
+}
+
+.footer-bottom {
+    text-align: center;
+    padding-top: 1rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.2);
+    font-size: 0.8rem;
+    opacity: 0.8;
+}
+
+.footer-legal {
+    margin-top: 0.5rem;
+}
+
+.footer-legal a {
+    color: white;
+    text-decoration: none;
+    margin: 0 0.5rem;
+}
+
+.footer-legal a:hover {
+    text-decoration: underline;
+}
+
+.separator {
+    opacity: 0.5;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .auth-container {
+        padding: 2rem 1.5rem;
+        margin: 1rem;
+        border-radius: 16px;
+    }
+    
+    .form-row {
+        grid-template-columns: 1fr;
+        gap: 0;
+    }
+    
+    .app-title {
+        font-size: 1.2rem;
+    }
+    
+    .nav-container {
+        padding: 0 15px;
+    }
+    
+    .footer-content {
+        flex-direction: column;
+        text-align: center;
+        gap: 1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .auth-container {
+        padding: 1.5rem 1rem;
+    }
+    
+    .auth-form h2 {
+        font-size: 1.5rem;
+    }
+    
+    .hero {
+        height: 80px;
+    }
+    
+    .nav-brand {
+        flex-direction: column;
+        gap: 5px;
+    }
+    
+    .app-title {
+        font-size: 1rem;
+    }
+}

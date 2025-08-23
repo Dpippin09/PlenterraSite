@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./assets/css/auth-standalone.css">
+    <title>Authentication - Plenterra</title>
+</head>
+
+<body>
+    <header class="site-header">
+        <nav class="main-nav">
+            <div class="nav-container">
+                <div class="nav-brand">
+                    <img src="./assets/images/plenterra-logo.png" class="plenterra-logo" alt="Plenterra Logo">
+                    <h1 class="app-title">Authentication Portal</h1>
+                </div>
+            </div>
+        </nav>
+    </header>
+    
+    <section class="hero"></section>
+    
+    <article class="content">
+        <main id="login-signup" class="login-signup">
+            <div class="auth-container">
+                <div class="auth-tabs">
+                    <button class="auth-tab active" onclick="showAuthTab('login')">Login</button>
+                    <button class="auth-tab" onclick="showAuthTab('signup')">Sign Up</button>
+                </div>
+                
+                <!-- Login Form -->
+                <div id="login-form" class="auth-form active">
+                    <h2>Welcome Back to PLENTERRA</h2>
+                    <p class="auth-subtitle">Access your account</p>
+                    
+                    <form onsubmit="handleLogin(event)">
+                        <div class="form-group">
+                            <input type="text" id="login-username" name="username" required>
+                            <label for="login-username">Username or Email</label>
+                        </div>
+                        <div class="form-group">
+                            <input type="password" id="login-password" name="password" required>
+                            <label for="login-password">Password</label>
+                        </div>
+                        <div class="form-group">
+                            <button type="submit" class="auth-btn">Login</button>
+                        </div>
+                        <div class="auth-links">
+                            <a href="#" onclick="showForgotPassword()">Forgot your password?</a>
+                        </div>
+                    </form>
+                    
+                    <!-- Demo Login -->
+                    <div class="demo-login">
+                        <p>Demo Account (for testing):</p>
+                        <button type="button" class="demo-btn" onclick="demoLogin()">
+                            Login as Demo User
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- Signup Form -->
+                <div id="signup-form" class="auth-form">
+                    <h2>Join PLENTERRA</h2>
+                    <p class="auth-subtitle">Create your account</p>
+                    
+                    <form onsubmit="handleSignup(event)">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <input type="text" id="signup-firstname" name="firstname" required>
+                                <label for="signup-firstname">First Name</label>
+                            </div>
+                            <div class="form-group">
+                                <input type="text" id="signup-lastname" name="lastname" required>
+                                <label for="signup-lastname">Last Name</label>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <input type="email" id="signup-email" name="email" required>
+                            <label for="signup-email">Email Address</label>
+                        </div>
+                        
+                        <div class="form-group">
+                            <input type="text" id="signup-username" name="username" required>
+                            <label for="signup-username">Username</label>
+                        </div>
+                        
+                        <div class="form-row">
+                            <div class="form-group">
+                                <input type="password" id="signup-password" name="password" required minlength="8">
+                                <label for="signup-password">Password</label>
+                            </div>
+                            <div class="form-group">
+                                <input type="password" id="confirm-password" name="confirm-password" required>
+                                <label for="confirm-password">Confirm Password</label>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group checkbox-group">
+                            <label class="checkbox-label" for="terms-agree">
+                                <input type="checkbox" id="terms-agree" required>
+                                <span>I agree to the <a href="#" onclick="showTerms()">Terms of Service</a> and <a href="#" onclick="showPrivacy()">Privacy Policy</a></span>
+                            </label>
+                        </div>
+                        
+                        <div class="form-group">
+                            <button type="submit" class="auth-btn">Create Account</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </main>
+    </article>
+    
+    <footer class="site-footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <img src="./assets/images/plenterra-logo.png" class="footer-logo" alt="Plenterra Logo">
+                    <p class="footer-tagline">Secure Authentication Portal</p>
+                </div>
+                
+                <div class="footer-bottom">
+                    <p>&copy; Copyright 2025 Plenterra. All Rights Reserved.</p>
+                    <div class="footer-legal">
+                        <a href="#" onclick="showTerms()">Terms of Service</a>
+                        <span class="separator">|</span>
+                        <a href="#" onclick="showPrivacy()">Privacy Policy</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    
+    <script src="./assets/js/auth-standalone.js"></script>
+</body>
+
+</html>
