@@ -264,7 +264,6 @@ body::after {
     height: 3px;
     background: var(--plenterra-primary);
     margin: 3px 0;
-    transition: 0.3s;
     border-radius: 2px;
 }
 
@@ -280,35 +279,15 @@ body::after {
     color: var(--plenterra-text);
     font-weight: 500;
     font-size: 16px;
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     position: relative;
     padding: 8px 12px;
     border-radius: 8px;
     overflow: hidden;
-    isolation: isolate; /* Create a new stacking context to contain effects */
-}
-
-.nav-links a::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: -100%;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(90deg, transparent, rgba(74, 155, 101, 0.1), transparent);
-    transition: left 0.6s ease;
-    z-index: -1; /* Keep shimmer behind text */
-}
-
-.nav-links a:hover::before {
-    left: 100%;
 }
 
 .nav-links a:hover {
     color: var(--plenterra-primary);
     background: rgba(26, 95, 58, 0.08);
-    transform: translateY(-2px);
-    box-shadow: 0 4px 12px rgba(26, 95, 58, 0.15);
 }
 
 .nav-links a::after {
@@ -319,13 +298,8 @@ body::after {
     width: 0;
     height: 2px;
     background: var(--growth-gradient);
-    transition: all 0.3s ease;
     transform: translateX(-50%);
     border-radius: 1px;
-}
-
-.nav-links a:hover::after {
-    width: 80%;
 }
 
 .nav-links a.active {
@@ -345,7 +319,6 @@ body::after {
     padding: 12px 24px !important;
     border-radius: 25px !important;
     font-weight: 600 !important;
-    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1) !important;
     position: relative !important;
     overflow: hidden !important;
     box-shadow: 0 2px 8px rgba(26, 95, 58, 0.1) !important;
@@ -1630,7 +1603,6 @@ textarea:focus-visible {
     .nav-links a:hover,
     .nav-links a:focus {
         background: var(--plenterra-light-gray);
-        transform: translateX(8px);
     }
     
     .login-btn {
