@@ -1,32 +1,33 @@
 document.addEventListener('DOMContentLoaded', function() {
-    // Mobile Menu Toggle
-    const mobileMenuToggle = document.querySelector('.mobile-menu-toggle');
-    const navLinks = document.querySelector('.nav-links');
-    const body = document.body;
+    // Clean Hamburger Menu
+    const hamburgerMenu = document.getElementById('hamburger-menu');
+    const mobileNav = document.getElementById('mobile-nav');
     
-    if (mobileMenuToggle && navLinks) {
-        mobileMenuToggle.addEventListener('click', function() {
-            mobileMenuToggle.classList.toggle('active');
-            navLinks.classList.toggle('active');
-            body.classList.toggle('menu-open');
+    if (hamburgerMenu && mobileNav) {
+        hamburgerMenu.addEventListener('click', function() {
+            hamburgerMenu.classList.toggle('active');
+            mobileNav.classList.toggle('active');
         });
         
-        // Close mobile menu when clicking on a link
-        navLinks.addEventListener('click', function(e) {
+        // Close menu when clicking on a link
+        mobileNav.addEventListener('click', function(e) {
             if (e.target.tagName === 'A') {
-                mobileMenuToggle.classList.remove('active');
-                navLinks.classList.remove('active');
-                body.classList.remove('menu-open');
+                hamburgerMenu.classList.remove('active');
+                mobileNav.classList.remove('active');
             }
         });
         
-        // Close mobile menu when clicking outside
+        // Close menu when clicking outside
         document.addEventListener('click', function(e) {
-            if (!navLinks.contains(e.target) && !mobileMenuToggle.contains(e.target)) {
-                mobileMenuToggle.classList.remove('active');
-                navLinks.classList.remove('active');
-                body.classList.remove('menu-open');
+            if (!hamburgerMenu.contains(e.target) && !mobileNav.contains(e.target)) {
+                hamburgerMenu.classList.remove('active');
+                mobileNav.classList.remove('active');
             }
+        });
+    } else {
+        console.error('Mobile menu elements not found!', {
+            mobileMenuToggle,
+            navLinks
         });
     }
     

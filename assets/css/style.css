@@ -1,3 +1,128 @@
+/* CLEAN HAMBURGER MENU - MOBILE FIRST */
+
+/* Header and Navigation */
+.site-header {
+    position: relative;
+    background: var(--plenterra-primary);
+    padding: 1rem 0;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    z-index: 10000;
+}
+
+.nav-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.nav-brand .plenterra-logo {
+    height: 40px;
+    width: auto;
+}
+
+/* Hamburger Button */
+.hamburger-menu {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    width: 30px;
+    height: 30px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    z-index: 100000;
+    position: relative;
+}
+
+.hamburger-menu .bar {
+    width: 100%;
+    height: 3px;
+    background: white;
+    border-radius: 2px;
+    transition: all 0.3s ease;
+}
+
+/* Hamburger animation when active */
+.hamburger-menu.active .bar:nth-child(1) {
+    transform: rotate(45deg) translate(7px, 7px);
+}
+
+.hamburger-menu.active .bar:nth-child(2) {
+    opacity: 0;
+}
+
+.hamburger-menu.active .bar:nth-child(3) {
+    transform: rotate(-45deg) translate(7px, -7px);
+}
+
+/* Mobile Navigation Menu */
+.mobile-nav {
+    position: fixed;
+    top: 70px;
+    left: 0;
+    width: 100%;
+    background: white;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    transform: translateY(-100%);
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+    z-index: 99999;
+    padding: 20px 0;
+}
+
+.mobile-nav.active {
+    transform: translateY(0);
+    opacity: 1;
+    visibility: visible;
+}
+
+.mobile-nav a {
+    display: block;
+    padding: 15px 20px;
+    color: var(--plenterra-text);
+    text-decoration: none;
+    font-size: 18px;
+    border-bottom: 1px solid #eee;
+    transition: all 0.2s ease;
+}
+
+.mobile-nav a:hover {
+    background: var(--plenterra-light);
+    color: var(--plenterra-primary);
+    padding-left: 30px;
+}
+
+.mobile-nav a.logout-link {
+    background: var(--plenterra-primary);
+    color: white;
+    margin: 10px 20px;
+    border-radius: 8px;
+    border-bottom: none;
+    text-align: center;
+}
+
+.mobile-nav a.logout-link:hover {
+    background: var(--plenterra-secondary);
+    padding-left: 20px;
+}
+
+/* Overlay when menu is open */
+.mobile-nav.active::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: -1;
+}
+
 /* Plenterra Official Theme - Enhanced Agricultural Theme */
 :root {
     --plenterra-primary: #1a5f3a;         /* Deep forest green - matches login page */
@@ -252,6 +377,12 @@ body::after {
     padding: 8px;
     border-radius: 8px;
     transition: all 0.3s ease;
+    min-height: 44px;
+    min-width: 44px;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    z-index: 1001;
 }
 
 .mobile-menu-toggle:hover {
@@ -265,6 +396,8 @@ body::after {
     background: var(--plenterra-primary);
     margin: 3px 0;
     border-radius: 2px;
+    transition: all 0.3s ease;
+    display: block;
 }
 
 .nav-links {
@@ -1584,35 +1717,55 @@ textarea:focus-visible {
     border: 0;
 }
 
-/* Enhanced Mobile Navigation */
+/* Enhanced Mobile Navigation - Dropdown Style */
 @media (max-width: 768px) {
-    /* Hide regular nav by default on mobile */
+    /* Mobile dropdown menu */
     .nav-links {
-        display: none;
         position: fixed;
         top: 70px;
+        left: 0;
         right: 0;
-        width: 280px;
-        height: calc(100vh - 70px);
+        width: 100%;
+        max-height: 0;
         background: var(--plenterra-white);
-        box-shadow: -5px 0 15px rgba(0, 0, 0, 0.2);
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
         flex-direction: column;
         align-items: stretch;
         justify-content: flex-start;
-        padding: 2rem 0;
+        padding: 0;
         gap: 0;
-        transform: translateX(100%);
-        transition: transform 0.3s ease;
+        overflow: hidden;
+        transition: max-height 0.3s ease, padding 0.3s ease;
         z-index: 1000;
-        overflow-y: auto;
         list-style: none;
         margin: 0;
+        display: flex;
+        border-top: 2px solid var(--plenterra-primary);
     }
     
-    /* Show and slide in when active */
+    /* EMERGENCY DEBUG - SUPER VISIBLE MENU */
     .nav-links.active {
-        display: flex;
-        transform: translateX(0);
+        position: fixed !important;
+        top: 0 !important;
+        left: 0 !important;
+        width: 100vw !important;
+        height: 100vh !important;
+        background: red !important;
+        z-index: 99999 !important;
+        display: block !important;
+        visibility: visible !important;
+        opacity: 1 !important;
+        max-height: none !important;
+        overflow: visible !important;
+    }
+
+    .nav-links.active li {
+        display: block !important;
+        background: yellow !important;
+        margin: 20px !important;
+        padding: 20px !important;
+        font-size: 24px !important;
+        border: 3px solid black !important;
     }
     
     .nav-links li {
@@ -1620,19 +1773,39 @@ textarea:focus-visible {
         margin: 0;
         padding: 0;
         list-style: none;
+        opacity: 0;
+        transform: translateY(-10px);
+        transition: all 0.3s ease;
+        display: block !important;
     }
+    
+    .nav-links.active li {
+        opacity: 1 !important;
+        transform: translateY(0) !important;
+        display: block !important;
+        background: #ffff00 !important; /* Temporary yellow background for debugging */
+        border: 1px solid #0000ff !important; /* Temporary blue border for debugging */
+    }
+    
+    /* Stagger animation for dropdown items */
+    .nav-links.active li:nth-child(1) { transition-delay: 0.1s; }
+    .nav-links.active li:nth-child(2) { transition-delay: 0.15s; }
+    .nav-links.active li:nth-child(3) { transition-delay: 0.2s; }
+    .nav-links.active li:nth-child(4) { transition-delay: 0.25s; }
+    .nav-links.active li:nth-child(5) { transition-delay: 0.3s; }
     
     .nav-links li a {
         display: block;
         width: 100%;
-        text-align: left;
-        padding: 16px 24px;
+        text-align: center;
+        padding: 12px 24px;
         margin: 0;
         font-size: 18px;
         color: var(--plenterra-text);
         text-decoration: none;
         border-bottom: 1px solid rgba(26, 95, 58, 0.1);
-        transition: background-color 0.2s ease;
+        transition: all 0.2s ease;
+        position: relative;
     }
     
     .nav-links li:last-child a {
@@ -1643,13 +1816,14 @@ textarea:focus-visible {
     .nav-links li a:focus {
         background: var(--plenterra-light-gray);
         color: var(--plenterra-primary);
+        transform: translateX(5px);
     }
     
     .nav-links li a.logout-btn {
         background: var(--plenterra-primary) !important;
         color: var(--plenterra-white) !important;
         font-weight: 600 !important;
-        margin: 10px 24px !important;
+        margin: 8px 24px !important;
         border-radius: 8px !important;
         border-bottom: none !important;
         width: calc(100% - 48px) !important;
@@ -1657,6 +1831,7 @@ textarea:focus-visible {
     
     .nav-links li a.logout-btn:hover {
         background: var(--plenterra-secondary) !important;
+        transform: translateY(-2px) !important;
     }
     
     .mobile-menu-toggle {
@@ -1672,8 +1847,22 @@ textarea:focus-visible {
         left: 0;
         width: 100%;
         height: 100%;
-        background: rgba(0, 0, 0, 0.5);
+        background: rgba(0, 0, 0, 0.3);
         z-index: 999;
+    }
+    
+    /* Dropdown arrow indicator */
+    .nav-links.active::before {
+        content: '';
+        position: absolute;
+        top: -8px;
+        right: 20px;
+        width: 0;
+        height: 0;
+        border-left: 8px solid transparent;
+        border-right: 8px solid transparent;
+        border-bottom: 8px solid var(--plenterra-white);
+        z-index: 1001;
     }
 }
 

@@ -52,6 +52,15 @@ body.profile-page .site-header {
     overflow: hidden;
 }
 
+/* Allow overflow when mobile menu is active */
+body.dashboard-page .site-header:has(.mobile-nav.active),
+body.profile-page .site-header:has(.mobile-nav.active),
+body.menu-open.dashboard-page .site-header,
+body.menu-open.profile-page .site-header {
+    overflow: visible !important;
+    z-index: 9999 !important;
+}
+
 body.dashboard-page .site-header::before,
 body.profile-page .site-header::before {
     content: '';
