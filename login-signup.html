@@ -4,37 +4,53 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./assets/css/style.css">
-    <link rel="stylesheet" href="./assets/css/login-signup.css">
-    <title>Login/Signup - Plenterra</title>
+    <title>Redirecting to Farmer's Portal - Plenterra</title>
+    <script>
+        // Automatically redirect to the new farmer's portal
+        window.location.replace('index.html');
+    </script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding: 50px;
+            background: linear-gradient(135deg, #1a5f3a 0%, #2d7a4d 100%);
+            color: white;
+            margin: 0;
+        }
+        .redirect-message {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 30px;
+            border-radius: 15px;
+            max-width: 500px;
+            margin: 0 auto;
+        }
+        .logo {
+            font-size: 2rem;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+        a {
+            color: #d4af37;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+    </style>
 </head>
 
 <body>
-    <header class="site-header">
-        <nav class="main-nav">
-            <div class="nav-container">
-                <div class="nav-brand">
-                    <img src="./assets/images/plenterra-logo.png" class="plenterra-logo" alt="Plenterra Logo">
-                </div>
-                
-                <button class="mobile-menu-toggle" aria-label="Toggle mobile menu">
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                </button>
-                
-                <ul class="nav-links" id="nav-links">
-                    <li><a href="index.html">Home</a></li>
-                    <li><a href="index.html#what-we-do">What We Do</a></li>
-                    <li><a href="index.html#services">Services</a></li>
-                    <li><a href="contact.html">Contact</a></li>
-                    <li><a href="login-signup.html" class="login-btn active">Login/Signup</a></li>
-                </ul>
-            </div>
-        </nav>
-    </header>
-    <section class="hero"></section>
-    <article class="content">
+    <div class="redirect-message">
+        <div class="logo">🌱 PLENTERRA</div>
+        <h1>Redirecting to Farmer's Portal...</h1>
+        <p>You're being redirected to our new and improved Farmer's Portal.</p>
+        <p>If you're not redirected automatically, <a href="index.html">click here</a>.</p>
+    </div>
+</body>
+
+</html>
         <main id="login-signup" class="login-signup">
             <div class="auth-container">
                 <div class="auth-tabs">

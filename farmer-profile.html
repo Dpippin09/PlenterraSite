@@ -3,22 +3,34 @@
 
 <head>
     <meta charset="UTF-8" />
-    <link rel="stylesheet" href="./assets/css/style.css?v=2">
-    <link rel="stylesheet" href="./assets/css/dashboard.css?v=2">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./assets/css/style.css?v=3">
+    <link rel="stylesheet" href="./assets/css/dashboard.css?v=3">
     <title>Farmer Profile - PLENTERRA</title>
 </head>
 
 <body>
-    <header>
-        <nav>
-            <img src="./assets/images/plenterra-logo.png" class="plenterra-logo" alt="plenterra-logo">
-            <ul class="nav-links" id="nav-links">
-                <li><a href="farmer-dashboard.html">Dashboard</a></li>
-                <li><a href="#profile-info">My Profile</a></li>
-                <li><a href="#farm-details">Farm Details</a></li>
-                <li><a href="contact.html">Contact Us</a></li>
-                <li><a href="#" class="logout-btn" onclick="logout()">Logout</a></li>
-            </ul>
+    <header class="site-header">
+        <nav class="main-nav">
+            <div class="nav-container">
+                <div class="nav-brand">
+                    <img src="./assets/images/plenterra-logo.png" class="plenterra-logo" alt="Plenterra Logo">
+                </div>
+                
+                <button class="mobile-menu-toggle" aria-label="Toggle mobile menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+                
+                <ul class="nav-links" id="nav-links">
+                    <li><a href="farmer-dashboard.html">Dashboard</a></li>
+                    <li><a href="#profile-info">My Profile</a></li>
+                    <li><a href="#farm-details">Farm Details</a></li>
+                    <li><a href="contact.html">Contact Us</a></li>
+                    <li><a href="#" class="logout-btn" onclick="logout()">Logout</a></li>
+                </ul>
+            </div>
         </nav>
     </header>
 

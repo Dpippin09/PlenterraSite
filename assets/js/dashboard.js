@@ -4,7 +4,7 @@
 function checkAuth() {
     const isLoggedIn = localStorage.getItem('plenterraLoggedIn');
     if (!isLoggedIn && window.location.pathname.includes('farmer-')) {
-        window.location.href = 'login-signup.html';
+        window.location.href = 'index.html';
     }
 }
 

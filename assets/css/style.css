@@ -1649,6 +1649,7 @@ textarea:focus-visible {
     .mobile-menu-toggle {
         display: none;
     }
+}
 
 /* Loading State Improvements */
 .loading-overlay {
