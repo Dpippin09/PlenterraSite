@@ -1540,6 +1540,7 @@ a:focus {
     }
     
     .mobile-menu-toggle {
+        display: flex;
         min-height: 44px;
         min-width: 44px;
     }
@@ -1602,11 +1603,13 @@ textarea:focus-visible {
         transform: translateX(100%);
         opacity: 0;
         visibility: hidden;
-        transition: all 0.3s ease;
+        transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
         z-index: 1000;
+        overflow-y: auto;
     }
     
     .nav-links.active {
+        right: 0;
         transform: translateX(0);
         opacity: 1;
         visibility: visible;
@@ -1620,7 +1623,25 @@ textarea:focus-visible {
         margin-bottom: 8px;
         font-size: 18px;
         border-bottom: none;
+        color: var(--plenterra-text);
+        text-decoration: none;
+        transition: all 0.3s ease;
+        transform: translateX(20px);
+        opacity: 0;
     }
+    
+    .nav-links.active a {
+        transform: translateX(0);
+        opacity: 1;
+        transition: all 0.3s ease;
+    }
+    
+    /* Stagger the menu items animation */
+    .nav-links.active a:nth-child(1) { transition-delay: 0.1s; }
+    .nav-links.active a:nth-child(2) { transition-delay: 0.15s; }
+    .nav-links.active a:nth-child(3) { transition-delay: 0.2s; }
+    .nav-links.active a:nth-child(4) { transition-delay: 0.25s; }
+    .nav-links.active a:nth-child(5) { transition-delay: 0.3s; }
     
     .nav-links a:hover,
     .nav-links a:focus {
@@ -1640,7 +1661,25 @@ textarea:focus-visible {
     }
     
     .mobile-menu-toggle {
-        display: block;
+        display: flex;
+    }
+    
+    /* Add overlay when mobile menu is open */
+    body.menu-open::before {
+        content: '';
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.5);
+        z-index: 999;
+        opacity: 0;
+        animation: fadeInOverlay 0.3s ease forwards;
+    }
+    
+    @keyframes fadeInOverlay {
+        to { opacity: 1; }
     }
 }
 
