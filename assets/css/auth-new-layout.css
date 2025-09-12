@@ -43,6 +43,15 @@ html, body {
     overflow: hidden;
 }
 
+/* Mobile override for scrolling */
+@media (max-width: 768px) {
+    .auth-body {
+        height: auto;
+        min-height: 100vh;
+        overflow: visible;
+    }
+}
+
 /* Main Container */
 .auth-main-container {
     display: flex;
@@ -557,8 +566,9 @@ html, body {
 @media (max-width: 768px) {
     .auth-main-container {
         flex-direction: column;
-        height: 100vh;
-        overflow-y: auto;
+        height: auto;
+        min-height: 100vh;
+        overflow: visible;
     }
     
     .auth-left-panel {
@@ -568,9 +578,10 @@ html, body {
     .auth-right-panel {
         width: 100%;
         padding: 20px;
-        min-height: 100vh;
+        min-height: auto;
         justify-content: flex-start;
         padding-top: 40px;
+        overflow: visible;
     }
     
     .auth-container {
