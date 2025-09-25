@@ -1,0 +1,12 @@
+{
+  "name": "plenterra-site",
+  "version": "1.0.0",
+  "description": "Plenterra Agricultural Platform Frontend",
+  "main": "index.html",
+  "scripts": {
+    "start": "cd backend && npm start"
+  },
+  "keywords": ["agriculture", "frontend", "plenterra"],
+  "author": "Plenterra",
+  "license": "ISC"
+}

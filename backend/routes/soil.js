@@ -1,5 +1,6 @@
 const express = require('express');
 const axios = require('axios');
+const jwt = require('jsonwebtoken');
 const router = express.Router();
 
 // Middleware to verify JWT token
@@ -32,7 +33,9 @@ const wardLabsAPI = axios.create({
   timeout: 10000,
   headers: {
     'Content-Type': 'application/json',
-    'X-API-Key': process.env.WARD_LABS_API_KEY
+    'Authorization': `Bearer ${process.env.WARD_LABS_API_KEY}`,
+    'X-API-Key': process.env.WARD_LABS_API_KEY,
+    'API-Key': process.env.WARD_LABS_API_KEY
   }
 });
 
@@ -135,8 +138,8 @@ router.get('/test-connection', authenticateToken, async (req, res) => {
   }
 
   try {
-    // Simple health check to Ward Labs API
-    const response = await wardLabsAPI.get('/health'); // Replace with actual health endpoint
+    // Test connection to Ward Labs API using samples endpoint
+    const response = await wardLabsAPI.get('/samples');
 
     res.json({
       success: true,
@@ -146,15 +149,20 @@ router.get('/test-connection', authenticateToken, async (req, res) => {
     });
 
   } catch (error) {
-    console.error('Ward Labs Connection Test Error:', error.message);
+    console.error('Ward Labs Connection Test Error:', error.response?.data || error.message);
     
     res.status(500).json({
       success: false,
       message: 'Ward Labs API connection failed',
-      error: error.message,
+      error: error.response?.data || error.message,
+      statusCode: error.response?.status,
       config: {
         baseURL: wardLabsAPI.defaults.baseURL,
-        hasApiKey: !!process.env.WARD_LABS_API_KEY
+        hasApiKey: !!process.env.WARD_LABS_API_KEY,
+        headers: {
+          'Content-Type': wardLabsAPI.defaults.headers['Content-Type'],
+          'X-API-Key': !!wardLabsAPI.defaults.headers['X-API-Key'] ? 'Present' : 'Missing'
+        }
       }
     });
   }
