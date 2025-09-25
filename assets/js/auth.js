@@ -18,7 +18,7 @@ function showAuthTab(tabName) {
 }
 
 // Handle login form submission
-function handleLogin(event) {
+async function handleLogin(event) {
     event.preventDefault();
     
     const username = document.getElementById('login-username').value;
@@ -32,27 +32,61 @@ function handleLogin(event) {
         return;
     }
     
-    // Simulate authentication (in real app, this would be an API call)
-    if (authenticateUser(username, password)) {
-        // Set login state
-        localStorage.setItem('plenterraLoggedIn', 'true');
+    try {
+        // Show loading state
+        const loginBtn = document.querySelector('.auth-btn');
+        const originalText = loginBtn.innerHTML;
+        loginBtn.innerHTML = '<span class="btn-text">Signing in...</span>';
+        loginBtn.disabled = true;
         
-        if (rememberMe) {
-            localStorage.setItem('plenterraRememberMe', 'true');
+        // Real API call for authentication
+        const response = await PlenterraAPI.login(username, password);
+        
+        if (response.success) {
+            // Set login state
+            localStorage.setItem('plenterraLoggedIn', 'true');
+            
+            if (rememberMe) {
+                localStorage.setItem('plenterraRememberMe', 'true');
+            }
+            
+            // Store user data from API response
+            localStorage.setItem('plenterraUserData', JSON.stringify(response.user));
+            
+            showAuthNotification('Login successful! Redirecting to dashboard...', 'success');
+            
+            // Redirect to dashboard
+            setTimeout(() => {
+                window.location.href = 'farmer-dashboard.html';
+            }, 1500);
         }
+    } catch (error) {
+        console.error('Login error:', error);
         
-        // Set user data
-        const userData = getUserData(username);
-        localStorage.setItem('plenterraUserData', JSON.stringify(userData));
-        
-        showAuthNotification('Login successful! Redirecting to dashboard...', 'success');
-        
-        // Redirect to dashboard
-        setTimeout(() => {
-            window.location.href = 'farmer-dashboard.html';
-        }, 1500);
-    } else {
-        showAuthNotification('Invalid username or password. Please try again.', 'error');
+        // Fallback to demo authentication for development
+        if (authenticateUser(username, password)) {
+            localStorage.setItem('plenterraLoggedIn', 'true');
+            
+            if (rememberMe) {
+                localStorage.setItem('plenterraRememberMe', 'true');
+            }
+            
+            const userData = getUserData(username);
+            localStorage.setItem('plenterraUserData', JSON.stringify(userData));
+            
+            showAuthNotification('Demo login successful! Redirecting to dashboard...', 'success');
+            
+            setTimeout(() => {
+                window.location.href = 'farmer-dashboard.html';
+            }, 1500);
+        } else {
+            showAuthNotification('Invalid username or password. Please try again.', 'error');
+        }
+    } finally {
+        // Restore button state
+        const loginBtn = document.querySelector('.auth-btn');
+        loginBtn.innerHTML = '<span class="btn-text">Sign In</span><span class="btn-arrow">→</span>';
+        loginBtn.disabled = false;
     }
 }
 
