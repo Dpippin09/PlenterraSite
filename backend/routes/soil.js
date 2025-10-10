@@ -33,9 +33,7 @@ const wardLabsAPI = axios.create({
   timeout: 10000,
   headers: {
     'Content-Type': 'application/json',
-    'Authorization': `Bearer ${process.env.WARD_LABS_API_KEY}`,
-    'X-API-Key': process.env.WARD_LABS_API_KEY,
-    'API-Key': process.env.WARD_LABS_API_KEY
+    'x-ward-api-key': process.env.WARD_LABS_API_KEY
   }
 });
 
