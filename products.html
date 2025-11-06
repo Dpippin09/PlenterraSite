@@ -380,6 +380,42 @@
     <script src="./assets/js/script.js"></script>
     <script src="./assets/js/main.js"></script>
     <script src="./assets/js/products.js"></script>
+    
+    <!-- Debug Script for Hamburger Menu -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('Products page DOM loaded');
+            
+            const hamburger = document.getElementById('hamburger-menu');
+            const mobileNav = document.getElementById('mobile-nav');
+            
+            console.log('Hamburger element:', hamburger);
+            console.log('Mobile nav element:', mobileNav);
+            
+            if (hamburger && mobileNav) {
+                console.log('Elements found, adding click listener');
+                
+                hamburger.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    console.log('Hamburger clicked!');
+                    hamburger.classList.toggle('active');
+                    mobileNav.classList.toggle('active');
+                    console.log('Classes toggled:', {
+                        hamburgerActive: hamburger.classList.contains('active'),
+                        mobileNavActive: mobileNav.classList.contains('active')
+                    });
+                });
+                
+                // Test click programmatically
+                setTimeout(() => {
+                    console.log('Testing programmatic click...');
+                    hamburger.click();
+                }, 2000);
+            } else {
+                console.error('Elements not found!');
+            }
+        });
+    </script>
 </body>
 
 </html>
