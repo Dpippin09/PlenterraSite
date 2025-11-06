@@ -92,8 +92,6 @@
     opacity: 1 !important;
     visibility: visible !important;
     pointer-events: auto !important;
-    /* Temporary debugging - bright red background */
-    background: rgba(255, 0, 0, 0.8) !important;
 }
 
 /* Clean menu links positioning */
@@ -111,11 +109,10 @@
     font-weight: 500 !important;
     border-bottom: 1px solid #eee !important;
     transition: all 0.2s ease !important;
-    background: yellow !important; /* Temporary debugging */
+    background: white !important;
     margin: 0 !important;
     width: 100% !important;
     box-sizing: border-box !important;
-    border: 2px solid blue !important; /* Temporary debugging */
 }
 
 .products-page .mobile-nav a:nth-child(1) { top: 70px !important; }
@@ -126,7 +123,7 @@
 .products-page .mobile-nav a:hover {
     background: #f8faf9 !important;
     color: #1a5f3a !important;
-    padding-left: 25px !important;
+    padding-left: 22px !important;
 }
 
 .products-page .mobile-nav a.logout-link {
