@@ -387,9 +387,29 @@
             const hamburger = document.getElementById('hamburger-menu');
             const mobileNav = document.getElementById('mobile-nav');
             
+            console.log('Debug - Elements found:', { hamburger, mobileNav });
+            
             if (hamburger && mobileNav) {
                 // Move mobile nav outside of any container that might clip it
                 document.body.appendChild(mobileNav);
+                console.log('Mobile nav moved to body');
+                
+                // Add our own click handler to ensure it works
+                hamburger.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    console.log('Hamburger clicked - toggling classes');
+                    
+                    hamburger.classList.toggle('active');
+                    mobileNav.classList.toggle('active');
+                    
+                    console.log('Classes after toggle:', {
+                        hamburgerActive: hamburger.classList.contains('active'),
+                        mobileNavActive: mobileNav.classList.contains('active')
+                    });
+                });
+            } else {
+                console.error('Elements not found!', { hamburger, mobileNav });
             }
         });
     </script>
