@@ -1,7 +1,7 @@
 const express = require('express');
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
-const { getUsers, addUser, findUser } = require('../data/users');
+const UserService = require('../services/userService');
 const router = express.Router();
 
 // Helper function to generate JWT token
@@ -36,10 +36,12 @@ router.post('/signup', async (req, res) => {
     }
 
     // Check if user already exists
-    const existingUser = findUser(user => 
-      user.email.toLowerCase() === email.toLowerCase() || 
-      user.username.toLowerCase() === username.toLowerCase()
-    );
+    const existingUser = await UserService.findUser({
+      $or: [
+        { email: email.toLowerCase() },
+        { username: username.toLowerCase() }
+      ]
+    });
 
     if (existingUser) {
       return res.status(400).json({
@@ -53,8 +55,7 @@ router.post('/signup', async (req, res) => {
     const hashedPassword = await bcrypt.hash(password, saltRounds);
 
     // Create user object
-    const newUser = {
-      id: Date.now().toString(), // Simple ID generation (use proper UUID in production)
+    const newUserData = {
       firstName,
       lastName,
       email: email.toLowerCase(),
@@ -81,18 +82,17 @@ router.post('/signup', async (req, res) => {
           healthScore: 6.0,
           lastTreatment: null
         }
-      ],
-      createdAt: new Date().toISOString()
+      ]
     };
 
-    // Store user (in production, save to MongoDB)
-    addUser(newUser);
+    // Store user in MongoDB
+    const newUser = await UserService.addUser(newUserData);
 
     // Generate token
-    const token = generateToken(newUser.id);
+    const token = generateToken(newUser._id);
 
     // Remove password from response
-    const { password: _, ...userResponse } = newUser;
+    const { password: _, ...userResponse } = newUser.toObject();
 
     res.status(201).json({
       success: true,
@@ -125,11 +125,13 @@ router.post('/login', async (req, res) => {
       });
     }
 
-    // Find user
-    const user = findUser(u => 
-      u.username.toLowerCase() === username.toLowerCase() || 
-      u.email.toLowerCase() === username.toLowerCase()
-    );
+    // Find user by username or email
+    const user = await UserService.findUser({
+      $or: [
+        { username: username.toLowerCase() },
+        { email: username.toLowerCase() }
+      ]
+    });
 
     if (!user) {
       return res.status(401).json({
@@ -149,10 +151,10 @@ router.post('/login', async (req, res) => {
     }
 
     // Generate token
-    const token = generateToken(user.id);
+    const token = generateToken(user._id);
 
     // Remove password from response
-    const { password: _, ...userResponse } = user;
+    const { password: _, ...userResponse } = user.toObject();
 
     res.json({
       success: true,

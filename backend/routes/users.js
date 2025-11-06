@@ -1,6 +1,6 @@
 const express = require('express');
 const jwt = require('jsonwebtoken');
-const { findUser, findUserIndex, updateUser } = require('../data/users');
+const UserService = require('../services/userService');
 const router = express.Router();
 
 // Middleware to verify JWT token
@@ -30,9 +30,9 @@ const authenticateToken = (req, res, next) => {
 // @route   GET /api/users/profile
 // @desc    Get current user profile
 // @access  Private
-router.get('/profile', authenticateToken, (req, res) => {
+router.get('/profile', authenticateToken, async (req, res) => {
   try {
-    const user = findUser(u => u.id === req.userId);
+    const user = await UserService.findUserById(req.userId);
 
     if (!user) {
       return res.status(404).json({
@@ -42,7 +42,7 @@ router.get('/profile', authenticateToken, (req, res) => {
     }
 
     // Remove password from response
-    const { password, ...userProfile } = user;
+    const { password, ...userProfile } = user.toObject();
 
     res.json({
       success: true,
@@ -61,11 +61,11 @@ router.get('/profile', authenticateToken, (req, res) => {
 // @route   PUT /api/users/profile
 // @desc    Update user profile
 // @access  Private
-router.put('/profile', authenticateToken, (req, res) => {
+router.put('/profile', authenticateToken, async (req, res) => {
   try {
-    const userIndex = findUserIndex(u => u.id === req.userId);
+    const user = await UserService.findUserById(req.userId);
 
-    if (userIndex === -1) {
+    if (!user) {
       return res.status(404).json({
         success: false,
         message: 'User not found'
@@ -83,7 +83,7 @@ router.put('/profile', authenticateToken, (req, res) => {
     });
 
     // Apply updates
-    const updatedUser = updateUser(userIndex, { ...updates, updatedAt: new Date().toISOString() });
+    const updatedUser = await UserService.updateUser(req.userId, updates);
 
     if (!updatedUser) {
       return res.status(500).json({
@@ -93,7 +93,7 @@ router.put('/profile', authenticateToken, (req, res) => {
     }
 
     // Remove password from response
-    const { password, ...userProfile } = updatedUser;
+    const { password, ...userProfile } = updatedUser.toObject();
 
     res.json({
       success: true,
@@ -113,9 +113,9 @@ router.put('/profile', authenticateToken, (req, res) => {
 // @route   GET /api/users/fields
 // @desc    Get user's fields
 // @access  Private
-router.get('/fields', authenticateToken, (req, res) => {
+router.get('/fields', authenticateToken, async (req, res) => {
   try {
-    const user = findUser(u => u.id === req.userId);
+    const user = await UserService.findUserById(req.userId);
 
     if (!user) {
       return res.status(404).json({
@@ -141,7 +141,7 @@ router.get('/fields', authenticateToken, (req, res) => {
 // @route   POST /api/users/fields
 // @desc    Add new field
 // @access  Private
-router.post('/fields', authenticateToken, (req, res) => {
+router.post('/fields', authenticateToken, async (req, res) => {
   try {
     const { name, size, crop, soilType } = req.body;
 
@@ -152,9 +152,9 @@ router.post('/fields', authenticateToken, (req, res) => {
       });
     }
 
-    const userIndex = findUserIndex(u => u.id === req.userId);
+    const user = await UserService.findUserById(req.userId);
 
-    if (userIndex === -1) {
+    if (!user) {
       return res.status(404).json({
         success: false,
         message: 'User not found'
@@ -172,11 +172,10 @@ router.post('/fields', authenticateToken, (req, res) => {
       createdAt: new Date().toISOString()
     };
 
-    const user = findUser(u => u.id === req.userId);
     const existingFields = user.fields || [];
     const updatedFields = [...existingFields, newField];
 
-    const updatedUser = updateUser(userIndex, { fields: updatedFields });
+    const updatedUser = await UserService.updateUser(req.userId, { fields: updatedFields });
 
     if (!updatedUser) {
       return res.status(500).json({
