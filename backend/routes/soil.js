@@ -127,6 +127,29 @@ router.get('/recommendations/:fieldId', authenticateToken, async (req, res) => {
   }
 });
 
+// @route   GET /api/soil/sample-types
+// @desc    Get available sample types from Ward Labs
+// @access  Private
+router.get('/sample-types', authenticateToken, async (req, res) => {
+  try {
+    const response = await wardLabsAPI.get('/sample-types');
+
+    res.json({
+      success: true,
+      data: response.data
+    });
+
+  } catch (error) {
+    console.error('Ward Labs Sample Types Error:', error.response?.data || error.message);
+    
+    res.status(500).json({
+      success: false,
+      message: 'Failed to fetch sample types',
+      error: process.env.NODE_ENV === 'development' ? error.message : undefined
+    });
+  }
+});
+
 // @route   GET /api/soil/test-connection
 // @desc    Test Ward Labs API connection (dev only)
 // @access  Private
@@ -136,8 +159,8 @@ router.get('/test-connection', authenticateToken, async (req, res) => {
   }
 
   try {
-    // Test connection to Ward Labs API using samples endpoint
-    const response = await wardLabsAPI.get('/samples');
+    // Test connection to Ward Labs API using sample-types endpoint
+    const response = await wardLabsAPI.get('/sample-types');
 
     res.json({
       success: true,

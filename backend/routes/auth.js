@@ -1,10 +1,8 @@
 const express = require('express');
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
+const { getUsers, addUser, findUser } = require('../data/users');
 const router = express.Router();
-
-// In-memory user storage (replace with MongoDB in production)
-let users = [];
 
 // Helper function to generate JWT token
 const generateToken = (userId) => {
@@ -38,7 +36,7 @@ router.post('/signup', async (req, res) => {
     }
 
     // Check if user already exists
-    const existingUser = users.find(user => 
+    const existingUser = findUser(user => 
       user.email.toLowerCase() === email.toLowerCase() || 
       user.username.toLowerCase() === username.toLowerCase()
     );
@@ -88,7 +86,7 @@ router.post('/signup', async (req, res) => {
     };
 
     // Store user (in production, save to MongoDB)
-    users.push(newUser);
+    addUser(newUser);
 
     // Generate token
     const token = generateToken(newUser.id);
@@ -128,7 +126,7 @@ router.post('/login', async (req, res) => {
     }
 
     // Find user
-    const user = users.find(u => 
+    const user = findUser(u => 
       u.username.toLowerCase() === username.toLowerCase() || 
       u.email.toLowerCase() === username.toLowerCase()
     );

@@ -32,6 +32,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use('/api/auth', require('./routes/auth'));
 app.use('/api/soil', require('./routes/soil'));
 app.use('/api/users', require('./routes/users'));
+app.use('/api/ward-labs', require('./routes/wardLabsIntegration'));
 
 // Health check endpoint
 app.get('/api/health', (req, res) => {

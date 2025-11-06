@@ -1,5 +1,6 @@
 const express = require('express');
 const jwt = require('jsonwebtoken');
+const { findUser, findUserIndex, updateUser } = require('../data/users');
 const router = express.Router();
 
 // Middleware to verify JWT token
@@ -26,15 +27,12 @@ const authenticateToken = (req, res, next) => {
   });
 };
 
-// External users array (this should be the same as in auth.js - in production use shared database)
-const users = []; // This should be imported from a shared data store
-
 // @route   GET /api/users/profile
 // @desc    Get current user profile
 // @access  Private
 router.get('/profile', authenticateToken, (req, res) => {
   try {
-    const user = users.find(u => u.id === req.userId);
+    const user = findUser(u => u.id === req.userId);
 
     if (!user) {
       return res.status(404).json({
@@ -65,7 +63,7 @@ router.get('/profile', authenticateToken, (req, res) => {
 // @access  Private
 router.put('/profile', authenticateToken, (req, res) => {
   try {
-    const userIndex = users.findIndex(u => u.id === req.userId);
+    const userIndex = findUserIndex(u => u.id === req.userId);
 
     if (userIndex === -1) {
       return res.status(404).json({
@@ -85,10 +83,17 @@ router.put('/profile', authenticateToken, (req, res) => {
     });
 
     // Apply updates
-    users[userIndex] = { ...users[userIndex], ...updates, updatedAt: new Date().toISOString() };
+    const updatedUser = updateUser(userIndex, { ...updates, updatedAt: new Date().toISOString() });
+
+    if (!updatedUser) {
+      return res.status(500).json({
+        success: false,
+        message: 'Failed to update user'
+      });
+    }
 
     // Remove password from response
-    const { password, ...userProfile } = users[userIndex];
+    const { password, ...userProfile } = updatedUser;
 
     res.json({
       success: true,
@@ -110,7 +115,7 @@ router.put('/profile', authenticateToken, (req, res) => {
 // @access  Private
 router.get('/fields', authenticateToken, (req, res) => {
   try {
-    const user = users.find(u => u.id === req.userId);
+    const user = findUser(u => u.id === req.userId);
 
     if (!user) {
       return res.status(404).json({
@@ -147,7 +152,7 @@ router.post('/fields', authenticateToken, (req, res) => {
       });
     }
 
-    const userIndex = users.findIndex(u => u.id === req.userId);
+    const userIndex = findUserIndex(u => u.id === req.userId);
 
     if (userIndex === -1) {
       return res.status(404).json({
@@ -167,11 +172,18 @@ router.post('/fields', authenticateToken, (req, res) => {
       createdAt: new Date().toISOString()
     };
 
-    if (!users[userIndex].fields) {
-      users[userIndex].fields = [];
-    }
+    const user = findUser(u => u.id === req.userId);
+    const existingFields = user.fields || [];
+    const updatedFields = [...existingFields, newField];
 
-    users[userIndex].fields.push(newField);
+    const updatedUser = updateUser(userIndex, { fields: updatedFields });
+
+    if (!updatedUser) {
+      return res.status(500).json({
+        success: false,
+        message: 'Failed to add field'
+      });
+    }
 
     res.status(201).json({
       success: true,
