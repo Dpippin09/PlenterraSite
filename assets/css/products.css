@@ -3,19 +3,58 @@
 .products-page {
     background-color: #f8faf9;
     min-height: 100vh;
+    padding-top: 70px;
 }
 
-/* Navigation Dropdown Fix - Override for products page */
+/* Complete Navigation Override for Products Page */
 .products-page .site-header {
-    position: relative;
-    z-index: 10000;
+    position: fixed !important;
+    top: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+    z-index: 1000 !important;
+    background: rgba(255, 255, 255, 0.95) !important;
+    backdrop-filter: blur(15px) !important;
+    border-bottom: 2px solid rgba(26, 95, 58, 0.1) !important;
+    box-shadow: 0 2px 20px rgba(26, 95, 58, 0.1) !important;
 }
 
 .products-page .hamburger-menu {
-    z-index: 100000;
-    position: relative;
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: space-around !important;
+    width: 30px !important;
+    height: 30px !important;
+    background: transparent !important;
+    border: none !important;
+    cursor: pointer !important;
+    padding: 0 !important;
+    z-index: 100000 !important;
+    position: relative !important;
 }
 
+.products-page .hamburger-menu .bar {
+    width: 100% !important;
+    height: 3px !important;
+    background: #1a5f3a !important;
+    border-radius: 2px !important;
+    transition: all 0.3s ease !important;
+}
+
+/* Hamburger animation when active */
+.products-page .hamburger-menu.active .bar:nth-child(1) {
+    transform: rotate(45deg) translate(7px, 7px) !important;
+}
+
+.products-page .hamburger-menu.active .bar:nth-child(2) {
+    opacity: 0 !important;
+}
+
+.products-page .hamburger-menu.active .bar:nth-child(3) {
+    transform: rotate(-45deg) translate(7px, -7px) !important;
+}
+
+/* Mobile Navigation Menu - Clean Override */
 .products-page .mobile-nav {
     position: fixed !important;
     top: 70px !important;
@@ -29,9 +68,15 @@
     transition: all 0.3s ease !important;
     z-index: 99999 !important;
     padding: 20px 0 !important;
+    display: block !important;
+    list-style: none !important;
+    margin: 0 !important;
+    border: none !important;
     border-radius: 0 !important;
     min-width: auto !important;
     right: auto !important;
+    max-height: none !important;
+    overflow: visible !important;
 }
 
 .products-page .mobile-nav.active {
@@ -41,11 +86,48 @@
     display: block !important;
 }
 
+.products-page .mobile-nav a {
+    display: block !important;
+    padding: 15px 20px !important;
+    color: #333333 !important;
+    text-decoration: none !important;
+    font-size: 18px !important;
+    border-bottom: 1px solid #eee !important;
+    transition: all 0.2s ease !important;
+    background: transparent !important;
+    margin: 0 !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
+}
+
+.products-page .mobile-nav a:hover {
+    background: #f8faf9 !important;
+    color: #1a5f3a !important;
+    padding-left: 30px !important;
+}
+
+.products-page .mobile-nav a.logout-link {
+    background: #1a5f3a !important;
+    color: white !important;
+    margin: 10px 20px !important;
+    border-radius: 8px !important;
+    border-bottom: none !important;
+    text-align: center !important;
+    width: calc(100% - 40px) !important;
+}
+
+.products-page .mobile-nav a.logout-link:hover {
+    background: #2d7a4d !important;
+    padding-left: 20px !important;
+}
+
 /* Ensure all page content stays below navigation */
 .products-page .page-header,
 .products-page .category-tabs,
 .products-page .category-section,
-.products-page .cta-section {
+.products-page .cta-section,
+.products-page .products-container,
+.products-page main {
     position: relative;
     z-index: 1;
 }
@@ -379,6 +461,29 @@
 
 /* Responsive Design */
 @media (max-width: 768px) {
+    .products-page {
+        padding-top: 70px;
+    }
+    
+    /* Ensure mobile navigation is always on top */
+    .products-page .mobile-nav {
+        position: fixed !important;
+        top: 70px !important;
+        left: 0 !important;
+        right: 0 !important;
+        width: 100% !important;
+        z-index: 999999 !important;
+        background: white !important;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1) !important;
+    }
+    
+    .products-page .mobile-nav.active {
+        display: block !important;
+        visibility: visible !important;
+        opacity: 1 !important;
+        transform: translateY(0) !important;
+    }
+    
     .products-container {
         padding: 1rem;
     }
