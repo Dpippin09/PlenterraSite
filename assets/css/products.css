@@ -5,10 +5,38 @@
     min-height: 100vh;
 }
 
+/* Navigation Dropdown Fix */
+.site-header {
+    position: relative;
+    z-index: 100;
+}
+
+.mobile-nav {
+    position: absolute;
+    z-index: 999;
+    background: white;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+    border-radius: 8px;
+    min-width: 200px;
+    top: 100%;
+    right: 1rem;
+}
+
+.mobile-nav.active {
+    display: block !important;
+}
+
+.hamburger-menu {
+    position: relative;
+    z-index: 1000;
+}
+
 .products-container {
     max-width: 1200px;
     margin: 0 auto;
     padding: 2rem 1rem;
+    position: relative;
+    z-index: 1;
 }
 
 /* Page Header */
