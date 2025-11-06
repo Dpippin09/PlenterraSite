@@ -395,6 +395,11 @@
             if (hamburger && mobileNav) {
                 console.log('Elements found, adding click listener');
                 
+                // CRITICAL FIX: Move mobile nav outside of any container that might clip it
+                console.log('Moving mobile nav to body root...');
+                document.body.appendChild(mobileNav);
+                console.log('Mobile nav moved to:', mobileNav.parentElement);
+                
                 // Log initial state
                 console.log('Initial state:', {
                     hamburgerClasses: hamburger.className,
@@ -404,7 +409,8 @@
                     mobileNavPosition: window.getComputedStyle(mobileNav).position,
                     mobileNavTop: window.getComputedStyle(mobileNav).top,
                     mobileNavOpacity: window.getComputedStyle(mobileNav).opacity,
-                    mobileNavVisibility: window.getComputedStyle(mobileNav).visibility
+                    mobileNavVisibility: window.getComputedStyle(mobileNav).visibility,
+                    mobileNavParent: mobileNav.parentElement.tagName
                 });
                 
                 hamburger.addEventListener('click', function(e) {
@@ -425,7 +431,9 @@
                             mobileNavTop: window.getComputedStyle(mobileNav).top,
                             mobileNavOpacity: window.getComputedStyle(mobileNav).opacity,
                             mobileNavVisibility: window.getComputedStyle(mobileNav).visibility,
-                            mobileNavTransform: window.getComputedStyle(mobileNav).transform
+                            mobileNavTransform: window.getComputedStyle(mobileNav).transform,
+                            mobileNavParent: mobileNav.parentElement.tagName,
+                            mobileNavOverflow: window.getComputedStyle(mobileNav.parentElement).overflow
                         });
                         
                         // Check if menu is actually visible
@@ -474,7 +482,9 @@
                         Visibility: ${window.getComputedStyle(mobileNav).visibility}<br>
                         Position: ${window.getComputedStyle(mobileNav).position}<br>
                         Transform: ${window.getComputedStyle(mobileNav).transform}<br>
-                        Display: ${window.getComputedStyle(mobileNav).display}
+                        Display: ${window.getComputedStyle(mobileNav).display}<br>
+                        Parent: ${mobileNav.parentElement.tagName}<br>
+                        Parent Overflow: ${window.getComputedStyle(mobileNav.parentElement).overflow}
                     `;
                 }, 1000);
                 

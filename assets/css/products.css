@@ -18,6 +18,15 @@
     border-bottom: 2px solid rgba(26, 95, 58, 0.1) !important;
     box-shadow: 0 2px 20px rgba(26, 95, 58, 0.1) !important;
     isolation: isolate !important;
+    overflow: visible !important; /* Allow dropdown to extend beyond header */
+}
+
+.products-page .main-nav {
+    overflow: visible !important; /* Allow dropdown to extend beyond nav */
+}
+
+.products-page .nav-container {
+    overflow: visible !important; /* Allow dropdown to extend beyond nav container */
 }
 
 .products-page .hamburger-menu {
@@ -79,6 +88,12 @@
     transition: all 0.3s ease !important;
     isolation: isolate !important;
     border: 10px solid lime !important; /* BRIGHT GREEN BORDER for debugging */
+    /* CRITICAL: Remove any clipping */
+    overflow: visible !important;
+    clip: none !important;
+    clip-path: none !important;
+    /* Force it out of the nav container stacking context */
+    transform-style: preserve-3d !important;
 }
 
 .products-page .mobile-nav.active {
