@@ -381,115 +381,15 @@
     <script src="./assets/js/main.js"></script>
     <script src="./assets/js/products.js"></script>
     
-    <!-- Debug Script for Hamburger Menu -->
+    <!-- Mobile Navigation DOM Fix -->
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            console.log('Products page DOM loaded');
-            
             const hamburger = document.getElementById('hamburger-menu');
             const mobileNav = document.getElementById('mobile-nav');
             
-            console.log('Hamburger element:', hamburger);
-            console.log('Mobile nav element:', mobileNav);
-            
             if (hamburger && mobileNav) {
-                console.log('Elements found, adding click listener');
-                
-                // CRITICAL FIX: Move mobile nav outside of any container that might clip it
-                console.log('Moving mobile nav to body root...');
+                // Move mobile nav outside of any container that might clip it
                 document.body.appendChild(mobileNav);
-                console.log('Mobile nav moved to:', mobileNav.parentElement);
-                
-                // Log initial state
-                console.log('Initial state:', {
-                    hamburgerClasses: hamburger.className,
-                    mobileNavClasses: mobileNav.className,
-                    mobileNavDisplay: window.getComputedStyle(mobileNav).display,
-                    mobileNavZIndex: window.getComputedStyle(mobileNav).zIndex,
-                    mobileNavPosition: window.getComputedStyle(mobileNav).position,
-                    mobileNavTop: window.getComputedStyle(mobileNav).top,
-                    mobileNavOpacity: window.getComputedStyle(mobileNav).opacity,
-                    mobileNavVisibility: window.getComputedStyle(mobileNav).visibility,
-                    mobileNavParent: mobileNav.parentElement.tagName
-                });
-                
-                hamburger.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    console.log('Hamburger clicked!');
-                    hamburger.classList.toggle('active');
-                    mobileNav.classList.toggle('active');
-                    
-                    // Log state after toggle
-                    setTimeout(() => {
-                        console.log('After toggle:', {
-                            hamburgerActive: hamburger.classList.contains('active'),
-                            mobileNavActive: mobileNav.classList.contains('active'),
-                            mobileNavClasses: mobileNav.className,
-                            mobileNavDisplay: window.getComputedStyle(mobileNav).display,
-                            mobileNavZIndex: window.getComputedStyle(mobileNav).zIndex,
-                            mobileNavPosition: window.getComputedStyle(mobileNav).position,
-                            mobileNavTop: window.getComputedStyle(mobileNav).top,
-                            mobileNavOpacity: window.getComputedStyle(mobileNav).opacity,
-                            mobileNavVisibility: window.getComputedStyle(mobileNav).visibility,
-                            mobileNavTransform: window.getComputedStyle(mobileNav).transform,
-                            mobileNavParent: mobileNav.parentElement.tagName,
-                            mobileNavOverflow: window.getComputedStyle(mobileNav.parentElement).overflow
-                        });
-                        
-                        // Check if menu is actually visible
-                        const rect = mobileNav.getBoundingClientRect();
-                        console.log('Mobile nav bounding rect:', rect);
-                        console.log('Mobile nav links:', mobileNav.querySelectorAll('a'));
-                        
-                        // Check what element is at the center of where the menu should be
-                        const elementAtCenter = document.elementFromPoint(window.innerWidth / 2, 150);
-                        console.log('Element at menu center:', elementAtCenter);
-                        
-                    }, 100);
-                });
-                
-                // Test click programmatically
-                setTimeout(() => {
-                    console.log('Testing programmatic click...');
-                    hamburger.click();
-                }, 2000);
-                
-                // Add visual debugging overlay
-                const debugOverlay = document.createElement('div');
-                debugOverlay.style.cssText = `
-                    position: fixed;
-                    top: 10px;
-                    left: 10px;
-                    background: rgba(0,0,0,0.8);
-                    color: white;
-                    padding: 10px;
-                    z-index: 9999999;
-                    font-family: monospace;
-                    font-size: 12px;
-                    border-radius: 5px;
-                    max-width: 300px;
-                `;
-                debugOverlay.innerHTML = 'Debug info will appear here...';
-                document.body.appendChild(debugOverlay);
-                
-                // Update debug overlay every second
-                setInterval(() => {
-                    const isActive = mobileNav.classList.contains('active');
-                    debugOverlay.innerHTML = `
-                        Menu Active: ${isActive}<br>
-                        Z-Index: ${window.getComputedStyle(mobileNav).zIndex}<br>
-                        Opacity: ${window.getComputedStyle(mobileNav).opacity}<br>
-                        Visibility: ${window.getComputedStyle(mobileNav).visibility}<br>
-                        Position: ${window.getComputedStyle(mobileNav).position}<br>
-                        Transform: ${window.getComputedStyle(mobileNav).transform}<br>
-                        Display: ${window.getComputedStyle(mobileNav).display}<br>
-                        Parent: ${mobileNav.parentElement.tagName}<br>
-                        Parent Overflow: ${window.getComputedStyle(mobileNav.parentElement).overflow}
-                    `;
-                }, 1000);
-                
-            } else {
-                console.error('Elements not found!');
             }
         });
     </script>
