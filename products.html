@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./assets/css/style.css?v=14">
+    <link rel="stylesheet" href="./assets/css/dashboard.css?v=8">
+    <link rel="stylesheet" href="./assets/css/products.css?v=1">
+    <title>Products & Services - PLENTERRA</title>
+</head>
+
+<body class="products-page">
+    <header class="site-header">
+        <nav class="main-nav">
+            <div class="nav-container">
+                <div class="nav-brand">
+                    <img src="./assets/images/plenterra-logo.png" class="plenterra-logo" alt="Plenterra Logo">
+                </div>
+                
+                <!-- Hamburger Menu Button -->
+                <button class="hamburger-menu" id="hamburger-menu">
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                </button>
+                
+                <!-- Mobile Navigation Menu -->
+                <div class="mobile-nav" id="mobile-nav">
+                    <a href="farmer-dashboard.html">Dashboard</a>
+                    <a href="farmer-profile.html">My Profile</a>
+                    <a href="contact.html">Contact</a>
+                    <a href="#" class="logout-link" onclick="logout()">Logout</a>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main class="products-container">
+        <!-- Header Section -->
+        <div class="page-header">
+            <h1>Soil Health Products & Services</h1>
+            <p class="page-subtitle">Enhance your farm's productivity with our scientifically-backed soil improvement solutions</p>
+            <nav class="breadcrumb">
+                <a href="farmer-dashboard.html">Dashboard</a> / Products & Services
+            </nav>
+        </div>
+
+        <!-- Product Categories -->
+        <div class="category-tabs">
+            <button class="tab-btn active" onclick="showCategory('soil-testing')">Soil Testing</button>
+            <button class="tab-btn" onclick="showCategory('amendments')">Soil Amendments</button>
+            <button class="tab-btn" onclick="showCategory('biochar')">Biochar Products</button>
+            <button class="tab-btn" onclick="showCategory('consulting')">Consulting Services</button>
+        </div>
+
+        <!-- Soil Testing Category -->
+        <div id="soil-testing" class="category-section active">
+            <div class="category-header">
+                <h2>Professional Soil Testing</h2>
+                <p>Get comprehensive analysis of your soil health with Ward Laboratories partnership</p>
+            </div>
+
+            <div class="products-grid">
+                <div class="product-card featured">
+                    <div class="product-badge">Most Popular</div>
+                    <div class="product-image">
+                        <img src="./assets/images/testing-image.jpg" alt="Comprehensive Soil Analysis">
+                    </div>
+                    <div class="product-content">
+                        <h3>Comprehensive Soil Analysis</h3>
+                        <p class="product-description">Complete soil health assessment including pH, nutrients, organic matter, and micronutrient analysis.</p>
+                        <ul class="product-features">
+                            <li>✓ 15+ key nutrient measurements</li>
+                            <li>✓ Organic matter analysis</li>
+                            <li>✓ pH and buffer capacity</li>
+                            <li>✓ Micronutrient profile</li>
+                            <li>✓ Detailed recommendations</li>
+                        </ul>
+                        <div class="product-pricing">
+                            <span class="price">$45.00</span>
+                            <span class="per-sample">per sample</span>
+                        </div>
+                        <button class="btn btn-primary" onclick="orderSoilTest('comprehensive')">Order Test</button>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="./assets/images/soil-image.png" alt="Basic Soil Test">
+                    </div>
+                    <div class="product-content">
+                        <h3>Basic Soil Test</h3>
+                        <p class="product-description">Essential soil health metrics for standard farming operations.</p>
+                        <ul class="product-features">
+                            <li>✓ pH and buffer capacity</li>
+                            <li>✓ NPK levels</li>
+                            <li>✓ Organic matter content</li>
+                            <li>✓ Basic recommendations</li>
+                        </ul>
+                        <div class="product-pricing">
+                            <span class="price">$25.00</span>
+                            <span class="per-sample">per sample</span>
+                        </div>
+                        <button class="btn btn-secondary" onclick="orderSoilTest('basic')">Order Test</button>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="./assets/images/carbon-returned.jpg" alt="Carbon Analysis">
+                    </div>
+                    <div class="product-content">
+                        <h3>Carbon Sequestration Analysis</h3>
+                        <p class="product-description">Specialized testing for carbon credits and sequestration tracking.</p>
+                        <ul class="product-features">
+                            <li>✓ Soil organic carbon levels</li>
+                            <li>✓ Carbon sequestration potential</li>
+                            <li>✓ Baseline measurement</li>
+                            <li>✓ Credit qualification assessment</li>
+                        </ul>
+                        <div class="product-pricing">
+                            <span class="price">$65.00</span>
+                            <span class="per-sample">per sample</span>
+                        </div>
+                        <button class="btn btn-secondary" onclick="orderSoilTest('carbon')">Order Test</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Soil Amendments Category -->
+        <div id="amendments" class="category-section">
+            <div class="category-header">
+                <h2>Soil Amendment Products</h2>
+                <p>Premium soil enhancers to boost your soil health and crop productivity</p>
+            </div>
+
+            <div class="products-grid">
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="./assets/images/fertilizer.jpg" alt="Organic Compost">
+                    </div>
+                    <div class="product-content">
+                        <h3>Premium Organic Compost</h3>
+                        <p class="product-description">Rich, aged compost to improve soil structure and nutrient availability.</p>
+                        <ul class="product-features">
+                            <li>✓ 100% organic materials</li>
+                            <li>✓ Improves water retention</li>
+                            <li>✓ Enhances microbial activity</li>
+                            <li>✓ Slow-release nutrients</li>
+                        </ul>
+                        <div class="product-pricing">
+                            <span class="price">$35.00</span>
+                            <span class="per-sample">per cubic yard</span>
+                        </div>
+                        <button class="btn btn-secondary" onclick="orderAmendment('compost')">Order Now</button>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="./assets/images/chemicals-image.png" alt="Lime Application">
+                    </div>
+                    <div class="product-content">
+                        <h3>Agricultural Lime</h3>
+                        <p class="product-description">High-quality limestone to adjust soil pH and improve nutrient uptake.</p>
+                        <ul class="product-features">
+                            <li>✓ Fast-acting pH adjustment</li>
+                            <li>✓ Calcium supplementation</li>
+                            <li>✓ Improves soil structure</li>
+                            <li>✓ Enhanced nutrient availability</li>
+                        </ul>
+                        <div class="product-pricing">
+                            <span class="price">$28.00</span>
+                            <span class="per-sample">per ton</span>
+                        </div>
+                        <button class="btn btn-secondary" onclick="orderAmendment('lime')">Order Now</button>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="./assets/images/growing-plant.png" alt="Gypsum">
+                    </div>
+                    <div class="product-content">
+                        <h3>Agricultural Gypsum</h3>
+                        <p class="product-description">Calcium sulfate to improve soil structure without affecting pH.</p>
+                        <ul class="product-features">
+                            <li>✓ Improves soil structure</li>
+                            <li>✓ Reduces soil compaction</li>
+                            <li>✓ pH neutral application</li>
+                            <li>✓ Enhanced water infiltration</li>
+                        </ul>
+                        <div class="product-pricing">
+                            <span class="price">$42.00</span>
+                            <span class="per-sample">per ton</span>
+                        </div>
+                        <button class="btn btn-secondary" onclick="orderAmendment('gypsum')">Order Now</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Biochar Products Category -->
+        <div id="biochar" class="category-section">
+            <div class="category-header">
+                <h2>Biochar Solutions</h2>
+                <p>Carbon-negative soil enhancement for sustainable agriculture</p>
+            </div>
+
+            <div class="products-grid">
+                <div class="product-card featured">
+                    <div class="product-badge">Eco-Friendly</div>
+                    <div class="product-image">
+                        <img src="./assets/images/biochar.png" alt="Premium Biochar">
+                    </div>
+                    <div class="product-content">
+                        <h3>Premium Agricultural Biochar</h3>
+                        <p class="product-description">High-quality biochar for long-term soil carbon storage and improved fertility.</p>
+                        <ul class="product-features">
+                            <li>✓ Carbon sequestration for 100+ years</li>
+                            <li>✓ Improves nutrient retention</li>
+                            <li>✓ Enhances water holding capacity</li>
+                            <li>✓ Supports beneficial microbes</li>
+                            <li>✓ Reduces fertilizer needs</li>
+                        </ul>
+                        <div class="product-pricing">
+                            <span class="price">$125.00</span>
+                            <span class="per-sample">per ton</span>
+                        </div>
+                        <button class="btn btn-primary" onclick="orderBiochar('premium')">Order Biochar</button>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="./assets/images/graphic-biochar.png" alt="Biochar Blend">
+                    </div>
+                    <div class="product-content">
+                        <h3>Biochar Compost Blend</h3>
+                        <p class="product-description">Ready-to-use blend of biochar and organic compost for immediate application.</p>
+                        <ul class="product-features">
+                            <li>✓ Pre-mixed for easy application</li>
+                            <li>✓ Immediate and long-term benefits</li>
+                            <li>✓ Reduced application time</li>
+                            <li>✓ Balanced nutrient profile</li>
+                        </ul>
+                        <div class="product-pricing">
+                            <span class="price">$85.00</span>
+                            <span class="per-sample">per ton</span>
+                        </div>
+                        <button class="btn btn-secondary" onclick="orderBiochar('blend')">Order Blend</button>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="./assets/images/charcol.png" alt="Custom Biochar">
+                    </div>
+                    <div class="product-content">
+                        <h3>Custom Biochar Application</h3>
+                        <p class="product-description">Tailored biochar solution based on your specific soil test results.</p>
+                        <ul class="product-features">
+                            <li>✓ Customized to soil needs</li>
+                            <li>✓ Professional application service</li>
+                            <li>✓ Monitoring and support</li>
+                            <li>✓ Performance guarantees</li>
+                        </ul>
+                        <div class="product-pricing">
+                            <span class="price">Contact Us</span>
+                            <span class="per-sample">for pricing</span>
+                        </div>
+                        <button class="btn btn-secondary" onclick="requestQuote('custom-biochar')">Get Quote</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Consulting Services Category -->
+        <div id="consulting" class="category-section">
+            <div class="category-header">
+                <h2>Expert Consulting Services</h2>
+                <p>Professional guidance to maximize your soil health investment</p>
+            </div>
+
+            <div class="products-grid">
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="./assets/images/farmer-image.jpg" alt="Soil Health Consulting">
+                    </div>
+                    <div class="product-content">
+                        <h3>Soil Health Assessment</h3>
+                        <p class="product-description">Comprehensive on-farm soil health evaluation and improvement plan.</p>
+                        <ul class="product-features">
+                            <li>✓ On-site soil evaluation</li>
+                            <li>✓ Custom improvement plan</li>
+                            <li>✓ Implementation timeline</li>
+                            <li>✓ ROI projections</li>
+                        </ul>
+                        <div class="product-pricing">
+                            <span class="price">$150.00</span>
+                            <span class="per-sample">per hour</span>
+                        </div>
+                        <button class="btn btn-secondary" onclick="bookConsulting('assessment')">Book Consultation</button>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="./assets/images/farming-image.jpg" alt="Carbon Credits">
+                    </div>
+                    <div class="product-content">
+                        <h3>Carbon Credit Consultation</h3>
+                        <p class="product-description">Navigate carbon credit markets and maximize your environmental impact revenue.</p>
+                        <ul class="product-features">
+                            <li>✓ Carbon credit eligibility assessment</li>
+                            <li>✓ Market navigation guidance</li>
+                            <li>✓ Verification support</li>
+                            <li>✓ Revenue optimization</li>
+                        </ul>
+                        <div class="product-pricing">
+                            <span class="price">$200.00</span>
+                            <span class="per-sample">per session</span>
+                        </div>
+                        <button class="btn btn-secondary" onclick="bookConsulting('carbon-credits')">Schedule Session</button>
+                    </div>
+                </div>
+
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="./assets/images/healthyLand-image.jpg" alt="Sustainability Planning">
+                    </div>
+                    <div class="product-content">
+                        <h3>Sustainability Planning</h3>
+                        <p class="product-description">Long-term farm sustainability and regenerative agriculture planning.</p>
+                        <ul class="product-features">
+                            <li>✓ 5-year sustainability roadmap</li>
+                            <li>✓ Regenerative practices integration</li>
+                            <li>✓ Economic impact analysis</li>
+                            <li>✓ Ongoing support and monitoring</li>
+                        </ul>
+                        <div class="product-pricing">
+                            <span class="price">$500.00</span>
+                            <span class="per-sample">per plan</span>
+                        </div>
+                        <button class="btn btn-secondary" onclick="bookConsulting('sustainability')">Start Planning</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Call to Action Section -->
+        <div class="cta-section">
+            <div class="cta-content">
+                <h2>Ready to Transform Your Soil Health?</h2>
+                <p>Join thousands of farmers who have improved their yields and sustainability with Plenterra solutions.</p>
+                <div class="cta-buttons">
+                    <button class="btn btn-primary large" onclick="contactSalesTeam()">Contact Sales Team</button>
+                    <button class="btn btn-secondary large" onclick="requestDemo()">Request Demo</button>
+                </div>
+            </div>
+            <div class="cta-stats">
+                <div class="stat-item">
+                    <span class="stat-number">2,500+</span>
+                    <span class="stat-label">Satisfied Farmers</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">45%</span>
+                    <span class="stat-label">Average Yield Increase</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">1M+</span>
+                    <span class="stat-label">Tons CO2 Sequestered</span>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script src="./assets/js/main.js"></script>
+    <script src="./assets/js/products.js"></script>
+</body>
+
+</html>
